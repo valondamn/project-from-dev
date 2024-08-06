@@ -1,0 +1,60 @@
+@import "assets/scss/properties";
+
+.tabs-wrapper {
+  &.sticky {
+    position: sticky;
+
+    transition: top 0.5s ease;
+
+    &.pushed {
+      top: 148px;
+    }
+
+    &.normal {
+      top: 20px;
+    }
+  }
+
+  .tabs {
+    @include flexbox;
+    @include flex-direction(column);
+
+    .tab-wrapper {
+      @include flexbox;
+      padding: 8px 0;
+
+      .tab {
+        user-select: none;
+        cursor: pointer;
+        padding-left: 8px;
+        @include subtitle_2_300;
+
+        @include flexbox;
+        @include align-items(flex-start);
+        @include flex-direction(column);
+        @include gap(4px);
+
+        .subtitle {
+          color: $cl-black;
+        }
+
+        .title {
+          &.bold {
+            font-family: $font-500;
+          }
+        }
+
+        &.active {
+          color: $cl-green;
+          padding-left: 6px;
+          border-left: 2px solid $cl-green;
+          cursor: default;
+
+          .title {
+            @include subtitle_2_700;
+          }
+        }
+      }
+    }
+  }
+}

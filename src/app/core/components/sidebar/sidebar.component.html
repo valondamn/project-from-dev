@@ -1,0 +1,47 @@
+<div
+  class="tabs-wrapper"
+  [ngClass]="{
+    sticky: isSticky,
+    pushed: headerService.isVisible,
+    normal: !headerService.isVisible
+  }"
+  [ngStyle]="{ width: width }"
+>
+  <div
+    class="tabs"
+    [ngStyle]="{
+      padding: padding
+    }"
+  >
+    @for (tab of tabs; track tab) {
+    <div
+      class="tab-wrapper"
+      [ngStyle]="{
+    'justify-content': justifyContent
+    }"
+      >
+        <div
+          class="tab"
+          [ngClass]="{
+    active: tab === currentTab
+    }"
+          (click)="setActiveTab(tab)"
+        >
+          <span
+            class="title"
+            [ngClass]="{
+    bold: tab.subtitle
+    }"
+            [innerHTML]="tab.title | replaceLineBreaksPipe"
+          ></span>
+          @if (tab.subtitle) {
+    <span
+      class="subtitle"
+      [innerHTML]="tab.subtitle | replaceLineBreaksPipe"
+    ></span>
+    }
+    </div>
+  </div>
+    }
+  </div>
+</div>
