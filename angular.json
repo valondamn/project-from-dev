@@ -65,10 +65,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "materuak:build:production"
+              "buildTarget": "materuak:build:production"
             },
             "development": {
-              "browserTarget": "materuak:build:development"
+              "buildTarget": "materuak:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -76,7 +76,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "materuak:build"
+            "buildTarget": "materuak:build"
           }
         },
         "test": {
