@@ -1,4 +1,4 @@
-@import "assets/scss/properties";
+@import "../../../../assets/scss/properties";
 
 .tabs-wrapper {
   &.sticky {
@@ -16,6 +16,8 @@
   }
 
   .tabs {
+
+
     @include flexbox;
     @include flex-direction(column);
 

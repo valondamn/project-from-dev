@@ -1,8 +1,8 @@
-@import "scss/colors";
-@import "scss/fonts";
-@import "scss/flexbox";
-@import "scss/typography";
-@import "scss/breakpoints";
+@import "./colors";
+@import "./fonts";
+@import "./flexbox";
+@import "./typography";
+@import "./breakpoints";
 
 @mixin scroll {
   /* width */

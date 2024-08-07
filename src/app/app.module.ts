@@ -21,7 +21,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatMenuModule } from '@angular/material/menu';
 import { HeaderComponent } from './core/components/header/header.component';
 import { FooterComponent } from './core/components/footer/footer.component';
-import { SidebarComponent } from './core/components/sidebar/sidebar.component';
+import { SidebarComponent } from './shared/components/sidebar/sidebar.component';
 import { MainComponent } from './layout/main/main.component';
 import { CurrentBenefitsComponent } from './layout/current-benefits/current-benefits.component';
 import { CatalogComponent } from './layout/catalog/catalog.component';

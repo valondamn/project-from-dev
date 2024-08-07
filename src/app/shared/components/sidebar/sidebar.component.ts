@@ -11,9 +11,9 @@ import {
   SimpleChanges,
 } from '@angular/core';
 import {DOCUMENT} from "@angular/common";
-import {HeaderService} from "../../services/header.service";
-import {Tab} from "../../../shared/interfaces/tab.interface";
-import {WINDOW} from "../../../shared/injectors/window";
+import {HeaderService} from "../../../core/services/header.service";
+import {Tab} from "../../interfaces/tab.interface";
+import {WINDOW} from "../../injectors/window";
 
 @Component({
   selector: 'app-sidebar',
