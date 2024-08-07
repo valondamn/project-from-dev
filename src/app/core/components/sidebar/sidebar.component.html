@@ -27,6 +27,7 @@
     }"
           (click)="setActiveTab(tab)"
         >
+          <svg-icon [src]="tab.icon"/>
           <span
             class="title"
             [ngClass]="{
@@ -35,10 +36,6 @@
             [innerHTML]="tab.title"
           ></span>
           @if (tab.subtitle) {
-    <span
-      class="subtitle"
-      [innerHTML]="tab.subtitle"
-    ></span>
     }
     </div>
   </div>

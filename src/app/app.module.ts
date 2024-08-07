@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import {
+  BrowserModule,
+   // HERE
+} from '@angular/platform-browser';
 import {AppRoutingModule} from "./app.routes";
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -19,51 +22,49 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatMenuModule } from '@angular/material/menu';
-import { HeaderComponent } from './core/components/header/header.component';
-import { FooterComponent } from './core/components/footer/footer.component';
-import { SidebarComponent } from './shared/components/sidebar/sidebar.component';
 import { MainComponent } from './layout/main/main.component';
 import { CurrentBenefitsComponent } from './layout/current-benefits/current-benefits.component';
 import { CatalogComponent } from './layout/catalog/catalog.component';
 import { QuestionsAndAnswersComponent } from './layout/questions-and-answers/questions-and-answers.component';
-import { PageComponent } from './core/components/page/page.component';
 import {RouterModule} from '@angular/router';
+import {PageComponent} from "./core/components/page/page.component";
+import {AngularSvgIconModule} from "angular-svg-icon";
+import {HttpClientModule} from "@angular/common/http";
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
-    FooterComponent,
-    SidebarComponent,
     MainComponent,
     CurrentBenefitsComponent,
     CatalogComponent,
     QuestionsAndAnswersComponent,
-    PageComponent
   ],
-    imports: [
-        AppRoutingModule,
-        BrowserModule,
-        RouterModule,
-        BrowserAnimationsModule,
-        MatSlideToggleModule,
-        MatInputModule,
-        MatButtonModule,
-        MatSelectModule,
-        MatRadioModule,
-        MatCardModule,
-        ReactiveFormsModule,
-        MatToolbarModule,
-        MatSidenavModule,
-        MatIconModule,
-        MatListModule,
-        MatTableModule,
-        MatPaginatorModule,
-        MatSortModule,
-        MatGridListModule,
-        MatMenuModule
-    ],
+  imports: [
+    AppRoutingModule,
+    BrowserModule,
+    RouterModule,
+    BrowserAnimationsModule,
+    MatSlideToggleModule,
+    MatInputModule,
+    MatButtonModule,
+    MatSelectModule,
+    MatRadioModule,
+    MatCardModule,
+    ReactiveFormsModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatGridListModule,
+    MatMenuModule,
+    PageComponent,
+    HttpClientModule,
+    AngularSvgIconModule.forRoot()
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

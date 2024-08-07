@@ -1,18 +1,14 @@
 @import "../../../../assets/scss/properties";
 
 .tabs-wrapper {
+
+  @include flexbox;
+  @include flex-direction(column);
+  @include gap(16px);
+  padding: 24px 16px;
+
   &.sticky {
     position: sticky;
-
-    transition: top 0.5s ease;
-
-    &.pushed {
-      top: 148px;
-    }
-
-    &.normal {
-      top: 20px;
-    }
   }
 
   .tabs {
@@ -26,19 +22,16 @@
       padding: 8px 0;
 
       .tab {
+        @include flexbox;
+        @include align-items(center);
+        @include gap(16px);
+        @include subtitle_2_300;
+        width: 100%;
+        padding: 12px 16px;
+
         user-select: none;
         cursor: pointer;
-        padding-left: 8px;
-        @include subtitle_2_300;
 
-        @include flexbox;
-        @include align-items(flex-start);
-        @include flex-direction(column);
-        @include gap(4px);
-
-        .subtitle {
-          color: $cl-black;
-        }
 
         .title {
           &.bold {
@@ -47,9 +40,9 @@
         }
 
         &.active {
-          color: $cl-green;
-          padding-left: 6px;
-          border-left: 2px solid $cl-green;
+          color: $brand-900;
+          background: $brand-100;
+          border-radius: 8px;
           cursor: default;
 
           .title {
