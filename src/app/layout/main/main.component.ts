@@ -8,24 +8,46 @@ import {Cards} from "./main.interface";
 })
 export class MainComponent {
 
+  public selectedCategory: string = 'Все';
 
+  get filteredMostPopularCards(): Cards[] {
+    return this.filterCards(this.mostPopularCards);
+  }
+
+  get filteredRecommendationsCards(): Cards[] {
+    return this.filterCards(this.recommendationsCards);
+  }
+
+  public filterCards(cards: Cards[]): Cards[] {
+    if (this.selectedCategory === 'Все') {
+      return cards;
+    }
+    return cards.filter(card => card.category === this.selectedCategory);
+  }
+
+  public selectCategory(category: string) {
+    this.selectedCategory = category;
+  }
 
   public mostPopularCards: Cards[] = [
-     {
-       code: 1,
-       image: 'assets/images/main/Image.jpg',
-       title: 'Абонемент в спортзал',
-       company: 'Invictus GO',
-       companyLogo: 'assets/icons/main/company-logo1.svg',
-       coins: 4,
-       descriptionList: ['Доступ в клуб на Суюнбая 89б',
-         'Без ограничений по времени',
-         'Тренер за дополнительную плату',
-         'Заморозка 5 дней',
-         '1 гостевое посещение',
-         'Действует 1 месяц с момента покупки'],
-       descriptionTitle: 'МЕСЯЦ FULL DAY'
-     },
+    {
+      code: 1,
+      image: 'assets/images/main/Image.jpg',
+      title: 'Абонемент в спортзал',
+      company: 'Invictus GO',
+      companyLogo: 'assets/icons/main/company-logo1.svg',
+      coins: 4,
+      descriptionList: [
+        'Доступ в клуб на Суюнбая 89б',
+        'Без ограничений по времени',
+        'Тренер за дополнительную плату',
+        'Заморозка 5 дней',
+        '1 гостевое посещение',
+        'Действует 1 месяц с момента покупки'
+      ],
+      descriptionTitle: 'МЕСЯЦ FULL DAY',
+      category: 'Спорт' // Категория
+    },
     {
       code: 2,
       image: 'assets/images/main/Image1.jpg',
@@ -33,13 +55,16 @@ export class MainComponent {
       company: 'Aqua Stars',
       companyLogo: 'assets/icons/main/company-logo2.svg',
       coins: 3,
-      descriptionList: ['Доступ в клуб на Суюнбая 89б',
+      descriptionList: [
+        'Доступ в клуб на Суюнбая 89б',
         'Без ограничений по времени',
         'Тренер за дополнительную плату',
         'Заморозка 5 дней',
         '1 гостевое посещение',
-        'Действует 1 месяц с момента покупки'],
-      descriptionTitle: 'МЕСЯЦ FULL DAY'
+        'Действует 1 месяц с момента покупки'
+      ],
+      descriptionTitle: 'МЕСЯЦ FULL DAY',
+      category: 'Спорт' // Категория
     },
     {
       code: 3,
@@ -48,16 +73,18 @@ export class MainComponent {
       company: 'Almaty Parking',
       companyLogo: 'assets/icons/main/company-logo3.svg',
       coins: 5,
-      descriptionList: ['Доступ в клуб на Суюнбая 89б',
+      descriptionList: [
+        'Доступ в клуб на Суюнбая 89б',
         'Без ограничений по времени',
         'Тренер за дополнительную плату',
         'Заморозка 5 дней',
         '1 гостевое посещение',
-        'Действует 1 месяц с момента покупки'],
-      descriptionTitle: 'МЕСЯЦ FULL DAY'
+        'Действует 1 месяц с момента покупки'
+      ],
+      descriptionTitle: 'МЕСЯЦ FULL DAY',
+      category: 'Комфорт и удобства' // Категория
     },
-
-   ]
+  ];
 
   public recommendationsCards: Cards[] = [
     {
@@ -67,13 +94,16 @@ export class MainComponent {
       company: 'ВОЗДУХ',
       companyLogo: 'assets/icons/main/company-logo4.svg',
       coins: 4,
-      descriptionList: ['Доступ в клуб на Суюнбая 89б',
+      descriptionList: [
+        'Доступ в клуб на Суюнбая 89б',
         'Без ограничений по времени',
         'Тренер за дополнительную плату',
         'Заморозка 5 дней',
         '1 гостевое посещение',
-        'Действует 1 месяц с момента покупки'],
-      descriptionTitle: 'МЕСЯЦ FULL DAY'
+        'Действует 1 месяц с момента покупки'
+      ],
+      descriptionTitle: 'МЕСЯЦ FULL DAY',
+      category: 'Спорт' // Категория
     },
     {
       code: 2,
@@ -82,13 +112,16 @@ export class MainComponent {
       company: 'Dobro Dent',
       companyLogo: 'assets/icons/main/company-logo5.svg',
       coins: 3,
-      descriptionList: ['Доступ в клуб на Суюнбая 89б',
+      descriptionList: [
+        'Доступ в клуб на Суюнбая 89б',
         'Без ограничений по времени',
         'Тренер за дополнительную плату',
         'Заморозка 5 дней',
         '1 гостевое посещение',
-        'Действует 1 месяц с момента покупки'],
-      descriptionTitle: 'МЕСЯЦ FULL DAY'
+        'Действует 1 месяц с момента покупки'
+      ],
+      descriptionTitle: 'МЕСЯЦ FULL DAY',
+      category: 'Здоровье' // Категория
     },
     {
       code: 3,
@@ -97,16 +130,18 @@ export class MainComponent {
       company: 'Most Hub',
       companyLogo: 'assets/icons/main/company-logo6.svg',
       coins: 5,
-      descriptionList: ['Доступ в клуб на Суюнбая 89б',
+      descriptionList: [
+        'Доступ в клуб на Суюнбая 89б',
         'Без ограничений по времени',
         'Тренер за дополнительную плату',
         'Заморозка 5 дней',
         '1 гостевое посещение',
-        'Действует 1 месяц с момента покупки'],
-      descriptionTitle: 'МЕСЯЦ FULL DAY'
+        'Действует 1 месяц с момента покупки'
+      ],
+      descriptionTitle: 'МЕСЯЦ FULL DAY',
+      category: 'Комфорт и удобства' // Категория
     }
-  ]
-
+  ];
 
 
 }

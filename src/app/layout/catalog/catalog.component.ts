@@ -17,13 +17,16 @@ export class CatalogComponent {
       company: 'Invictus GO',
       companyLogo: 'assets/icons/main/company-logo1.svg',
       coins: 4,
-      descriptionList: ['Доступ в клуб на Суюнбая 89б',
+      descriptionList: [
+        'Доступ в клуб на Суюнбая 89б',
         'Без ограничений по времени',
         'Тренер за дополнительную плату',
         'Заморозка 5 дней',
         '1 гостевое посещение',
-        'Действует 1 месяц с момента покупки'],
-      descriptionTitle: 'МЕСЯЦ FULL DAY'
+        'Действует 1 месяц с момента покупки'
+      ],
+      descriptionTitle: 'МЕСЯЦ FULL DAY',
+      category: 'Спорт' // Категория
     },
     {
       code: 2,
@@ -32,13 +35,16 @@ export class CatalogComponent {
       company: 'Aqua Stars',
       companyLogo: 'assets/icons/main/company-logo2.svg',
       coins: 3,
-      descriptionList: ['Доступ в клуб на Суюнбая 89б',
+      descriptionList: [
+        'Доступ в клуб на Суюнбая 89б',
         'Без ограничений по времени',
         'Тренер за дополнительную плату',
         'Заморозка 5 дней',
         '1 гостевое посещение',
-        'Действует 1 месяц с момента покупки'],
-      descriptionTitle: 'МЕСЯЦ FULL DAY'
+        'Действует 1 месяц с момента покупки'
+      ],
+      descriptionTitle: 'МЕСЯЦ FULL DAY',
+      category: 'Спорт' // Категория
     },
     {
       code: 3,
@@ -47,16 +53,18 @@ export class CatalogComponent {
       company: 'Almaty Parking',
       companyLogo: 'assets/icons/main/company-logo3.svg',
       coins: 5,
-      descriptionList: ['Доступ в клуб на Суюнбая 89б',
+      descriptionList: [
+        'Доступ в клуб на Суюнбая 89б',
         'Без ограничений по времени',
         'Тренер за дополнительную плату',
         'Заморозка 5 дней',
         '1 гостевое посещение',
-        'Действует 1 месяц с момента покупки'],
-      descriptionTitle: 'МЕСЯЦ FULL DAY'
+        'Действует 1 месяц с момента покупки'
+      ],
+      descriptionTitle: 'МЕСЯЦ FULL DAY',
+      category: 'Комфорт и удобства' // Категория
     },
-
-  ]
+  ];
 
   public recommendationsCards: Cards[] = [
     {
@@ -66,13 +74,16 @@ export class CatalogComponent {
       company: 'ВОЗДУХ',
       companyLogo: 'assets/icons/main/company-logo4.svg',
       coins: 4,
-      descriptionList: ['Доступ в клуб на Суюнбая 89б',
+      descriptionList: [
+        'Доступ в клуб на Суюнбая 89б',
         'Без ограничений по времени',
         'Тренер за дополнительную плату',
         'Заморозка 5 дней',
         '1 гостевое посещение',
-        'Действует 1 месяц с момента покупки'],
-      descriptionTitle: 'МЕСЯЦ FULL DAY'
+        'Действует 1 месяц с момента покупки'
+      ],
+      descriptionTitle: 'МЕСЯЦ FULL DAY',
+      category: 'Спорт' // Категория
     },
     {
       code: 2,
@@ -81,13 +92,16 @@ export class CatalogComponent {
       company: 'Dobro Dent',
       companyLogo: 'assets/icons/main/company-logo5.svg',
       coins: 3,
-      descriptionList: ['Доступ в клуб на Суюнбая 89б',
+      descriptionList: [
+        'Доступ в клуб на Суюнбая 89б',
         'Без ограничений по времени',
         'Тренер за дополнительную плату',
         'Заморозка 5 дней',
         '1 гостевое посещение',
-        'Действует 1 месяц с момента покупки'],
-      descriptionTitle: 'МЕСЯЦ FULL DAY'
+        'Действует 1 месяц с момента покупки'
+      ],
+      descriptionTitle: 'МЕСЯЦ FULL DAY',
+      category: 'Здоровье' // Категория
     },
     {
       code: 3,
@@ -96,14 +110,17 @@ export class CatalogComponent {
       company: 'Most Hub',
       companyLogo: 'assets/icons/main/company-logo6.svg',
       coins: 5,
-      descriptionList: ['Доступ в клуб на Суюнбая 89б',
+      descriptionList: [
+        'Доступ в клуб на Суюнбая 89б',
         'Без ограничений по времени',
         'Тренер за дополнительную плату',
         'Заморозка 5 дней',
         '1 гостевое посещение',
-        'Действует 1 месяц с момента покупки'],
-      descriptionTitle: 'МЕСЯЦ FULL DAY'
+        'Действует 1 месяц с момента покупки'
+      ],
+      descriptionTitle: 'МЕСЯЦ FULL DAY',
+      category: 'Комфорт и удобства' // Категория
     }
-  ]
+  ];
 
 }

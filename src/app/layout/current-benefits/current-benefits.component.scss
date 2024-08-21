@@ -47,3 +47,30 @@
     }
   }
 }
+.categories {
+  @include flexbox;
+  @include gap(16px);
+  margin-bottom: 24px;
+
+  button {
+    padding: 8px 16px;
+    background-color: $neutral-200;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: $neutral-300;
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    &.active {
+      background-color:  $neutral-300;
+      color: $primary-white;
+    }
+  }
+}

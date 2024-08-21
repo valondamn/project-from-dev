@@ -1,8 +1,18 @@
+
+<div class="categories">
+  <button
+    *ngFor="let category of ['Все', 'Здоровье', 'Спорт', 'Питание', 'Обучение и развитие', 'Семья', 'Комфорт и удобства', 'Прочие']"
+    [class.active]="isCategorySelected(category)"
+    (click)="toggleCategory(category)">
+    {{category}}
+  </button>
+</div>
+
 <div class="main-page">
   <div class="most-popular">
 
     <div class="most-popular__cards">
-      <app-benefits-cards [cards]="mostPopularCards"></app-benefits-cards>
+      <app-benefits-cards [cards]="filteredMostPopularCards"></app-benefits-cards>
     </div>
   </div>
 
