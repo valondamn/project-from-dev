@@ -1,1 +1,22 @@
-<p>header works!</p>
+<div class="header">
+  <app-input
+    [placeholder]="'Поиск'"
+    type="search"
+    [width]="'100%'"
+    [bgHidden]="true"
+    [clearBtnShown]="true"
+    #input
+  />
+
+  <div class="account-info">
+    <div class="notification">
+      <app-notifications />
+    </div>
+    <div class="coins">
+    <app-coins [coins]="10" />
+    </div>
+    <div class="account-image">
+      <svg-icon src="assets/icons/account/account-logo.svg"/>
+    </div>
+  </div>
+</div>

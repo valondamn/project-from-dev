@@ -1,0 +1,73 @@
+@switch (type) {
+  @case ("button") {
+    <button
+      class="{{ theme }} {{ styling }}"
+      [ngClass]="{
+        disabled: disabled || isLoading(),
+      }"
+      (click)="click($event)"
+    >
+      @if (isLoading()) {
+        <p-progressSpinner
+          [style]="{ height: '16px', width: '16px' }"
+          strokeWidth="8"
+        />
+      }
+      {{ label }}
+    </button>
+  }
+  @case ("submit") {
+    <button
+      class="{{ theme }} {{ styling }}"
+      [ngClass]="{
+        disabled: disabled || isLoading(),
+      }"
+      type="submit"
+    >
+      @if (isLoading()) {
+        <p-progressSpinner
+          [style]="{ height: '16px', width: '16px' }"
+          strokeWidth="8"
+        />
+      }
+      {{ label }}
+    </button>
+  }
+  @case ("link") {
+    <a
+      class="{{ theme }} {{ styling }}"
+      [ngClass]="{
+        disabled: disabled || isLoading(),
+      }"
+      [href]="link"
+      target="_{{ target }}"
+    >
+      @if (isLoading()) {
+        <p-progressSpinner
+          [style]="{ height: '16px', width: '16px' }"
+          strokeWidth="8"
+        />
+      }
+      {{ label }}
+    </a>
+  }
+  @case ("routerLink") {
+
+    <a
+      class="{{ theme }} {{ styling }}"
+      [ngClass]="{
+        disabled: disabled || isLoading(),
+      }"
+      [routerLink]="link"
+    >
+      @if (isLoading()) {
+        <p-progressSpinner
+          [style]="{ height: '16px', width: '16px' }"
+          strokeWidth="8"
+        />
+      }
+
+      {{ label }}
+    </a>
+  }
+}

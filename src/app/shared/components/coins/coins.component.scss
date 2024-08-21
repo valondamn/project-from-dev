@@ -1,0 +1,16 @@
+@import "../../../../assets/scss/properties";
+
+.coins{
+  @include flexbox;
+  @include align-items(center);
+  @include gap(8px);
+  background-color: $brand-100;
+  border-radius: 6px;
+  padding: 10px 16px;
+
+  svg-icon{
+    width: 24px;
+    height: 24px;
+  }
+
+}

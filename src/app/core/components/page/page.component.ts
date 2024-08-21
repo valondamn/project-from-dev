@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {SidebarComponent} from "../sidebar/sidebar.component";
 import {HeaderComponent} from "../header/header.component";
 import {Tab} from "../../../shared/interfaces/tab.interface";
+import {Router, RouterOutlet} from "@angular/router";
 
 @Component({
   selector: 'app-page',
@@ -11,30 +12,45 @@ import {Tab} from "../../../shared/interfaces/tab.interface";
 
   imports: [
     SidebarComponent,
-    HeaderComponent
+    HeaderComponent,
+    RouterOutlet
   ]
 })
 export class PageComponent {
-  public tab: Tab[] =[
+
+  constructor(
+    private router: Router,
+  ) {}
+
+  public tabs: Tab[] =[
     {
       title: 'Главная',
-      link: 'link',
+      link: '',
       icon: '/assets/icons/tabs/home.svg'
     },
     {
       title: 'Действующие льготы',
-      link: 'link',
+      link: 'current-benefits',
       icon: '/assets/icons/tabs/current-benefits.svg'
     },
     {
       title: 'Каталог льгот',
-      link: 'link',
+      link: 'catalog',
       icon: '/assets/icons/tabs/catalog.svg'
     },
     {
       title: 'Вопросы и ответы',
-      link: 'link',
+      link: 'questions-and-answers',
       icon: '/assets/icons/tabs/questions-and-answers.svg'
     }
   ]
+
+  currentTab: Tab = this.tabs[0];
+
+
+  navigate(tab: Tab) {
+    this.router.navigate([
+      `/${tab.link}`,
+    ]);
+  }
 }

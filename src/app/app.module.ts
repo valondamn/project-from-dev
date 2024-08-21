@@ -30,6 +30,8 @@ import {RouterModule} from '@angular/router';
 import {PageComponent} from "./core/components/page/page.component";
 import {AngularSvgIconModule} from "angular-svg-icon";
 import {HttpClientModule} from "@angular/common/http";
+import {BenefitsCardsComponent} from "./shared/components/benefits-cards/benefits-cards.component";
+import {ModalComponent} from "./shared/components/modal/modal.component";
 
 
 @NgModule({
@@ -40,31 +42,33 @@ import {HttpClientModule} from "@angular/common/http";
     CatalogComponent,
     QuestionsAndAnswersComponent,
   ],
-  imports: [
-    AppRoutingModule,
-    BrowserModule,
-    RouterModule,
-    BrowserAnimationsModule,
-    MatSlideToggleModule,
-    MatInputModule,
-    MatButtonModule,
-    MatSelectModule,
-    MatRadioModule,
-    MatCardModule,
-    ReactiveFormsModule,
-    MatToolbarModule,
-    MatSidenavModule,
-    MatIconModule,
-    MatListModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatSortModule,
-    MatGridListModule,
-    MatMenuModule,
-    PageComponent,
-    HttpClientModule,
-    AngularSvgIconModule.forRoot()
-  ],
+    imports: [
+        AppRoutingModule,
+        BrowserModule,
+        RouterModule,
+        BrowserAnimationsModule,
+        MatSlideToggleModule,
+        MatInputModule,
+        MatButtonModule,
+        MatSelectModule,
+        MatRadioModule,
+        MatCardModule,
+        ReactiveFormsModule,
+        MatToolbarModule,
+        MatSidenavModule,
+        MatIconModule,
+        MatListModule,
+        MatTableModule,
+        MatPaginatorModule,
+        MatSortModule,
+        MatGridListModule,
+        MatMenuModule,
+        PageComponent,
+        HttpClientModule,
+        AngularSvgIconModule.forRoot(),
+        BenefitsCardsComponent,
+        ModalComponent
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

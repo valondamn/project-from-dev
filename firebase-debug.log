@@ -1,0 +1,46 @@
+[debug] [2024-08-10T05:27:41.422Z] ----------------------------------------------------------------------
+[debug] [2024-08-10T05:27:41.425Z] Command:       /opt/homebrew/Cellar/node/21.7.1/bin/node /opt/homebrew/bin/firebase init
+[debug] [2024-08-10T05:27:41.425Z] CLI Version:   13.15.1
+[debug] [2024-08-10T05:27:41.425Z] Platform:      darwin
+[debug] [2024-08-10T05:27:41.425Z] Node Version:  v21.7.1
+[debug] [2024-08-10T05:27:41.425Z] Time:          Sat Aug 10 2024 11:27:41 GMT+0600 (East Kazakhstan Time)
+[debug] [2024-08-10T05:27:41.426Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2024-08-10T05:27:41.432Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-08-10T05:27:41.432Z] > authorizing via signed-in user (danilovvadim.0404@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  /Applications/myFolder/material/efes
+
+Before we get started, keep in mind:
+
+  * You are currently outside your home directory
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[debug] [2024-08-10T05:28:09.366Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects pageSize=100
+[debug] [2024-08-10T05:28:10.116Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects 200
+[debug] [2024-08-10T05:28:10.116Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects [omitted]
+[info] i  Using project efes-bb4e8 (efes) 
+[info] 
+=== Hosting Setup
+[debug] [2024-08-10T05:28:21.842Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/efes-bb4e8 [none]
+[debug] [2024-08-10T05:28:22.314Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/efes-bb4e8 200
+[debug] [2024-08-10T05:28:22.315Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/efes-bb4e8 {"projectId":"efes-bb4e8","projectNumber":"1061553408057","displayName":"efes","name":"projects/efes-bb4e8","resources":{"hostingSite":"efes-bb4e8"},"state":"ACTIVE","etag":"1_97a1237f-3891-4234-87b4-a73b7d774738"}
+[info] 
+[info] Your public directory is the folder (relative to your project directory) that
+[info] will contain Hosting assets to be uploaded with firebase deploy. If you
+[info] have a build process for your assets, use your build's output directory.
+[info] 

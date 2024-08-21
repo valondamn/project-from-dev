@@ -3,7 +3,6 @@ import {
   Component,
   ElementRef,
   EventEmitter,
-  HostBinding,
   Inject,
   Input,
   OnChanges,
@@ -15,6 +14,7 @@ import {HeaderService} from "../../services/header.service";
 import {Tab} from "../../../shared/interfaces/tab.interface";
 import {WINDOW} from "../../../shared/injectors/window";
 import {SvgIconComponent} from "angular-svg-icon";
+import {RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-sidebar',
@@ -24,7 +24,8 @@ import {SvgIconComponent} from "angular-svg-icon";
   imports: [
     NgClass,
     NgStyle,
-    SvgIconComponent
+    SvgIconComponent,
+    RouterLink
   ]
 })
 export class SidebarComponent implements OnChanges, AfterViewInit {
@@ -85,8 +86,4 @@ export class SidebarComponent implements OnChanges, AfterViewInit {
     this.onChange.emit(tab);
   }
 
-  @HostBinding('style.border-right')
-  get verticalBorder() {
-    return this.hasBorder ? '1px solid #D1D1D1' : 'none';
-  }
 }

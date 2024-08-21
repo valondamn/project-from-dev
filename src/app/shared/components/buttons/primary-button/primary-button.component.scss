@@ -1,0 +1,45 @@
+@import "../../../../../assets/scss/properties";
+
+@import "./themes/dark";
+@import "./themes/light";
+
+:host::ng-deep {
+  display: inline-block;
+
+  button,
+  a {
+    padding: 11px 16px;
+
+    @include font-(16px, 120%);
+    border-radius: 8px;
+
+    @include flexbox;
+    @include justify-content(center);
+    @include align-items(center);
+    @include gap(8px);
+
+    text-decoration: none;
+
+    cursor: pointer;
+    user-select: none;
+
+
+    &.disabled {
+      pointer-events: none;
+      opacity: 30%;
+    }
+    @include sm-breakpoint-down {
+      width: 100%;
+    }
+    @include media-breakpoint-between(sm, xl) {
+      width: 100%;
+    }
+  }
+
+  p-progressspinner {
+    height: 16px;
+    width: 16px;
+  }
+
+
+}

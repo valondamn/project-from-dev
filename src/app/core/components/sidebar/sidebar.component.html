@@ -1,5 +1,6 @@
+<div class="tabs-wrapper">
 <div
-  class="tabs-wrapper"
+  class="tabs-container"
   [ngClass]="{
     sticky: isSticky,
     pushed: headerService.isVisible,
@@ -7,12 +8,25 @@
   }"
   [ngStyle]="{ width: width }"
 >
+  <div class="logo-title">
+    <a  routerLink="">
+
+    <div class="logo">
+        <svg-icon src="/assets/icons/logo.svg"></svg-icon>
+    </div>
+    <div class="title">
+    <span>Magic tap</span>
+    </div>
+    </a>
+
+  </div>
   <div
     class="tabs"
     [ngStyle]="{
       padding: padding
     }"
   >
+
     @for (tab of tabs; track tab) {
     <div
       class="tab-wrapper"
@@ -40,5 +54,10 @@
     </div>
   </div>
     }
+  </div>
+</div>
+  <div class="settings">
+    <svg-icon src="/assets/icons/settings.svg"></svg-icon>
+    <span>Настройки</span>
   </div>
 </div>

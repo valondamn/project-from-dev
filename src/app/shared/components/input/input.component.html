@@ -1,0 +1,27 @@
+@if (label) {
+  <label>{{ label }}</label>
+}
+<div
+  class="wrapper {{ size }} {{ font }}"
+  [ngClass]="{
+    disabled: disabled
+  }"
+>
+  @if (clearBtnShown && value()) {
+    <button class="clear-btn" (click)="clearValue()">
+
+    </button>
+  }
+  <input
+    [(ngModel)]="value"
+    (ngModelChange)="onChange($event)"
+    (blur)="onTouched()"
+    [placeholder]="placeholder"
+    [disabled]="disabled"
+    (keydown.enter)="onEnter.emit()"
+    #input
+  />
+  @if (type === "search") {
+    <svg-icon src="/assets/icons/input/search-loop.svg"></svg-icon>  }
+</div>
+

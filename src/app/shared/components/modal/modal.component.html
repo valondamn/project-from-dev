@@ -1,0 +1,19 @@
+@if (visible) {
+  <div
+    class="modal"
+    [ngClass]="{
+      isFull: isFullscreen,
+      hasOverflow: hasOverflow
+    }"
+  >
+    <div class="modal__body"
+         [ngStyle]="{ width: width,
+         height: height}"
+         #modalBody>
+      <div class="modal__content">
+        <ng-content></ng-content>
+      </div>
+    </div>
+  </div>
+  <div class="modal__background"></div>
+}

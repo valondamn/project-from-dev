@@ -1,19 +1,46 @@
 @import "../../../../assets/scss/properties";
 
-.tabs-wrapper {
 
+.tabs-wrapper {
   @include flexbox;
   @include flex-direction(column);
-  @include gap(16px);
+
+  border-right: 1px solid $neutral-200;
+  height: 96vh;
   padding: 24px 16px;
+
+  svg-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+
+  .tabs-container{
+  @include flexbox;
+  @include flex-direction(column);
+  @include gap(40px);
+
+    .logo-title{
+
+      a{
+        @include flexbox;
+        @include align-items(center);
+        @include gap(16px);
+        @include heading_4;
+        color: $brand-900;
+        text-decoration: none;
+      .logo{
+        width: 34px;
+        height: 34px;
+      }
+    }
+    }
 
   &.sticky {
     position: sticky;
   }
 
   .tabs {
-
-
     @include flexbox;
     @include flex-direction(column);
 
@@ -25,19 +52,14 @@
         @include flexbox;
         @include align-items(center);
         @include gap(16px);
-        @include subtitle_2_300;
         width: 100%;
         padding: 12px 16px;
 
         user-select: none;
         cursor: pointer;
 
+        @include paragraph;
 
-        .title {
-          &.bold {
-            font-family: $font-500;
-          }
-        }
 
         &.active {
           color: $brand-900;
@@ -45,11 +67,23 @@
           border-radius: 8px;
           cursor: default;
 
-          .title {
-            @include subtitle_2_700;
+          svg-icon {
+            path {
+              fill: $brand-900
+            }
           }
         }
       }
-    }
+    }}
+  }
+
+  .settings{
+    @include flexbox;
+    @include align-items(center);
+    @include gap(16px);
+    padding: 16px 12px;
+
+    margin-top: auto;
+
   }
 }

@@ -1,0 +1,49 @@
+@import "../../../assets/scss/properties";
+
+.main-page{
+  @include flexbox;
+  @include flex-direction(column);
+
+  @include gap(24px);
+  padding: 24px;
+  background-color: $neutral-100;
+
+  overflow-y: auto; // Добавьте скроллинг по вертикали
+  height: 83vh;
+
+  .banner{
+    @include flexbox;
+    @include align-items(center);
+    border-radius: 16px;
+    height: 160px;
+
+    .banner-content{
+      padding: 44px 40px;
+      color: $primary-white;
+      @include heading_2;
+    }
+
+  }
+
+  .most-popular{
+    @include flexbox;
+    @include flex-direction(column);
+    @include gap(16px);
+
+    &__title{
+      font-size: 20px;
+      font-family: 'Inter-regular';
+    }
+  }
+
+  .recommendations{
+    @include flexbox;
+    @include flex-direction(column);
+    @include gap(16px);
+
+    &__title{
+      font-size: 20px;
+      font-family: 'Inter-regular';
+    }
+  }
+}

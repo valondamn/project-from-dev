@@ -1,0 +1,17 @@
+@import "../../../../../../assets/scss/properties";
+
+button,
+a {
+  &.dark {
+    &.standard {
+      background: $brand-900;
+      color: $primary-white;
+
+      @include hover {
+        background: $brand-600;
+      }
+    }
+
+
+  }
+}

@@ -1,0 +1,96 @@
+@import "../../../../assets/scss/properties";
+
+:host ::ng-deep {
+  .modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    z-index: 1000;
+
+    &__background {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+
+      z-index: 900;
+
+      background: rgba(#000, 0.75);
+    }
+
+    &.isFull {
+      .modal__body {
+        height: 100%;
+        width: 100%;
+        border-radius: 0;
+      }
+    }
+
+    &.hasOverflow {
+      .modal__body {
+        @include sm-breakpoint-down {
+          height: 80%;
+        }
+      }
+      .modal__content {
+        overflow: auto !important;
+        @include small-scroll;
+        height: 100%;
+
+      }
+    }
+
+    &__body {
+      background-color: $primary-white;
+      border-radius: 20px;
+
+      position: absolute;
+      top: 50%;
+      left: 50%;
+
+
+      @include sm-breakpoint-down {
+        width: 95%;
+        overflow: hidden;
+        @include hidden-scroll;
+      }
+
+      @include media-breakpoint-between(sm, lg) {
+        width: 90%;
+      }
+
+      @include media-breakpoint-between(lg, xl) {
+        width: 70%;
+      }
+
+      transform: translate(-50%, -50%);
+    }
+
+
+
+
+    &__exit-button {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+
+      cursor: pointer;
+
+      svg path {
+        stroke: $brand-900;
+      }
+    }
+
+    &__content {
+      user-select: none;
+      height: 83%;
+      @include sm-breakpoint-down {
+        height: 90%;
+      }
+    }
+  }
+}

@@ -1,13 +1,29 @@
 @import "../../../../assets/scss/properties";
 
+:host ::ng-deep {
+  > .wrapper {
+    flex-direction: column;
+    overflow: hidden;
 
 
 
-
-   .page {
+    .page {
     display: flex;
     flex-direction: row;
 
-    min-height: 100vh;
-    width: 100%;
-  }
+    width: 100%;overflow: hidden;
+
+    .sidebar{
+        height: 80vh
+    }
+
+
+
+    .page-content{
+      width: 81%;
+      max-height: 100vh;
+
+
+    }
+  }}
+}

@@ -1,1 +1,25 @@
-<p>catalog works!</p>
+<div class="main-page">
+  <div class="banner" [ngStyle]="{
+    background: 'url(assets/images/main/Banner-blue.jpg) no-repeat',
+    'background-size': '100% 100%'
+  }">
+    <div class="banner-content">
+      <span>Найдите идеальные бонусы <br />
+        для вашего образа жизни!</span>
+    </div>
+  </div>
+  <div class="most-popular">
+
+    <div class="most-popular__cards">
+      <app-benefits-cards [cards]="mostPopularCards"></app-benefits-cards>
+    </div>
+  </div>
+
+  <div class="recommendations">
+    <div class="recommendations__cards">
+      <app-benefits-cards  [cards]="recommendationsCards"></app-benefits-cards>
+
+    </div>
+  </div>
+</div>
+
