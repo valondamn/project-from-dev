@@ -1,0 +1,29 @@
+<div
+  id="accordion-card"
+  class="accordion-card"
+  [ngStyle]="{ width: width, gap: gap }"
+>
+  @for (menu of menus; track menu; let i = $index) {
+    <ng-container [class.active]="menu.active">
+      @if (menus) {
+        <div
+          class="menu"
+          [ngClass]="{ 'has-border': hasBorder, opened: menu.active }"
+          [ngStyle]="{ 'border-radius': borderRadius }"
+        >
+          <div class="menu__title" (click)="this.trigger(i)">
+            <span [innerHTML]="menu.title "></span>
+
+            <div class="plusminus"></div>
+          </div>
+          <div
+            class="content"
+            [@contentExpansion]="menu.active ? 'expanded' : 'collapsed'"
+          >
+            <div class="content-text" [innerHTML]="menu.content"></div>
+          </div>
+        </div>
+      }
+    </ng-container>
+  }
+</div>

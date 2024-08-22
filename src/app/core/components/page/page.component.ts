@@ -4,6 +4,7 @@ import {HeaderComponent} from "../header/header.component";
 import {Tab} from "../../../shared/interfaces/tab.interface";
 import {Router, RouterOutlet} from "@angular/router";
 import {ActivatedRoute} from '@angular/router';
+import {NgStyle} from "@angular/common";
 
 @Component({
   selector: 'app-page',
@@ -14,7 +15,8 @@ import {ActivatedRoute} from '@angular/router';
   imports: [
     SidebarComponent,
     HeaderComponent,
-    RouterOutlet
+    RouterOutlet,
+    NgStyle
   ]
 })
 export class PageComponent implements OnInit{
@@ -35,7 +37,6 @@ export class PageComponent implements OnInit{
 
   constructor(
     private router: Router,
-    private route: ActivatedRoute,
 
   ) {}
 

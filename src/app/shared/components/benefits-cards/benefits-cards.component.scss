@@ -11,7 +11,7 @@
     @include flex-direction(column);
     @include gap(16px);
     border-radius: 16px;
-    border: 1px solid $neutral-200;
+    box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.1);
     padding: 16px;
     background-color: $primary-white;
     width: 29.33%;

@@ -26,7 +26,7 @@ import {DeadLineComponent} from "../dead-line/dead-line.component";
 export class BenefitsCardsComponent {
   @Input({ required: true }) cards!: Cards[];
 
-  @Input() deadLine!: boolean;
+  @Input() deadLine: boolean = false;
 
   public currentCard!: Cards;
   public modalVisible: boolean = false;

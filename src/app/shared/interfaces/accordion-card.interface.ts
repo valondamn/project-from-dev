@@ -1,4 +1,3 @@
-import { Media } from '@shared/interfaces/media.interface';
 
 export interface AccordionCard {
   title: string;
@@ -9,6 +8,5 @@ export interface AccordionCard {
 }
 
 export interface IconLink {
-  icon: Media;
   link: string;
 }

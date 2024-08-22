@@ -1,1 +1,13 @@
-<p>questions-and-answers works!</p>
+<div class="question-and-answer">
+  <div class="banner" [ngStyle]="{
+    background: 'url(assets/images/main/Banner-blue.jpg) no-repeat',
+    'background-size': '100% 100%'
+  }">
+    <div class="banner-content">
+      <span>Найдите идеальные бонусы <br />
+        для вашего образа жизни!</span>
+    </div>
+  </div>
+<app-accordion-card [menus]="accordionCards">
+</app-accordion-card>
+</div>

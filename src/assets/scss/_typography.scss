@@ -27,6 +27,11 @@
   font-family: 'Inter-semibold';
 }
 
+@mixin heading_4_regular {
+  @include font-(20px, 28px);
+  font-family: 'Inter-regular';
+}
+
 @mixin paragraph {
   @include font-(16px, 24px);
   font-family: 'Inter-regular';

@@ -32,6 +32,7 @@ import {AngularSvgIconModule} from "angular-svg-icon";
 import {HttpClientModule} from "@angular/common/http";
 import {BenefitsCardsComponent} from "./shared/components/benefits-cards/benefits-cards.component";
 import {ModalComponent} from "./shared/components/modal/modal.component";
+import {AccordionCardComponent} from "./shared/components/accordion-card/accordion-card.component";
 
 
 @NgModule({
@@ -67,7 +68,8 @@ import {ModalComponent} from "./shared/components/modal/modal.component";
         HttpClientModule,
         AngularSvgIconModule.forRoot(),
         BenefitsCardsComponent,
-        ModalComponent
+        ModalComponent,
+        AccordionCardComponent
     ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,27 @@
+@import "../../../assets/scss/properties";
+
+.question-and-answer{
+  @include flexbox;
+  @include flex-direction(column);
+
+  @include gap(24px);
+  padding: 24px;
+  background-color: $neutral-100;
+
+  overflow-y: auto;
+  height: 83vh;
+
+  .banner{
+    @include flexbox;
+    @include align-items(center);
+    border-radius: 16px;
+    height: 160px;
+
+    .banner-content{
+      padding: 44px 40px;
+      color: $primary-white;
+      @include heading_2;
+    }
+
+  }
+}
