@@ -37,6 +37,11 @@
   font-family: 'Inter-regular';
 }
 
+@mixin description {
+  @include font-(14px, 22px);
+  font-family: 'Inter-regular';
+}
+
 @mixin lead {
   @include font-(20px, 28px);
   font-family: 'Inter-regular';

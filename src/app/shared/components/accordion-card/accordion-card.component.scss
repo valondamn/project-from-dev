@@ -8,8 +8,10 @@
   user-select: none;
   @include justify-content(center);
 
+  .accordion-card-container{
 
-  .menu {
+
+    .menu {
 
     position: relative;
     cursor: pointer;
@@ -25,10 +27,15 @@
       transition: rotate 0.3s ease;
     }
 
+      .plusminus-container{
+        padding: 8px;
+        background-color: $neutral-100;
+        border-radius: 8px;
+
     .plusminus {
       position: relative;
-      width: 25px;
-      height: 25px;
+      width: 20px;
+      height: 20px;
       cursor: pointer;
 
       &:before , &:after {
@@ -41,7 +48,6 @@
         width: 100%;
         height: 3px;
 
-
       }
 
       &:before {
@@ -51,21 +57,24 @@
       // Вертикальная линия по умолчанию (плюс)
       &:after {
         transform: translateY(-50%) rotate(90deg);
-      }
+      }}
 
     }
 
 
 
       &.opened {
+        .plusminus-container{
+          background-color: $brand-900;
       .plusminus {
-
 
         &:after {
           transform: translateY(-50%) rotate(0deg);
+          background-color: $primary-white;
+
         }
 
-      }
+      }}
       .content {
         margin-top: 24px;
       }
@@ -88,8 +97,9 @@
       transition: height 0.4s ease;
 
       .content-text {
-        @include font-(16px, 140%);
-        color: $primary-black;
+
+        @include description;
+        color: $neutral-600;
         @include flexbox;
         @include flex-direction(column);
         @include gap(12px);
@@ -99,9 +109,7 @@
           text-decoration-line: underline;
           transition: 0.3s;
 
-          @include hover {
-            color: $brand-900;
-          }
+
         }
 
         ul {
@@ -127,10 +135,6 @@
         a {
           border-radius: 50px;
 
-          @include hover {
-            border-radius: 0;
-            transition: border-radius 0.2s ease-in-out;
-          }
         }
 
         svg {
@@ -144,5 +148,5 @@
         }
       }
     }
-  }
+  }}
 }
