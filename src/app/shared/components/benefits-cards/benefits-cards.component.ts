@@ -6,6 +6,7 @@ import {CoinsComponent} from "../coins/coins.component";
 import {ModalComponent} from "../modal/modal.component";
 import {NgIf} from "@angular/common";
 import {RouterLink} from "@angular/router";
+import {DeadLineComponent} from "../dead-line/dead-line.component";
 
 @Component({
   selector: 'app-benefits-cards',
@@ -14,6 +15,7 @@ import {RouterLink} from "@angular/router";
     SvgIconComponent,
     PrimaryButtonComponent,
     CoinsComponent,
+    DeadLineComponent,
     ModalComponent,
     NgIf,
     RouterLink
@@ -23,6 +25,8 @@ import {RouterLink} from "@angular/router";
 })
 export class BenefitsCardsComponent {
   @Input({ required: true }) cards!: Cards[];
+
+  @Input() deadLine!: boolean;
 
   public currentCard!: Cards;
   public modalVisible: boolean = false;

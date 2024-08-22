@@ -5,7 +5,7 @@
     <span>Самые популярные</span>
   </div>
   <div class="most-popular__cards">
-    <app-benefits-cards [cards]="filteredMostPopularCards"></app-benefits-cards>
+    <app-benefits-cards  [deadLine]="true" [cards]="filteredMostPopularCards"></app-benefits-cards>
   </div>
 </div>
 
@@ -14,6 +14,6 @@
     <span>Рекомендации для вас</span>
   </div>
   <div class="recommendations__cards">
-    <app-benefits-cards [cards]="filteredRecommendationsCards"></app-benefits-cards>
+    <app-benefits-cards [deadLine]="true" [cards]="filteredRecommendationsCards"></app-benefits-cards>
   </div>
 </div>

@@ -61,7 +61,9 @@ export class CurrentBenefitsComponent {
         'Действует 1 месяц с момента покупки'
       ],
       descriptionTitle: 'МЕСЯЦ FULL DAY',
-      category: 'Спорт' // Категория
+      category: 'Спорт',
+      date: '24.09.24'
+// Категория
     },
     {
       code: 2,
@@ -79,7 +81,9 @@ export class CurrentBenefitsComponent {
         'Действует 1 месяц с момента покупки'
       ],
       descriptionTitle: 'МЕСЯЦ FULL DAY',
-      category: 'Спорт' // Категория
+      category: 'Спорт'
+      ,      date: '24.09.24'
+// Категория
     },
     {
       code: 3,
@@ -97,7 +101,9 @@ export class CurrentBenefitsComponent {
         'Действует 1 месяц с момента покупки'
       ],
       descriptionTitle: 'МЕСЯЦ FULL DAY',
-      category: 'Комфорт и удобства' // Категория
+      category: 'Комфорт и удобства'
+      ,      date: '24.09.24'
+// Категория
     },
   ];
 
@@ -118,7 +124,9 @@ export class CurrentBenefitsComponent {
         'Действует 1 месяц с момента покупки'
       ],
       descriptionTitle: 'МЕСЯЦ FULL DAY',
-      category: 'Спорт' // Категория
+      category: 'Спорт',
+      date: '24.09.24'
+// Категория
     },
     {
       code: 2,
@@ -136,7 +144,9 @@ export class CurrentBenefitsComponent {
         'Действует 1 месяц с момента покупки'
       ],
       descriptionTitle: 'МЕСЯЦ FULL DAY',
-      category: 'Здоровье' // Категория
+      category: 'Здоровье' ,
+      date: '24.09.24'
+// Категория
     },
     {
       code: 3,
@@ -154,7 +164,8 @@ export class CurrentBenefitsComponent {
         'Действует 1 месяц с момента покупки'
       ],
       descriptionTitle: 'МЕСЯЦ FULL DAY',
-      category: 'Комфорт и удобства' // Категория
+      category: 'Комфорт и удобства',// Категория
+      date: '24.09.24'
     }
   ];
 

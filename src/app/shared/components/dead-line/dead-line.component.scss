@@ -1,0 +1,15 @@
+@import "../../../../assets/scss/properties";
+
+.dead-line{
+  @include flexbox;
+  @include align-items(center);
+  @include gap(8px);
+  background-color: $green-100;
+  border-radius: 6px;
+  padding: 10px 16px;
+  color: $green-500;
+  @include small;
+  width: 214px;
+
+
+}

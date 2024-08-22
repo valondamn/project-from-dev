@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import {Component, input, OnInit} from '@angular/core';
 import {SidebarComponent} from "../sidebar/sidebar.component";
 import {HeaderComponent} from "../header/header.component";
 import {Tab} from "../../../shared/interfaces/tab.interface";
 import {Router, RouterOutlet} from "@angular/router";
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-page',
@@ -16,10 +17,26 @@ import {Router, RouterOutlet} from "@angular/router";
     RouterOutlet
   ]
 })
-export class PageComponent {
+export class PageComponent implements OnInit{
+  type = input.required<string>();
+
+
+  ngOnInit() {
+    const storedTabLink = localStorage.getItem('currentTab');
+    const tab = this.tabs.find(t => t.link === storedTabLink) || this.tabs[0];
+    this.changeCurrentTab(tab);
+  }
+
+  changeCurrentTab(tab: Tab) {
+    this.currentTab = tab;
+    localStorage.setItem('currentTab', tab.link);
+    this.router.navigate([`/${tab.link}`]);
+  }
 
   constructor(
     private router: Router,
+    private route: ActivatedRoute,
+
   ) {}
 
   public tabs: Tab[] =[
@@ -48,9 +65,11 @@ export class PageComponent {
   currentTab: Tab = this.tabs[0];
 
 
-  navigate(tab: Tab) {
-    this.router.navigate([
-      `/${tab.link}`,
-    ]);
+
+  setCurrentTab() {
+    let tab =
+      this.tabs.find((item) => item.link === this.type()) || this.tabs[0];
+    this.changeCurrentTab(tab);
   }
+
 }

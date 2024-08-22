@@ -10,5 +10,6 @@ export interface Cards{
   descriptionList: string[];
   descriptionTitle: string;
   category: string;
+  date?: string;
 }
 

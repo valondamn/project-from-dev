@@ -9,6 +9,7 @@
           <div class="card-item-info__company__title" [innerHTML]="card.company"></div>
         </div>
       </div>
+        @if (deadLine){
         <div class="coins-button">
           <div class="coins">
            <app-coins [coins]="card.coins"></app-coins>
@@ -24,6 +25,9 @@
             />
           </div>
         </div>
+        } @else if (!deadLine){
+          <app-dead-line date="{{card.date}}"></app-dead-line>
+        }
       </div>
     }
 </div>
