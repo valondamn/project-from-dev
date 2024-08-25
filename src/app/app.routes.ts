@@ -6,6 +6,8 @@ import {MainComponent} from "./layout/main/main.component";
 import {CurrentBenefitsComponent} from "./layout/current-benefits/current-benefits.component";
 import {CatalogComponent} from "./layout/catalog/catalog.component";
 import {QuestionsAndAnswersComponent} from "./layout/questions-and-answers/questions-and-answers.component";
+import {NotificationsPageComponent} from "./layout/notifications-page/notifications-page.component";
+import {WalletComponent} from "./layout/wallet/wallet.component";
 
 
 const routes: Routes = [
@@ -29,6 +31,14 @@ const routes: Routes = [
         path: 'questions-and-answers',
         component: QuestionsAndAnswersComponent
       },
+      {
+        path: 'notifications',
+        component: NotificationsPageComponent
+      },
+      {
+        path: 'wallet',
+        component: WalletComponent
+      }
     ]
   },
 ];

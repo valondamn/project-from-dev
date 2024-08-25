@@ -27,6 +27,7 @@ export class BenefitsCardsComponent {
   @Input({ required: true }) cards!: Cards[];
 
   @Input() deadLine: boolean = false;
+  @Input() isColumnCard: boolean = true;
 
   public currentCard!: Cards;
   public modalVisible: boolean = false;

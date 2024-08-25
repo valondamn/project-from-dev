@@ -59,6 +59,57 @@
   }
 }
 
+.rowCards{
+  @include flexbox;
+  @include align-items(center);
+  @include flex-direction(column);
+  @include gap(16px);
+  padding: 0  24px;
+
+  .card-item{
+    @include flexbox;
+    @include gap(16px);
+    border-radius: 16px;
+    box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.1);
+    padding: 16px;
+    background-color: $primary-white;
+    width: 100%;
+
+    img{
+      width: 110px;
+      height: 69px;
+      border-radius: 12px;
+    }
+
+    .card-item-info{
+      @include flexbox;
+      @include flex-direction(column);
+      @include gap(4px);
+
+      &__title{
+        @include heading_4;
+      }
+
+      &__company{
+        @include flexbox;
+        @include align-items(center);
+        @include gap(8px);
+
+        svg{
+          border-radius: 1000px
+        }
+
+        &__title{
+          @include small;
+          color: $neutral-500
+        }
+      }
+
+    }
+
+  }
+}
+
 
 .modal{
   padding: 40px;

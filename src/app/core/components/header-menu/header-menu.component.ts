@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, ElementRef, EventEmitter, HostListener, Input, Output, ViewChild} from '@angular/core';
 import {NgClass} from "@angular/common";
 import {RouterLink} from "@angular/router";
 import {ExternalClickDirective} from "../../../shared/derivatives/external-click.directive";
@@ -16,5 +16,18 @@ import {ExternalClickDirective} from "../../../shared/derivatives/external-click
 })
 export class HeaderMenuComponent {
   @Input() isVisible: boolean = false;
+  @Output() closeDropdown: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @ViewChild('dropdownMenu') dropdownMenu!: ElementRef;
 
+
+  closeModal() {
+    this.isVisible = false
+  }
+
+  @HostListener('click', ['$event.target'])
+  onOutsideClick(target: any) {
+    if (this.isVisible && this.dropdownMenu.nativeElement.contains(target)) {
+      this.closeModal();
+    }
+  }
 }

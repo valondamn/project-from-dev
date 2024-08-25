@@ -1,5 +1,10 @@
 @import "../../../../assets/scss/properties";
 
+a{
+  color: $primary-black;
+  text-decoration: none
+}
+
 .coins{
   @include flexbox;
   @include align-items(center);
@@ -12,5 +17,6 @@
     width: 24px;
     height: 24px;
   }
+
 
 }

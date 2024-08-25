@@ -1,3 +1,4 @@
+@if (isColumnCard){
 <div class="cards">
     @for(card of cards; track card){
       <div class="card-item">
@@ -31,6 +32,26 @@
       </div>
     }
 </div>
+} @else if (!isColumnCard){
+  <div class="rowCards">
+    @for(card of cards; track card){
+      <div class="card-item">
+        <img src="{{card.image}}" alt="">
+        <div class="card-item-info">
+          <div class="card-item-info__title" [innerHTML]="card.title"></div>
+          <div class="card-item-info__company">
+            <svg-icon src="{{card.companyLogo}}"></svg-icon>
+            <div class="card-item-info__company__title" [innerHTML]="card.company"></div>
+          </div>
+        </div>
+       @if (deadLine){
+          <app-dead-line date="{{card.date}}"></app-dead-line>
+        }
+      </div>
+    }
+  </div>
+}
+
 <modal
   [(visible)]="modalVisible"
   width="634px"
@@ -97,6 +118,7 @@
     </div>
   </div>
   }
+
 </modal>
 
 <modal

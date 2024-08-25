@@ -24,4 +24,8 @@ export class HeaderComponent {
   toggleDropdown() {
     this.isDropdownVisible = !this.isDropdownVisible;
   }
+
+  closeDropdown() {
+    this.isDropdownVisible = false;
+  }
 }

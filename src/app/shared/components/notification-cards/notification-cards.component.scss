@@ -1,0 +1,63 @@
+@import "../../../../assets/scss/properties";
+
+.notification-cards{
+  @include flexbox;
+  @include flex-direction(column);
+
+
+  .card-item{
+    @include flexbox;
+    @include gap(16px);
+
+    padding: 16px 0;
+    border-bottom: 1px solid $neutral-200;
+
+    .content{
+      @include flexbox;
+      @include flex-direction(column);
+      @include gap(8px);
+      width: 100%;
+
+      .content__title{
+        @include flexbox;
+        @include flex-direction(column);
+        @include gap(8px);
+
+        .title-time{
+          @include flexbox;
+          @include justify-content(space-between);
+          width: 100%;
+
+
+          .title{
+            @include paragraph-semibold;
+          }
+
+          .time{
+            @include xxs;
+            color: $neutral-500;
+
+          }
+        }
+
+        .sub-title{
+          @include xxs;
+          color: $neutral-500;
+
+        }
+      }
+
+      .category{
+
+
+        &__text{
+          padding:8px 12px;
+          @include xxs;
+          color: $brand-900;
+          border-radius: 20px;
+          background-color: $brand-100;
+        }
+      }
+    }
+  }
+}

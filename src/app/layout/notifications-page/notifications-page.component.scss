@@ -1,0 +1,34 @@
+
+@import "../../../assets/scss/properties";
+
+.notifications-container{
+  @include flexbox;
+  @include flex-direction(column);
+  @include gap(24px);
+  background-color: $neutral-100;
+  min-height: 100vh;
+
+  padding: 24px;
+
+}
+.notifications {
+  @include flexbox;
+  @include flex-direction(column);
+  @include gap(8px);
+  padding: 24px;
+  background-color: $primary-white;
+  border-radius: 16px;
+
+
+
+  &__title {
+    @include heading_3;
+  }
+
+  &__subtitle {
+    @include paragraph;
+  }
+
+
+
+}

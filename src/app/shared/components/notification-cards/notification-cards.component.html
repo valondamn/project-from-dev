@@ -1,0 +1,27 @@
+<div class="notification-cards">
+  @for (cards of notificationCards; track cards){
+    <div class="card-item">
+      <div class="image">
+        <img src="{{cards.image}}" alt="">
+      </div>
+      <div class="content">
+      <div class="content__title">
+        <div class="title-time">
+        <div class="title" [innerHTML]="cards.title">
+          </div>
+          <div class="time" >
+            {{cards.time}} min ago
+
+          </div>
+          </div>
+        <div class="sub-title" [innerHTML]="cards.subTitle">
+      </div>
+        <div class="category">
+          <span class="category__text" [innerHTML]="cards.category"></span>
+        </div>
+    </div>
+      </div>
+    </div>
+  }
+
+</div>
