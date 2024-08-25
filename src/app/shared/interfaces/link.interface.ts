@@ -1,4 +1,4 @@
-import { Media } from '@shared/interfaces/media.interface';
+
 
 export interface Link {
   title: string;
@@ -19,5 +19,4 @@ export interface FragmentLink {
 export interface LinkWithFile {
   title: string;
   link: string;
-  file: Media;
 }

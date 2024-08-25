@@ -1,26 +1,69 @@
 @import "../../../../assets/scss/properties";
 
-
 :host ::ng-deep {
 
-.header{
-  @include flexbox;
-  @include align-items(center);
-  @include justify-content(space-between);
-  padding: 16px 24px;
-  border-bottom: 1px solid $neutral-200;
-  width: 96%;
-
-.account-info{
+  .header {
     @include flexbox;
     @include align-items(center);
-    @include gap(20px);
+    @include justify-content(space-between);
+    padding: 16px 24px;
+    border-bottom: 1px solid $neutral-200;
+    width: 96%;
 
-  .account-image{
-    svg-icon{
-      width:48px;
-      height: 48px
+    .account-info {
+      @include flexbox;
+      @include align-items(center);
+      @include gap(20px);
+
+      .account-image {
+        position: relative;
+
+        svg-icon {
+          width: 48px;
+          height: 48px;
+          cursor: pointer;
+        }
+
+        .dropdown-menu {
+          position: absolute;
+          top:0;
+          right: 0;
+          background-color: white;
+          border: 1px solid $neutral-200;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          width: 226px;
+          height: 236px;
+          border-radius: 8px;
+          z-index: 100;
+
+          .user-info {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid $neutral-200;
+
+            .profile-pic {
+              width: 40px;
+              height: 40px;
+              border-radius: 50%;
+              margin-right: 10px;
+            }
+
+            .points {
+              margin-left: auto;
+              font-weight: bold;
+            }
+          }
+
+          .menu-item {
+            padding: 10px;
+            cursor: pointer;
+            &:hover {
+              background-color: $neutral-100;
+            }
+          }
+        }
+      }
     }
   }
-  }
-}}
+}
