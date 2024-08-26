@@ -2,9 +2,10 @@
 
 .accordion-card {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(48%, 104px));
+  grid-template-columns: repeat(auto-fill, minmax(48%,  104px));
   gap: 16px;
   width: 100%;
+
   user-select: none;
   @include justify-content(center);
 
@@ -12,6 +13,8 @@
 
 
     .menu {
+
+      min-height: 56px;
 
     position: relative;
     cursor: pointer;
