@@ -9,7 +9,8 @@ import {Cards} from "../main/main.interface";
 export class CurrentBenefitsComponent {
 
 
-  public selectedCategories: string[] = [];
+  public selectedCategories: string[] = ['Все'];
+  public categorylist: string[] = ['Все', 'Здоровье', 'Спорт', 'Питание', 'Обучение и развитие', 'Семья', 'Комфорт и удобства', 'Прочие']
 
   get filteredMostPopularCards(): Cards[] {
     return this.filterCards(this.mostPopularCards);
@@ -168,5 +169,6 @@ export class CurrentBenefitsComponent {
       date: '24.09.24'
     }
   ];
+
 
 }

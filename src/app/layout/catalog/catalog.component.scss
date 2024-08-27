@@ -11,6 +11,36 @@
   overflow-y: auto; // Добавьте скроллинг по вертикали
   height: 83vh;
 
+  .categories {
+    @include flexbox;
+    @include align-items(center);
+    @include gap(16px);
+    border-radius: 8px;
+    box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.1);
+    padding: 8px;
+    background-color: $primary-white;
+
+    button {
+      padding: 8px 16px;
+      background-color: $primary-white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      color: $neutral-400;
+      transition: background-color 0.3s;
+
+      &:hover {
+        background-color: $neutral-200;
+      }
+
+
+      &.active {
+        background-color:  $neutral-900;
+        color: $primary-white;
+      }
+    }
+  }
+
   .banner{
     @include flexbox;
     @include align-items(center);

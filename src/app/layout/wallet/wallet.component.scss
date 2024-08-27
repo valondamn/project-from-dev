@@ -8,6 +8,8 @@
   padding: 24px;
   background-color: $neutral-100;
 
+  overflow-y: auto;
+  height: 83vh;
 
 
 
@@ -21,6 +23,11 @@
       padding: 44px 40px;
       color: $primary-white;
       @include heading_2;
+      @include flexbox;
+      @include flex-direction(column);
+      @include gap(20px);
+
+
     }
   }
 }

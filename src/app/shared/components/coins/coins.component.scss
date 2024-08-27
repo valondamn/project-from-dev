@@ -4,19 +4,27 @@ a{
   color: $primary-black;
   text-decoration: none
 }
+.coins-container {
 
-.coins{
-  @include flexbox;
-  @include align-items(center);
-  @include gap(8px);
-  background-color: $brand-100;
-  border-radius: 6px;
-  padding: 10px 16px;
+    width: 86px;
 
-  svg-icon{
-    width: 24px;
-    height: 24px;
+
+  .coins {
+    @include flexbox;
+    @include align-items(center);
+    @include gap(8px);
+    background-color: $brand-100;
+    border-radius: 6px;
+    padding: 10px 16px;
+
+    @include lead;
+
+
+    svg-icon {
+      width: 24px;
+      height: 24px;
+    }
+
+
   }
-
-
 }

@@ -8,18 +8,21 @@
         для вашего образа жизни!</span>
     </div>
   </div>
+  <div class="categories">
+    @for (category of categorylist; track category){
+      <button
+        [class.active]="isCategorySelected(category)"
+        (click)="toggleCategory(category)">
+        {{category}}
+      </button>
+    }
+  </div>
   <div class="most-popular">
 
     <div class="most-popular__cards">
-      <app-benefits-cards [cards]="mostPopularCards"></app-benefits-cards>
+      <app-benefits-cards [cards]="filteredMostPopularCards"></app-benefits-cards>
     </div>
   </div>
 
-  <div class="recommendations">
-    <div class="recommendations__cards">
-      <app-benefits-cards  [cards]="recommendationsCards"></app-benefits-cards>
-
-    </div>
-  </div>
 </div>
 
