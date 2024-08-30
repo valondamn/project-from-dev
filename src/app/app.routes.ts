@@ -8,6 +8,7 @@ import {CatalogComponent} from "./layout/catalog/catalog.component";
 import {QuestionsAndAnswersComponent} from "./layout/questions-and-answers/questions-and-answers.component";
 import {NotificationsPageComponent} from "./layout/notifications-page/notifications-page.component";
 import {WalletComponent} from "./layout/wallet/wallet.component";
+import {AccountComponent} from "./layout/account/account.component";
 
 
 const routes: Routes = [
@@ -38,6 +39,10 @@ const routes: Routes = [
       {
         path: 'wallet',
         component: WalletComponent
+      },
+      {
+        path: 'settings',
+        component: AccountComponent
       }
     ]
   },

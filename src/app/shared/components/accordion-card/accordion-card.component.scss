@@ -1,8 +1,8 @@
 @import "../../../../assets/scss/properties";
 
 .accordion-card {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(48%,  104px));
+@include flexbox;
+  flex-wrap: wrap;
   gap: 16px;
   width: 100%;
 
@@ -10,6 +10,8 @@
   @include justify-content(center);
 
   .accordion-card-container{
+
+    width: 48.9%;
 
 
     .menu {

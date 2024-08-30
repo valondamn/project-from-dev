@@ -1,0 +1,98 @@
+@import "../../../assets/scss/properties";
+
+.account-page {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+
+  .account-container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+    .content {
+
+      .photo{
+        @include flexbox;
+        @include flex-direction(column);
+        @include gap(8px);
+
+        &__title{
+          @include xxs;
+        }
+        &__active{
+          @include flexbox;
+          @include gap(40px);
+          @include align-items(center);
+
+          img{
+            width: 140px;
+            height: 140px
+          }
+
+          .buttons{
+            @include flexbox;
+            @include gap(16px);
+          }
+        }
+
+      }
+
+      .content__title-subtitle {
+        margin-bottom: 20px;
+
+        .title {
+          font-size: 24px;
+          font-weight: bold;
+        }
+
+        .subtitle {
+          font-size: 16px;
+          color: #666;
+        }
+      }
+
+      .form-container {
+        form {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 20px;
+
+          .form-group {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+
+            label {
+              font-weight: bold;
+              margin-bottom: 5px;
+            }
+
+            input,
+            select {
+              padding: 10px;
+              border: 1px solid #ccc;
+              border-radius: 5px;
+            }
+
+            .radio-group {
+              display: flex;
+              gap: 10px;
+
+              label {
+                display: flex;
+                align-items: center;
+                gap: 5px;
+              }
+            }
+          }
+
+          .form-group.full-width {
+            flex: 0 0 100%;
+          }
+        }
+      }
+    }
+  }
+}
