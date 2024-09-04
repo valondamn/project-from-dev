@@ -1,16 +1,21 @@
 <div class="wallet">
-  <div class="banner" [ngStyle]="{
-    background: 'url(assets/images/main/Banner-purple.jpg) no-repeat',
-    'background-size': '100% 100%'
-  }">
+  <div
+    class="banner"
+    [ngStyle]="{
+      background: 'url(assets/images/main/Banner-purple.jpg) no-repeat',
+      'background-size': '100% 100%'
+    }"
+  >
     <div class="banner-content">
-     <span>Ваш баланс</span>
+      <span>Ваш баланс</span>
       <div class="coins">
-      <app-coins [coins]="10"></app-coins>
+        <app-coins [isWalletCoins]="true" [coins]="10"></app-coins>
       </div>
     </div>
   </div>
 
-  <app-benefits-cards [isColumnCard]="false" [cards]="cards"></app-benefits-cards>
-
+  <app-benefits-cards
+    [isColumnCard]="false"
+    [cards]="cards"
+  ></app-benefits-cards>
 </div>

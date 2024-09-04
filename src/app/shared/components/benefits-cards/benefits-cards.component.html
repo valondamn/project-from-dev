@@ -38,7 +38,7 @@
 } @else if (!isColumnCard && !isLinkCard){
 <div class="rowCards">
   @for(card of cards; track card){
-  <div class="card-item">
+  <div class="card-item" (click)="openModal(card)">
     <img src="{{ card.image }}" alt="" />
     <div class="card-item-info">
       <div class="card-item-info__title" [innerHTML]="card.title"></div>
@@ -145,7 +145,7 @@
         ></div>
         }
       </div>
-      @if (!deadLine){
+      @if (!deadLine && isColumnCard){
 
       <div class="button">
         <app-primary-button

@@ -7,8 +7,15 @@
     </div>
   </div>
 </a>
-}@else if(!isLink){
+}@else if(!isLink && !isWalletCoins){
 <div class="coins-container">
+  <div class="coins">
+    <span>{{ coins }}</span>
+    <svg-icon src="assets/icons/coins.svg"></svg-icon>
+  </div>
+</div>
+}@else if(!isLink && isWalletCoins){
+<div class="coins-container-wallet">
   <div class="coins">
     <span>{{ coins }}</span>
     <svg-icon src="assets/icons/coins.svg"></svg-icon>

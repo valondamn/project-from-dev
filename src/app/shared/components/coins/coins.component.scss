@@ -43,3 +43,24 @@ a {
     }
   }
 }
+
+.coins-container-wallet {
+  width: 86px;
+  .coins {
+    @include flexbox;
+    @include align-items(center);
+    @include gap(8px);
+    background-color: $brand-100;
+    border-radius: 8px;
+    padding: 10px 16px;
+    color: $primary-black;
+
+    @include font-(20px, 28px);
+    font-family: "Inter-regular";
+    font-weight: 100;
+    svg-icon {
+      width: 24px;
+      height: 24px;
+    }
+  }
+}
