@@ -14,5 +14,6 @@ import {RouterLink} from "@angular/router";
 })
 export class CoinsComponent {
   @Input({required: true}) coins!: number
+  @Input() isLink: boolean = false
 
 }

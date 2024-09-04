@@ -1,16 +1,14 @@
 @if (label) {
-  <label>{{ label }}</label>
+<label>{{ label }}</label>
 }
 <div
-  class="wrapper {{ size }} {{ font }}"
+  class="wrapper"
   [ngClass]="{
     disabled: disabled
   }"
 >
   @if (clearBtnShown && value()) {
-    <button class="clear-btn" (click)="clearValue()">
-
-    </button>
+  <button class="clear-btn" (click)="clearValue()"></button>
   }
   <input
     [(ngModel)]="value"
@@ -22,6 +20,5 @@
     #input
   />
   @if (type === "search") {
-    <svg-icon src="/assets/icons/input/search-loop.svg"></svg-icon>  }
+  <svg-icon src="/assets/icons/input/search-loop.svg"></svg-icon> }
 </div>
-

@@ -1,9 +1,17 @@
+@if(isLink){
 <a routerLink="/wallet">
-  <div class="coins-container">
-<div class="coins">
-<span>{{coins}}</span>
-  <svg-icon src="assets/icons/coins.svg"></svg-icon>
-</div>
+  <div class="coins-container-link">
+    <div class="coins">
+      <span>{{ coins }}</span>
+      <svg-icon src="assets/icons/coins.svg"></svg-icon>
+    </div>
   </div>
-
 </a>
+}@else if(!isLink){
+<div class="coins-container">
+  <div class="coins">
+    <span>{{ coins }}</span>
+    <svg-icon src="assets/icons/coins.svg"></svg-icon>
+  </div>
+</div>
+}

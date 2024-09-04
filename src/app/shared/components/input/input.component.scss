@@ -1,20 +1,9 @@
 @import "../../../../assets/scss/properties";
 
-
-
 :host {
   @include flexbox;
   @include flex-direction(column);
   @include gap(4px);
-
-  label {
-    @include paragraph;
-  }
-
-  &.ng-invalid.ng-touched {
-    .wrapper {
-    }
-  }
 
   .wrapper {
     @include flexbox;
@@ -26,30 +15,19 @@
     padding: 12px 16px;
     background-color: $neutral-100;
 
-    width:366px;
+    width: 366px;
 
     input {
       border: none;
-      color: #b6b6b6;
+      color: $neutral-400;
       width: 100%;
       background: none;
+      &::placeholder {
+        @include paragraph;
 
-      &:focus {
-        outline: none;
-        box-shadow: none;
+        color: $neutral-400;
       }
     }
-
-
-    svg-icon {
-      cursor: default;
-      svg {
-        width: 20px;
-        height: 20px;
-
-      }
-    }
-
 
     &.background {
       background-color: rgba(255, 255, 255, 0.2);
@@ -58,33 +36,5 @@
     &.disabled {
       opacity: 0.5;
     }
-
-    &:focus-within {
-    }
-
-    &.normal {
-      input {
-      }
-    }
-
-    &.bold {
-      input {
-      }
-    }
-
-
-
-
-    .clear-btn {
-      svg-icon {
-        cursor: pointer;
-
-        svg {
-          path {
-          }
-        }
-      }
-    }
-    }
   }
-
+}

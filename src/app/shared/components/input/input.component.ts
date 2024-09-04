@@ -19,8 +19,7 @@ export class InputComponent implements ControlValueAccessor {
   @Input() placeholder: string = '';
   @Input() label!: string;
   @Input() helper!: string;
-  @Input() font: 'normal' | 'bold' = 'normal';
-  @Input() size: 'small' | 'medium' | 'big' = 'medium';
+
   @Input() type: '' | 'search' = '';
   @Input() width: string = '';
   @Input() bgHidden: boolean = false;

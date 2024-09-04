@@ -13,12 +13,11 @@
       <app-notifications />
     </div>
     <div class="coins">
-      <app-coins [coins]="10" />
+      <app-coins [isLink]="true" [coins]="10" />
     </div>
     <div class="account-image" (click)="toggleDropdown()">
-      <svg-icon src="assets/icons/account/account-logo.svg"/>
-      <app-header-menu
-        [isVisible]="isDropdownVisible">
-      </app-header-menu>    </div>
+      <svg-icon src="assets/icons/account/account-logo.svg" />
+      <app-header-menu [isVisible]="isDropdownVisible"> </app-header-menu>
+    </div>
   </div>
 </div>
