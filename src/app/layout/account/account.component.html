@@ -9,7 +9,7 @@
       <div class="photo">
         <div class="photo__title">Фотография</div>
         <div class="photo__active">
-          <img src="assets/icons/account/account-logo.svg" alt="">
+          <img src="assets/icons/account/account-logo.svg" alt="" />
           <div class="buttons">
             <app-primary-button
               theme="dark"
@@ -24,9 +24,7 @@
               type="button"
             />
           </div>
-
         </div>
-
       </div>
 
       <div class="form-container">
@@ -34,31 +32,65 @@
           <!-- Имя и Фамилия -->
           <div class="form-group">
             <label for="firstName">Имя*</label>
-            <input type="text" id="firstName" [(ngModel)]="firstName" name="firstName" required>
+            <input
+              type="text"
+              id="firstName"
+              [(ngModel)]="firstName"
+              name="firstName"
+              required
+            />
           </div>
           <div class="form-group">
             <label for="lastName">Фамилия*</label>
-            <input type="text" id="lastName" [(ngModel)]="lastName" name="lastName" required>
+            <input
+              type="text"
+              id="lastName"
+              [(ngModel)]="lastName"
+              name="lastName"
+              required
+            />
           </div>
 
           <!-- Электронная почта и Номер телефона -->
           <div class="form-group">
             <label for="email">Электронная почта*</label>
-            <input type="email" id="email" [(ngModel)]="email" name="email" required>
+            <input
+              type="email"
+              id="email"
+              [(ngModel)]="email"
+              name="email"
+              required
+            />
           </div>
           <div class="form-group">
             <label for="phoneNumber">Номер телефона*</label>
-            <input type="tel" id="phoneNumber" [(ngModel)]="phoneNumber" name="phoneNumber" required>
+            <input
+              type="tel"
+              id="phoneNumber"
+              [(ngModel)]="phoneNumber"
+              name="phoneNumber"
+              required
+            />
           </div>
 
           <!-- Дата рождения и Страна -->
           <div class="form-group">
             <label for="birthDate">Дата рождения</label>
-            <input type="date" id="birthDate" [(ngModel)]="birthDate" name="birthDate">
+            <input
+              type="date"
+              id="birthDate"
+              [(ngModel)]="birthDate"
+              name="birthDate"
+            />
           </div>
           <div class="form-group">
             <label for="country">Страна</label>
-            <input type="text" id="country" [(ngModel)]="country" name="country">
+            <input
+              type="text"
+              id="country"
+              [(ngModel)]="country"
+              name="country"
+            />
           </div>
 
           <!-- Пол -->
@@ -66,11 +98,21 @@
             <label>Пол</label>
             <div class="radio-group">
               <label>
-                <input type="radio" name="gender" [(ngModel)]="gender" value="male">
+                <input
+                  type="radio"
+                  name="gender"
+                  [(ngModel)]="gender"
+                  value="male"
+                />
                 Мужской
               </label>
               <label>
-                <input type="radio" name="gender" [(ngModel)]="gender" value="female">
+                <input
+                  type="radio"
+                  name="gender"
+                  [(ngModel)]="gender"
+                  value="female"
+                />
                 Женский
               </label>
             </div>

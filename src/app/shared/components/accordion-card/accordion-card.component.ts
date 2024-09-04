@@ -8,7 +8,7 @@ import {
   transition,
   trigger,
 } from '@angular/animations';
-import {AccordionCard} from "../../interfaces/accordion-card.interface";
+import { AccordionCard } from '../../interfaces/accordion-card.interface';
 
 @Component({
   selector: 'app-accordion-card',
@@ -22,7 +22,7 @@ import {AccordionCard} from "../../interfaces/accordion-card.interface";
       state('collapsed', style({ height: '0px', opacity: 0, display: 'none' })),
       transition(
         'expanded <=> collapsed',
-        animate('300ms cubic-bezier(.37,1.04,.68,.98)'),
+        animate('300ms cubic-bezier(.37,1.04,.68,.98)')
       ),
     ]),
   ],
@@ -32,7 +32,7 @@ export class AccordionCardComponent {
   @Input() width: string = '100%';
   @Input() gap: string = '24px';
   @Input() hasBorder: boolean = true;
-  @Input() borderRadius: string = '8px';
+  @Input() borderRadius: string = '16px';
   @Input() isExpanded: boolean = false;
 
   trigger(index: number) {

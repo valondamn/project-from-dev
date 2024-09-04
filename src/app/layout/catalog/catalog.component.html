@@ -1,28 +1,34 @@
 <div class="main-page">
-  <div class="banner" [ngStyle]="{
-    background: 'url(assets/images/main/Banner-blue.jpg) no-repeat',
-    'background-size': '100% 100%'
-  }">
+  <div
+    class="banner"
+    [ngStyle]="{
+      background: 'url(assets/images/main/Banner-blue.jpg) no-repeat',
+      'background-size': '100% 100%'
+    }"
+  >
     <div class="banner-content">
-      <span>Найдите идеальные бонусы <br />
-        для вашего образа жизни!</span>
+      <span
+        >Найдите идеальные бонусы <br />
+        для вашего образа жизни!</span
+      >
     </div>
   </div>
+
   <div class="categories">
-    @for (category of categorylist; track category){
-      <button
-        [class.active]="isCategorySelected(category)"
-        (click)="toggleCategory(category)">
-        {{category}}
-      </button>
-    }
+    <button
+      *ngFor="let category of categorylist"
+      [class.active]="isCategorySelected(category)"
+      (click)="toggleCategory(category)"
+    >
+      {{ category }}
+    </button>
   </div>
-  <div class="most-popular">
 
+  <div class="most-popular">
     <div class="most-popular__cards">
-      <app-benefits-cards [cards]="filteredMostPopularCards"></app-benefits-cards>
+      <app-benefits-cards
+        [cards]="filteredMostPopularCards"
+      ></app-benefits-cards>
     </div>
   </div>
-
 </div>
-

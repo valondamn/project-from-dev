@@ -1,12 +1,12 @@
-import {Component, Input} from '@angular/core';
-import {Cards} from "../../../layout/main/main.interface";
-import {SvgIconComponent} from "angular-svg-icon";
-import {PrimaryButtonComponent} from "../buttons/primary-button/primary-button.component";
-import {CoinsComponent} from "../coins/coins.component";
-import {ModalComponent} from "../modal/modal.component";
-import {NgIf} from "@angular/common";
-import {RouterLink} from "@angular/router";
-import {DeadLineComponent} from "../dead-line/dead-line.component";
+import { Component, Input } from '@angular/core';
+import { Cards } from '../../../layout/main/main.interface';
+import { SvgIconComponent } from 'angular-svg-icon';
+import { PrimaryButtonComponent } from '../buttons/primary-button/primary-button.component';
+import { CoinsComponent } from '../coins/coins.component';
+import { ModalComponent } from '../modal/modal.component';
+import { NgIf } from '@angular/common';
+import { RouterLink } from '@angular/router';
+import { DeadLineComponent } from '../dead-line/dead-line.component';
 
 @Component({
   selector: 'app-benefits-cards',
@@ -18,16 +18,17 @@ import {DeadLineComponent} from "../dead-line/dead-line.component";
     DeadLineComponent,
     ModalComponent,
     NgIf,
-    RouterLink
+    RouterLink,
   ],
   templateUrl: './benefits-cards.component.html',
-  styleUrl: './benefits-cards.component.scss'
+  styleUrl: './benefits-cards.component.scss',
 })
 export class BenefitsCardsComponent {
   @Input({ required: true }) cards!: Cards[];
 
   @Input() deadLine: boolean = false;
   @Input() isColumnCard: boolean = true;
+  @Input() isLinkCard: boolean = false;
 
   public currentCard!: Cards;
   public modalVisible: boolean = false;
@@ -49,5 +50,4 @@ export class BenefitsCardsComponent {
   public closeConfirmPurchase() {
     this.modalVisible = false;
   }
-
 }

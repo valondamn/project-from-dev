@@ -1,16 +1,23 @@
 import { Component } from '@angular/core';
-import {Cards} from "../main/main.interface";
+import { Cards } from '../main/main.interface';
 
 @Component({
   selector: 'app-current-benefits',
   templateUrl: './current-benefits.component.html',
-  styleUrls: ['./current-benefits.component.scss']
+  styleUrls: ['./current-benefits.component.scss'],
 })
 export class CurrentBenefitsComponent {
-
-
-  public selectedCategories: string[] = ['Все'];
-  public categorylist: string[] = ['Все', 'Здоровье', 'Спорт', 'Питание', 'Обучение и развитие', 'Семья', 'Комфорт и удобства', 'Прочие']
+  public selectedCategory: string = 'Все'; // "Все" selected by default
+  public categorylist: string[] = [
+    'Все',
+    'Здоровье',
+    'Спорт',
+    'Питание',
+    'Обучение и развитие',
+    'Семья',
+    'Комфорт и удобства',
+    'Прочие',
+  ];
 
   get filteredMostPopularCards(): Cards[] {
     return this.filterCards(this.mostPopularCards);
@@ -21,28 +28,18 @@ export class CurrentBenefitsComponent {
   }
 
   public filterCards(cards: Cards[]): Cards[] {
-    if (this.selectedCategories.length === 0 || this.selectedCategories.includes('Все')) {
+    if (this.selectedCategory === 'Все') {
       return cards;
     }
-    return cards.filter(card => this.selectedCategories.includes(card.category));
+    return cards.filter((card) => card.category === this.selectedCategory);
   }
 
   public toggleCategory(category: string) {
-    if (category === 'Все') {
-      this.selectedCategories = this.selectedCategories.includes('Все') ? [] : ['Все'];
-    } else {
-      const index = this.selectedCategories.indexOf(category);
-      if (index >= 0) {
-        this.selectedCategories.splice(index, 1);
-      } else {
-        this.selectedCategories.push(category);
-        this.selectedCategories = this.selectedCategories.filter(cat => cat !== 'Все');
-      }
-    }
+    this.selectedCategory = category;
   }
 
   public isCategorySelected(category: string): boolean {
-    return this.selectedCategories.includes(category);
+    return this.selectedCategory === category;
   }
 
   public mostPopularCards: Cards[] = [
@@ -59,12 +56,12 @@ export class CurrentBenefitsComponent {
         'Тренер за дополнительную плату',
         'Заморозка 5 дней',
         '1 гостевое посещение',
-        'Действует 1 месяц с момента покупки'
+        'Действует 1 месяц с момента покупки',
       ],
       descriptionTitle: 'МЕСЯЦ FULL DAY',
       category: 'Спорт',
-      date: '24.09.24'
-// Категория
+      date: '24.09.24',
+      // Категория
     },
     {
       code: 2,
@@ -79,12 +76,12 @@ export class CurrentBenefitsComponent {
         'Тренер за дополнительную плату',
         'Заморозка 5 дней',
         '1 гостевое посещение',
-        'Действует 1 месяц с момента покупки'
+        'Действует 1 месяц с момента покупки',
       ],
       descriptionTitle: 'МЕСЯЦ FULL DAY',
-      category: 'Спорт'
-      ,      date: '24.09.24'
-// Категория
+      category: 'Спорт',
+      date: '24.09.24',
+      // Категория
     },
     {
       code: 3,
@@ -99,12 +96,12 @@ export class CurrentBenefitsComponent {
         'Тренер за дополнительную плату',
         'Заморозка 5 дней',
         '1 гостевое посещение',
-        'Действует 1 месяц с момента покупки'
+        'Действует 1 месяц с момента покупки',
       ],
       descriptionTitle: 'МЕСЯЦ FULL DAY',
-      category: 'Комфорт и удобства'
-      ,      date: '24.09.24'
-// Категория
+      category: 'Комфорт и удобства',
+      date: '24.09.24',
+      // Категория
     },
   ];
 
@@ -122,12 +119,12 @@ export class CurrentBenefitsComponent {
         'Тренер за дополнительную плату',
         'Заморозка 5 дней',
         '1 гостевое посещение',
-        'Действует 1 месяц с момента покупки'
+        'Действует 1 месяц с момента покупки',
       ],
       descriptionTitle: 'МЕСЯЦ FULL DAY',
       category: 'Спорт',
-      date: '24.09.24'
-// Категория
+      date: '24.09.24',
+      // Категория
     },
     {
       code: 2,
@@ -142,12 +139,12 @@ export class CurrentBenefitsComponent {
         'Тренер за дополнительную плату',
         'Заморозка 5 дней',
         '1 гостевое посещение',
-        'Действует 1 месяц с момента покупки'
+        'Действует 1 месяц с момента покупки',
       ],
       descriptionTitle: 'МЕСЯЦ FULL DAY',
-      category: 'Здоровье' ,
-      date: '24.09.24'
-// Категория
+      category: 'Здоровье',
+      date: '24.09.24',
+      // Категория
     },
     {
       code: 3,
@@ -162,13 +159,11 @@ export class CurrentBenefitsComponent {
         'Тренер за дополнительную плату',
         'Заморозка 5 дней',
         '1 гостевое посещение',
-        'Действует 1 месяц с момента покупки'
+        'Действует 1 месяц с момента покупки',
       ],
       descriptionTitle: 'МЕСЯЦ FULL DAY',
-      category: 'Комфорт и удобства',// Категория
-      date: '24.09.24'
-    }
+      category: 'Комфорт и удобства', // Категория
+      date: '24.09.24',
+    },
   ];
-
-
 }

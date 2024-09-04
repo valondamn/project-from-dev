@@ -1,16 +1,14 @@
 import { Component } from '@angular/core';
-import {PrimaryButtonComponent} from "../../shared/components/buttons/primary-button/primary-button.component";
-import {FormsModule} from "@angular/forms";
+import { PrimaryButtonComponent } from '../../shared/components/buttons/primary-button/primary-button.component';
+import { FormsModule } from '@angular/forms';
+import { AccordionCardComponent } from '../../shared/components/accordion-card/accordion-card.component';
 
 @Component({
   selector: 'app-account',
   standalone: true,
-  imports: [
-    PrimaryButtonComponent,
-    FormsModule
-  ],
+  imports: [PrimaryButtonComponent, FormsModule, AccordionCardComponent],
   templateUrl: './account.component.html',
-  styleUrl: './account.component.scss'
+  styleUrl: './account.component.scss',
 })
 export class AccountComponent {
   firstName = '';
