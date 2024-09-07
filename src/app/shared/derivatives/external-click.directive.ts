@@ -15,10 +15,11 @@ export class ExternalClickDirective {
 
   constructor(private el: ElementRef) {}
 
-  @HostListener('document:click', ['$event'])
+  @HostListener('click', ['$event'])
   onClick(event: Event) {
+    // Проверяем, был ли клик вне текущего элемента
     if (!this.el.nativeElement.contains(event.target)) {
-      this.closeEmitter.emit();
+      this.closeEmitter.emit(true);
     }
   }
 }

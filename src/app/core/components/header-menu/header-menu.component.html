@@ -1,12 +1,34 @@
-@if (isVisible){
-  <div class="dropdown-menu"  #dropdownMenu>
-  <div class="user-info">
-    <img src="assets/icons/account/account-logo.svg" alt="Profile Picture" class="profile-pic"/>
-    <span>Эвелина</span>
-    <span class="points">10</span>
+@if (visible) {
+<div class="dropdown-menu" >
+  <div class="profile-info">
+    <img
+      src="assets/icons/account/account-logo.svg"
+      alt="Profile Picture"
+      class="profile-logo"
+    />
+    <div class="profile-info__name-coins" #modalBody>
+      <span>Эвелина</span>
+      <div class="coins">
+        <span>10</span>
+        <svg-icon src="assets/icons/coins.svg"></svg-icon>
+      </div>
+    </div>
   </div>
-  <div class="menu-item" >Кошелёк</div>
-  <div class="menu-item">Настройки</div>
-  <div class="menu-item">Выйти</div>
+  <div class="header-menu">
+    <div class="header-menu-item">
+      <svg-icon src="assets/icons/account/wallet.svg"></svg-icon>
+      <span>Кошелёк</span>
+    </div>
+    <div class="header-menu-item">
+      <svg-icon src="assets/icons/account/settings.svg"></svg-icon>
+      <span>Настройки</span>
+    </div>
+  </div>
+  <div class="logout">
+    <div class="header-menu-item">
+      <svg-icon src="assets/icons/account/logout.svg"></svg-icon>
+      <span>Выйти</span>
+    </div>
+  </div>
 </div>
 }

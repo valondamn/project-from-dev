@@ -5,6 +5,7 @@ import {Tab} from "../../../shared/interfaces/tab.interface";
 import {Router, RouterOutlet} from "@angular/router";
 import {ActivatedRoute} from '@angular/router';
 import {NgStyle} from "@angular/common";
+import { HeaderMenuComponent } from "../header-menu/header-menu.component";
 
 @Component({
   selector: 'app-page',
@@ -16,8 +17,9 @@ import {NgStyle} from "@angular/common";
     SidebarComponent,
     HeaderComponent,
     RouterOutlet,
-    NgStyle
-  ]
+    NgStyle,
+    HeaderMenuComponent
+]
 })
 export class PageComponent implements OnInit{
   type = input.required<string>();

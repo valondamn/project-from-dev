@@ -1,4 +1,54 @@
 @import "../../../../assets/scss/properties";
+.account-image {
+  position: relative;
+
+  svg-icon {
+    width: 48px;
+    height: 48px;
+    cursor: pointer;
+  }
+
+  .dropdown-menu {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: white;
+    border: 1px solid $neutral-200;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 226px;
+    height: 236px;
+    border-radius: 8px;
+    z-index: 100;
+
+    .user-info {
+      display: flex;
+      align-items: center;
+      padding: 10px;
+      border-bottom: 1px solid $neutral-200;
+
+      .profile-pic {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        margin-right: 10px;
+      }
+
+      .points {
+        margin-left: auto;
+        font-weight: bold;
+      }
+    }
+
+    .menu-item {
+      padding: 10px;
+      cursor: pointer;
+      &:hover {
+        background-color: $neutral-100;
+      }
+    }
+  }
+}
+
 .dropdown-menu {
   position: absolute;
   top: 0;
@@ -9,31 +59,78 @@
   width: 226px;
   border-radius: 8px;
   z-index: 100;
+  color: $neutral-500;
+  @include paragraph;
 
-  .user-info {
-    display: flex;
-    align-items: center;
-    padding: 10px;
-    border-bottom: 1px solid $neutral-200;
+  .profile-info {
+    @include flexbox;
+    @include align-items(center);
+    @include gap(16px);
 
-    .profile-pic {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      margin-right: 10px;
+    padding: 13px 16px;
+
+    &__name-coins {
+      @include flexbox;
+      @include flex-direction(column);
+
+      .coins {
+        @include flexbox;
+        @include align-items(center);
+        @include gap(8px);
+
+        svg-icon {
+          width: 24px;
+          height: 24px;
+        }
+      }
     }
 
-    .points {
-      margin-left: auto;
-      font-weight: bold;
+    .profile-logo {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+    }
+  }
+  .header-menu {
+    border-top: 1px solid $neutral-200;
+    border-bottom: 1px solid $neutral-200;
+    padding: 6px 0;
+
+    .header-menu-item {
+      @include flexbox;
+      @include align-items(center);
+      @include gap(16px);
+      padding: 10px 16px;
+
+      svg-icon {
+        width: 24px;
+        height: 24px;
+      }
+
+      cursor: pointer;
+      &:hover {
+        background-color: $brand-100;
+      }
     }
   }
 
-  .menu-item {
-    padding: 10px;
-    cursor: pointer;
-    &:hover {
-      background-color: $neutral-100;
+  .logout {
+    padding: 6px 0;
+
+    .header-menu-item {
+      @include flexbox;
+      @include align-items(center);
+      @include gap(16px);
+      padding: 10px 16px;
+
+      svg-icon {
+        width: 24px;
+        height: 24px;
+      }
+      cursor: pointer;
+      &:hover {
+        background-color: $brand-100;
+      }
     }
   }
 }

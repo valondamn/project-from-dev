@@ -1,194 +1,186 @@
 @import "../../../../assets/scss/properties";
 
-.cards{
+.cards {
   @include flexbox;
   @include align-items(center);
   @include gap(16px);
   flex-wrap: wrap;
 
-  .card-item{
+  .card-item {
     @include flexbox;
     @include flex-direction(column);
     @include gap(16px);
     border-radius: 16px;
-    box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 5px 16px rgba(93, 93, 93, 0.06);
     padding: 16px;
     background-color: $primary-white;
     width: 29.33%;
 
-    img{
+    img {
       width: 100%;
       height: 175px;
       border-radius: 12px;
     }
 
-    .card-item-info{
+    .card-item-info {
       @include flexbox;
       @include flex-direction(column);
       @include gap(4px);
 
-      &__title{
+      &__title {
         @include heading_4;
       }
 
-      &__company{
+      &__company {
         @include flexbox;
         @include align-items(center);
         @include gap(8px);
 
-        svg{
-          border-radius: 1000px
+        svg {
+          border-radius: 1000px;
         }
 
-        &__title{
+        &__title {
           @include small;
-          color: $neutral-500
+          color: $neutral-500;
         }
       }
-
     }
 
-    .coins-button{
+    .coins-button {
       @include flexbox;
       @include align-items(center);
       @include justify-content(space-between);
-
-
     }
-
   }
 }
 
-.rowCards{
+.rowCards {
   @include flexbox;
   @include align-items(center);
   @include flex-direction(column);
   @include gap(16px);
-  padding: 0  24px;
+  padding: 0 24px;
 
-  .card-item{
+  .card-item {
     @include flexbox;
     @include gap(16px);
     border-radius: 16px;
-    box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 5px 16px rgba(93, 93, 93, 0.06);
     padding: 16px;
     background-color: $primary-white;
     width: 100%;
 
-    img{
+    img {
       width: 110px;
       height: 69px;
       border-radius: 12px;
     }
 
-    .card-item-info{
+    .card-item-info {
       @include flexbox;
       @include flex-direction(column);
       @include gap(4px);
 
-      &__title{
+      &__title {
         @include heading_4;
       }
 
-      &__company{
+      &__company {
         @include flexbox;
         @include align-items(center);
         @include gap(8px);
 
-        svg{
-          border-radius: 1000px
+        svg {
+          border-radius: 1000px;
         }
 
-        &__title{
+        &__title {
           @include small;
-          color: $neutral-500
+          color: $neutral-500;
         }
       }
-
     }
-
   }
 }
 
-
-.modal{
+.modal {
   padding: 40px;
   @include flexbox;
   @include flex-direction(column);
   @include gap(24px);
 
-
-  .info-title{
+  .info-title {
     @include flexbox;
     @include flex-direction(column);
     @include gap(8px);
 
-  .title{
-    @include heading_2;
+    .title {
+      @include heading_2;
+    }
+
+    .subtitle {
+      @include paragraph;
+      color: $neutral-500;
+    }
   }
 
-  .subtitle {
-    @include paragraph;
-    color: $neutral-500
-  }
-  }
-
-  &__main-info{
+  &__main-info {
     @include flexbox;
     @include flex-direction(column);
     @include gap(24px);
 
-     .heading{
-       @include flexbox;
-       @include gap(16px);
-       padding: 16px;
-       background-color: $neutral-100;
-       border-radius: 16px;
+    .heading {
+      @include flexbox;
+      @include gap(16px);
+      padding: 16px;
+      background-color: $neutral-100;
+      border-radius: 16px;
 
-       &__image{
-         img{
-           width: 175px;
-           height:110px;
-         }
-       }
+      &__image {
+        img {
+          width: 175px;
+          height: 110px;
+        }
+      }
 
-       &__info{
-         @include flexbox;
-         @include flex-direction(column);
-         @include gap(16px);
+      &__info {
+        @include flexbox;
+        @include flex-direction(column);
+        @include gap(16px);
 
-         &__description{
-           @include flexbox;
-           @include flex-direction(column);
-           @include gap(4px);
+        &__description {
+          @include flexbox;
+          @include flex-direction(column);
+          @include gap(4px);
 
-           &__title{
-             @include heading_4;
-           }
+          &__title {
+            @include heading_4;
+          }
 
-           &__company{
-             @include flexbox;
-             @include align-items(center);
-             @include gap(8px);
+          &__company {
+            @include flexbox;
+            @include align-items(center);
+            @include gap(8px);
 
-             svg{
-               border-radius: 1000px
-             }
+            svg {
+              border-radius: 1000px;
+            }
 
-             .title{
-               @include small;
-               color: $neutral-500
-             }
-           }
-         }
+            .title {
+              @include small;
+              color: $neutral-500;
+            }
+          }
+        }
 
-         &__coins{
-           width: 76px
-         }
-       }
-     }
+        &__coins {
+          width: 76px;
+        }
+      }
+    }
 
-    .description{
+    .description {
       @include flexbox;
       @include flex-direction(column);
       @include gap(16px);
@@ -196,14 +188,14 @@
       background-color: $neutral-100;
       border-radius: 16px;
 
-      &__title{
+      &__title {
         @include heading_4;
       }
 
-      &__list{
+      &__list {
         padding-left: 16px;
 
-        ul{
+        ul {
           @include flexbox;
           @include flex-direction(column);
           @include gap(8px);
@@ -212,15 +204,14 @@
       }
     }
 
-    .button{
+    .button {
       @include flexbox;
       @include align-items(center);
       @include gap(16px);
 
-      app-primary-button{
+      app-primary-button {
         width: 100%;
-        height:48px;
-
+        height: 48px;
       }
     }
   }
@@ -244,22 +235,19 @@
 
     .message {
       @include small;
-      color: $neutral-500
+      color: $neutral-500;
     }
   }
 
-  .buttons{
+  .buttons {
     @include flexbox;
     @include align-items(center);
     @include gap(16px);
     margin-top: auto;
 
-    app-primary-button{
+    app-primary-button {
       width: 100%;
-      height:48px;
-
+      height: 48px;
     }
   }
-
-
 }
