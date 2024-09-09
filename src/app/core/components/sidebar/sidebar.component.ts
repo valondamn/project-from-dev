@@ -86,4 +86,8 @@ export class SidebarComponent implements OnChanges, AfterViewInit {
     this.onChange.emit(tab);
   }
 
+  public setTab() {
+    this.currentTab = this.tabs[0]
+  }
+
 }

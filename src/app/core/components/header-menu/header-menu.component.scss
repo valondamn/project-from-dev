@@ -45,10 +45,15 @@
       border-radius: 50%;
     }
   }
+
   .header-menu {
     border-top: 1px solid $neutral-200;
     border-bottom: 1px solid $neutral-200;
     padding: 6px 0;
+
+    a {
+      text-decoration: none;
+    }
 
     .header-menu-item {
       @include flexbox;
@@ -62,6 +67,7 @@
       }
 
       cursor: pointer;
+
       &:hover {
         background-color: $brand-100;
       }
@@ -81,7 +87,9 @@
         width: 24px;
         height: 24px;
       }
+
       cursor: pointer;
+
       &:hover {
         background-color: $brand-100;
       }

@@ -1,37 +1,64 @@
 @import "../../../assets/scss/properties";
 
+input {
+  width: 400px;
+}
+
 .account-page {
   display: flex;
   justify-content: center;
-  padding: 20px;
+  height: 90vh;
+  background-color: $neutral-100;
+
 
   .account-container {
-    background-color: #fff;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    overflow-y: auto;
+    @include flexbox;
+    @include flex-direction(column);
+    @include gap(86px);
+
+    .buttons-block {
+      @include flexbox;
+      @include justify-content(center);
+      @include gap(16px);
+      background-color: $primary-white;
+      padding: 21px 0;
+      box-shadow: 0 5px 16px rgba(93, 93, 93, 0.06);
+      border-radius: 16px;
+    }
 
     .content {
+      @include flexbox;
+      @include flex-direction(column);
+      @include gap(24px);
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 5px 16px rgba(93, 93, 93, 0.06);
+      width: 100%;
 
-      .photo{
+      .photo {
         @include flexbox;
         @include flex-direction(column);
         @include gap(8px);
 
-        &__title{
+        &__title {
           @include xxs;
+          color: $neutral-500;
         }
-        &__active{
+
+        &__active {
           @include flexbox;
           @include gap(40px);
           @include align-items(center);
 
-          img{
+          img {
             width: 140px;
             height: 140px
           }
 
-          .buttons{
+          .buttons {
             @include flexbox;
             @include gap(16px);
           }
@@ -40,45 +67,93 @@
       }
 
       .content__title-subtitle {
-        margin-bottom: 20px;
 
         .title {
-          font-size: 24px;
-          font-weight: bold;
+          @include heading_3;
         }
 
         .subtitle {
-          font-size: 16px;
-          color: #666;
+          @include paragraph;
         }
       }
 
       .form-container {
+        .group-title {
+          @include heading_4_regular;
+        }
+
         form {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 20px;
+          @include flexbox;
+          @include flex-direction(column);
+          gap: 24px;
+
+          .firstName-lastName {
+            @include flexbox;
+            @include gap(42px);
+          }
+
+          .account-data {
+            @include flexbox;
+            @include flex-direction(column);
+            @include gap(16px);
+
+            &__content {
+              @include flexbox;
+              @include gap(42px);
+
+            }
+          }
+
+          .birthDate-country {
+
+            @include flexbox;
+            @include flex-direction(column);
+
+            @include gap(16px);
+
+            &__content {
+              @include flexbox;
+              @include flex-wrap(wrap);
+              @include gap(42px);
+            }
+
+
+            input,
+            select {
+              width: 401px
+            }
+
+          }
 
           .form-group {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
+            @include flexbox;
+            @include flex-direction(column);
+            @include gap(8px);
+
 
             label {
-              font-weight: bold;
-              margin-bottom: 5px;
+              @include xxs;
+              color: $neutral-500;
             }
 
             input,
             select {
-              padding: 10px;
-              border: 1px solid #ccc;
-              border-radius: 5px;
+              padding: 12px 8px;
+              border: 1px solid $neutral-300;
+              border-radius: 12px;
             }
 
             .radio-group {
               display: flex;
+              @include align-items(center);
               gap: 10px;
+
+              input {
+                width: 24px;
+                height: 24px;
+                margin: 0
+
+              }
 
               label {
                 display: flex;
@@ -88,9 +163,7 @@
             }
           }
 
-          .form-group.full-width {
-            flex: 0 0 100%;
-          }
+
         }
       }
     }

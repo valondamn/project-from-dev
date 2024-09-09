@@ -1,18 +1,15 @@
 @import "../../../../../../assets/scss/properties";
 
-@import "../../../../../../assets/scss/properties";
-
 button,
 a {
-  &.light {
+  &.disable {
     &.standard {
-      background: $neutral-100;
-      border: 1px solid $neutral-300;
-
+      background: $brand-900;
+      color: $primary-white;
+      
       @include hover {
         background: $brand-100;
       }
-
     }
   }
 }

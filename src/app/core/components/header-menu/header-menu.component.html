@@ -1,36 +1,36 @@
 @if (visible) {
-<div class="dropdown-menu" #modalBody>
-  <div class="profile-info">
-    <img
-      src="assets/icons/account/account-logo.svg"
-      alt="Profile Picture"
-      class="profile-logo"
-    />
-    <div class="profile-info__name-coins" >
-      <span>Эвелина</span>
-      <div class="coins">
-        <span>10</span>
-        <svg-icon src="assets/icons/coins.svg"></svg-icon>
+  <div class="dropdown-menu" #modalBody>
+    <div class="profile-info">
+      <img
+        src="assets/icons/account/account-logo.svg"
+        alt="Profile Picture"
+        class="profile-logo"
+      />
+      <div class="profile-info__name-coins">
+        <span>Эвелина</span>
+        <div class="coins">
+          <span>10</span>
+          <svg-icon src="assets/icons/coins.svg"></svg-icon>
+        </div>
+      </div>
+    </div>
+    <div class="header-menu">
+      <div class="header-menu-item" routerLink="/wallet">
+        <svg-icon src="assets/icons/account/wallet.svg"></svg-icon>
+        <span>Кошелёк</span>
+      </div>
+      <div class="header-menu-item" routerLink="/settings">
+        <svg-icon src="assets/icons/account/settings.svg"></svg-icon>
+        <span>Настройки</span>
+      </div>
+    </div>
+    <div class="logout">
+      <div class="header-menu-item">
+        <svg-icon src="assets/icons/account/logout.svg"></svg-icon>
+        <span>Выйти</span>
       </div>
     </div>
   </div>
-  <div class="header-menu">
-    <div class="header-menu-item">
-      <svg-icon src="assets/icons/account/wallet.svg"></svg-icon>
-      <span>Кошелёк</span>
-    </div>
-    <div class="header-menu-item">
-      <svg-icon src="assets/icons/account/settings.svg"></svg-icon>
-      <span>Настройки</span>
-    </div>
-  </div>
-  <div class="logout">
-    <div class="header-menu-item">
-      <svg-icon src="assets/icons/account/logout.svg"></svg-icon>
-      <span>Выйти</span>
-    </div>
-  </div>
-</div>
   <div class="dropdown-menu__background"></div>
 
 }

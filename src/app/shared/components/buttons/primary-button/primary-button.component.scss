@@ -9,6 +9,7 @@
   button,
   a {
     padding: 11px 16px;
+    margin: 0;
 
     @include font-(16px, 120%);
     border-radius: 8px;
@@ -19,6 +20,7 @@
     @include gap(8px);
 
     text-decoration: none;
+    border: none;
 
     cursor: pointer;
     user-select: none;
@@ -28,6 +30,7 @@
       pointer-events: none;
       opacity: 30%;
     }
+
     @include sm-breakpoint-down {
       width: 100%;
     }

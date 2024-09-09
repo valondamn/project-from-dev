@@ -3,9 +3,8 @@ import {SidebarComponent} from "../sidebar/sidebar.component";
 import {HeaderComponent} from "../header/header.component";
 import {Tab} from "../../../shared/interfaces/tab.interface";
 import {Router, RouterOutlet} from "@angular/router";
-import {ActivatedRoute} from '@angular/router';
 import {NgStyle} from "@angular/common";
-import { HeaderMenuComponent } from "../header-menu/header-menu.component";
+import {HeaderMenuComponent} from "../header-menu/header-menu.component";
 
 @Component({
   selector: 'app-page',
@@ -19,30 +18,11 @@ import { HeaderMenuComponent } from "../header-menu/header-menu.component";
     RouterOutlet,
     NgStyle,
     HeaderMenuComponent
-]
+  ]
 })
-export class PageComponent implements OnInit{
+export class PageComponent implements OnInit {
   type = input.required<string>();
-
-
-  ngOnInit() {
-    const storedTabLink = localStorage.getItem('currentTab');
-    const tab = this.tabs.find(t => t.link === storedTabLink) || this.tabs[0];
-    this.changeCurrentTab(tab);
-  }
-
-  changeCurrentTab(tab: Tab) {
-    this.currentTab = tab;
-    localStorage.setItem('currentTab', tab.link);
-    this.router.navigate([`/${tab.link}`]);
-  }
-
-  constructor(
-    private router: Router,
-
-  ) {}
-
-  public tabs: Tab[] =[
+  public tabs: Tab[] = [
     {
       title: 'Главная',
       link: '',
@@ -63,15 +43,42 @@ export class PageComponent implements OnInit{
       link: 'questions-and-answers',
       icon: '/assets/icons/tabs/questions-and-answers.svg'
     }
-  ]
-
+  ];
   currentTab: Tab = this.tabs[0];
 
+  constructor(private router: Router) {
+  }
 
+  ngOnInit() {
+    this.storeTab();
+  }
+
+  storeTab() {
+    const storedTabLink = localStorage.getItem('currentTab');
+
+    // Проверяем, не является ли сохраненная страница "settings" или "wallet"
+    if (storedTabLink === 'settings' || storedTabLink === 'wallet') {
+      this.router.navigate([`/${storedTabLink}`]);
+    } else {
+      const tab = this.tabs.find(t => t.link === storedTabLink) || this.tabs[0];
+      this.changeCurrentTab(tab);
+    }
+  }
+
+  changeCurrentTab(tab: Tab) {
+    this.currentTab = tab;
+    localStorage.setItem('currentTab', tab.link);
+    this.router.navigate([`/${tab.link}`]);
+  }
+
+  // Новый метод для работы со страницами, не зависящими от табов
+  changePage(page: string) {
+    localStorage.setItem('currentTab', page);
+    this.router.navigate([`/${page}`]);
+  }
 
   setCurrentTab() {
-    let tab =
-      this.tabs.find((item) => item.link === this.type()) || this.tabs[0];
+    let tab = this.tabs.find(item => item.link === this.type()) || this.tabs[0];
     this.changeCurrentTab(tab);
   }
 

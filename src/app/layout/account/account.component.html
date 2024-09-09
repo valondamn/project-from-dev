@@ -7,21 +7,23 @@
       </div>
 
       <div class="photo">
-        <div class="photo__title">Фотография</div>
+        <div class="photo__title">Фотография
+        </div>
         <div class="photo__active">
-          <img src="assets/icons/account/account-logo.svg" alt="" />
+          <img alt="" src="assets/icons/account/account-logo.svg"/>
           <div class="buttons">
             <app-primary-button
-              theme="dark"
-              styling="standard"
               [label]="'Зарузить фото'"
-              type="button"
-            />
-            <app-primary-button
-              theme="light"
               styling="standard"
+              theme="dark"
+              type="submit"
+            />
+
+            <app-primary-button
               [label]="'Удалить фото'"
-              type="button"
+              styling="standard"
+              theme="light"
+              type="submit"
             />
           </div>
         </div>
@@ -29,117 +31,138 @@
 
       <div class="form-container">
         <form>
-          <!-- Имя и Фамилия -->
-          <div class="form-group">
-            <label for="firstName">Имя*</label>
-            <input
-              type="text"
-              id="firstName"
-              [(ngModel)]="firstName"
-              name="firstName"
-              required
-            />
+          <div class="firstName-lastName">
+            <!-- Имя и Фамилия -->
+            <div class="form-group">
+              <label for="firstName">Имя*</label>
+              <input
+                [(ngModel)]="firstName"
+                id="firstName"
+                name="firstName"
+                required
+                type="text"
+              />
+            </div>
+            <div class="form-group">
+              <label for="lastName">Фамилия*</label>
+              <div class="input">
+                <input
+                  [(ngModel)]="lastName"
+                  id="lastName"
+                  name="lastName"
+                  required
+                  type="text"
+                />
+              </div>
+            </div>
           </div>
-          <div class="form-group">
-            <label for="lastName">Фамилия*</label>
-            <input
-              type="text"
-              id="lastName"
-              [(ngModel)]="lastName"
-              name="lastName"
-              required
-            />
-          </div>
-
           <!-- Электронная почта и Номер телефона -->
-          <div class="form-group">
-            <label for="email">Электронная почта*</label>
-            <input
-              type="email"
-              id="email"
-              [(ngModel)]="email"
-              name="email"
-              required
-            />
-          </div>
-          <div class="form-group">
-            <label for="phoneNumber">Номер телефона*</label>
-            <input
-              type="tel"
-              id="phoneNumber"
-              [(ngModel)]="phoneNumber"
-              name="phoneNumber"
-              required
-            />
-          </div>
-
-          <!-- Дата рождения и Страна -->
-          <div class="form-group">
-            <label for="birthDate">Дата рождения</label>
-            <input
-              type="date"
-              id="birthDate"
-              [(ngModel)]="birthDate"
-              name="birthDate"
-            />
-          </div>
-          <div class="form-group">
-            <label for="country">Страна</label>
-            <input
-              type="text"
-              id="country"
-              [(ngModel)]="country"
-              name="country"
-            />
-          </div>
-
-          <!-- Пол -->
-          <div class="form-group">
-            <label>Пол</label>
-            <div class="radio-group">
-              <label>
+          <div class="account-data">
+            <div class="group-title">Ваш аккаунт</div>
+            <div class="account-data__content">
+              <div class="form-group">
+                <label for="email">Электронная почта*</label>
                 <input
-                  type="radio"
-                  name="gender"
-                  [(ngModel)]="gender"
-                  value="male"
+                  [(ngModel)]="email"
+                  id="email"
+                  name="email"
+                  required
+                  type="email"
                 />
-                Мужской
-              </label>
-              <label>
+              </div>
+              <div class="form-group">
+                <label for="phoneNumber">Номер телефона*</label>
                 <input
-                  type="radio"
-                  name="gender"
-                  [(ngModel)]="gender"
-                  value="female"
+                  [(ngModel)]="phoneNumber"
+                  id="phoneNumber"
+                  name="phoneNumber"
+                  required
+                  type="tel"
                 />
-                Женский
-              </label>
+              </div>
             </div>
           </div>
 
-          <!-- Язык -->
-          <div class="form-group">
-            <label for="language">Выбрать язык</label>
-            <select id="language" [(ngModel)]="language" name="language">
-              <option value="ru">Русский</option>
-              <option value="en">Английский</option>
-              <!-- Add more languages as needed -->
-            </select>
-          </div>
-
-          <!-- Submit Button -->
-          <div class="form-group">
-            <app-primary-button
-              theme="dark"
-              styling="standard"
-              [label]="'Сохранить'"
-              type="button"
-              (click)="saveProfile()"
-            ></app-primary-button>
+          <div class="birthDate-country">
+            <!-- Дата рождения и Страна -->
+            <div class="group-title">
+              Персональные данные
+            </div>
+            <div class="birthDate-country__content">
+              <div class="form-group">
+                <label for="birthDate">Дата рождения</label>
+                <input
+                  [(ngModel)]="birthDate"
+                  id="birthDate"
+                  name="birthDate"
+                  type="date"
+                />
+              </div>
+              <div class="form-group">
+                <label for="country">Страна</label>
+                <input
+                  [(ngModel)]="country"
+                  id="country"
+                  name="country"
+                  type="text"
+                />
+              </div>
+              <div class="form-group">
+                <label for="language">Выбрать язык</label>
+                <select [(ngModel)]="language" id="language" name="language">
+                  <option value="ru">Русский</option>
+                  <option value="en">Английский</option>
+                  <!-- Add more languages as needed -->
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Пол</label>
+                <div class="radio-group">
+                  <input
+                    [(ngModel)]="gender"
+                    name="gender"
+                    type="radio"
+                    value="male"
+                  />
+                  <label>
+                    Мужской
+                  </label>
+                  <input
+                    [(ngModel)]="gender"
+                    name="gender"
+                    type="radio"
+                    value="female"
+                  />
+                  <label>
+                    Женский
+                  </label>
+                </div>
+              </div>
+            </div>
           </div>
         </form>
       </div>
     </div>
+    <div class="buttons-block">
+      <div class="button">
+        <app-primary-button
+          [label]="'Сбросить'"
+          styling="standard"
+          theme="light"
+          type="submit"
+        />
+
+      </div>
+      <div class="button">
+        <app-primary-button
+          [label]="'Сохранить'"
+          styling="standard"
+          theme="light"
+          type="submit"
+        />
+      </div>
+    </div>
   </div>
+
+
 </div>
