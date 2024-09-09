@@ -11,12 +11,13 @@
 
   .accordion-card-container {
     width: 48.9%;
-    box-shadow: 0px 5px 16px rgba(93, 93, 93, 0.06);
     border-radius: 16px;
 
     .menu {
       min-height: 56px;
       border-radius: 16px;
+      box-shadow: 0 5px 16px rgba(93, 93, 93, 0.06);
+
 
       position: relative;
       cursor: pointer;
@@ -67,6 +68,7 @@
       &.opened {
         .plusminus-container {
           background-color: $brand-900;
+
           .plusminus {
             &:after {
               transform: translateY(-50%) rotate(0deg);
@@ -74,6 +76,7 @@
             }
           }
         }
+
         .content {
           margin-top: 24px;
         }
