@@ -15,7 +15,17 @@
       @include align-items(center);
       @include gap(20px);
 
-      
+      .account-image{
+        сursor: pointer;
+
+        a{
+          сursor: pointer;
+
+        }
+
+      }
+
+
     }
   }
 }

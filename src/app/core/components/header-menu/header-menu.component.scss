@@ -1,65 +1,19 @@
 @import "../../../../assets/scss/properties";
-.account-image {
-  position: relative;
 
-  svg-icon {
-    width: 48px;
-    height: 48px;
-    cursor: pointer;
-  }
-
-  .dropdown-menu {
-    position: absolute;
-    top: 0;
-    right: 0;
-    background-color: white;
-    border: 1px solid $neutral-200;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 226px;
-    height: 236px;
-    border-radius: 8px;
-    z-index: 100;
-
-    .user-info {
-      display: flex;
-      align-items: center;
-      padding: 10px;
-      border-bottom: 1px solid $neutral-200;
-
-      .profile-pic {
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        margin-right: 10px;
-      }
-
-      .points {
-        margin-left: auto;
-        font-weight: bold;
-      }
-    }
-
-    .menu-item {
-      padding: 10px;
-      cursor: pointer;
-      &:hover {
-        background-color: $neutral-100;
-      }
-    }
-  }
-}
 
 .dropdown-menu {
-  position: absolute;
-  top: 0;
-  right: 0;
+  position: fixed;
+  top: 16px;
+  right: 30px;
+  z-index: 1000;
   background-color: white;
   border: 1px solid $neutral-200;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   width: 226px;
+  height: 236px;
   border-radius: 8px;
-  z-index: 100;
   color: $neutral-500;
+
   @include paragraph;
 
   .profile-info {
@@ -132,5 +86,15 @@
         background-color: $brand-100;
       }
     }
+  }
+
+  &__background {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    z-index: 900;
   }
 }

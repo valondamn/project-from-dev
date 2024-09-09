@@ -16,15 +16,10 @@
       <app-coins [isLink]="true" [coins]="10" />
     </div>
     <div class="account-image" (click)="openModal()">
-      <svg-icon src="assets/icons/account/account-logo.svg" />
+      <a>
+      <svg-icon src="assets/icons/account/account-logo.svg" /></a>
+
     </div>
-    <app-primary-button
-      theme="dark"
-      styling="standard"
-      [label]="'Купить'"
-      type="routerLink"
-      (click)="openModal()"
-    />
   </div>
 </div>
-<app-header-menu [(visible)]="purchaseSuccessModalVisible"></app-header-menu>
+<app-header-menu [(visible)]="modalVisible"></app-header-menu>

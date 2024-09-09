@@ -1,12 +1,12 @@
 @if (visible) {
-<div class="dropdown-menu" >
+<div class="dropdown-menu" #modalBody>
   <div class="profile-info">
     <img
       src="assets/icons/account/account-logo.svg"
       alt="Profile Picture"
       class="profile-logo"
     />
-    <div class="profile-info__name-coins" #modalBody>
+    <div class="profile-info__name-coins" >
       <span>Эвелина</span>
       <div class="coins">
         <span>10</span>
@@ -31,4 +31,6 @@
     </div>
   </div>
 </div>
+  <div class="dropdown-menu__background"></div>
+
 }
