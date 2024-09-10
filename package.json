@@ -7,7 +7,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "build-deploy": "ng build  && firebase deploy --only hosting"
+    "build-deploy": "ng build  && firebase deploy --only hosting",
+    "postbuild": "preloadfonts --dist dist/materuak -f index.html -i arial,helvetica -e comic-sans"
   },
   "private": true,
   "dependencies": {
@@ -21,6 +22,7 @@
     "@angular/platform-browser": "^18.2.3",
     "@angular/platform-browser-dynamic": "^18.2.3",
     "@angular/router": "^18.2.3",
+    "@bfoese/ngx-preload-fonts": "^1.0.0",
     "angular-svg-icon": "^18.0.1",
     "primeng": "^17.18.7",
     "rxjs": "~7.8.0",
@@ -29,6 +31,7 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^18.2.3",
+    "@bfoese/ngx-preload-fonts": "^1.0.0",
     "@angular/cli": "^18.2.3",
     "@angular/compiler-cli": "^18.2.3",
     "@types/jasmine": "~4.3.0",
