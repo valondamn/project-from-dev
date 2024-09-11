@@ -1,0 +1,45 @@
+@import "../../../../../assets/scss/properties";
+
+
+$small_height: 36px;
+$medium_height: 40px;
+$big_height: 44px;
+
+:host {
+  @include flexbox;
+  @include flex-direction(column);
+  @include gap(4px);
+
+  label {
+  }
+
+  .helper {
+    color: $cl-black;
+  }
+
+
+  .wrapper {
+
+
+    &.background {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    &.disabled {
+      opacity: 0.5;
+    }
+
+
+    input {
+      border: none;
+
+      color: $cl-black;
+
+      width: 100%;
+      background: none;
+
+
+      //caret-color: $cl-green;
+    }
+  }
+}

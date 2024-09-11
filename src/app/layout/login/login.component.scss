@@ -1,0 +1,83 @@
+@import "../../../assets/scss/properties";
+
+
+.login-page {
+  @include flexbox;
+  @include flex-direction(column);
+  @include align-items(center);
+  @include justify-content(center);
+  height: 100vh;
+  background-color: $neutral-200;
+
+  .content {
+    border-radius: 16px;
+    width: 656px;
+    height: 564px;
+    margin: 0 auto;
+    @include flexbox;
+    @include flex-direction(column);
+    @include align-items(center);
+    @include gap(24px);
+    background-color: $primary-white;
+
+
+    @include md-breakpoint-down {
+      width: auto;
+      margin: 0 16px;
+      padding: 20px;
+    }
+
+
+    h3 {
+      @include heading_2;
+      margin-top: 100px;
+      margin-bottom: 64px;
+    }
+
+    app-login-form ::ng-deep {
+      p-progressSpinner {
+        align-self: center;
+      }
+
+      form {
+        @include flexbox;
+        @include flex-direction(column);
+        @include gap(24px);
+
+
+        .input {
+          @include flexbox;
+          @include flex-direction(column);
+          @include gap(4px);
+
+          input:focus {
+            outline: none !important;
+            border: 1px solid $brand-900;
+          }
+
+
+          input {
+            width: 400px;
+            border: 1px solid $neutral-300;
+            border-radius: 12px;
+            padding: 16px;
+
+          }
+
+          app-primary-button {
+            padding: 0;
+          }
+
+          label {
+            @include xxs;
+            color: $neutral-500;
+          }
+
+          span {
+            color: $cl-red;
+          }
+        }
+      }
+    }
+  }
+}

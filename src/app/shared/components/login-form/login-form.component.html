@@ -1,0 +1,26 @@
+<form [formGroup]="authForm">
+  <div class="input">
+    <app-input
+      [autocomplete]="true"
+      [label]="'Email'"
+      formControlName="username"
+    />
+  </div>
+  <div class="input">
+    <app-password
+      [autocomplete]="true"
+      [label]="'Пароль'"
+      formControlName="password"
+      size="big"
+    />
+  </div>
+
+  <app-primary-button
+    [label]="'Войти'"
+    height="26px"
+    routerLink="/"
+    styling="standard"
+    theme="dark"
+    type="routerLink"
+  />
+</form>

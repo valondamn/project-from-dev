@@ -1,0 +1,28 @@
+<label>Электронная почта <span>*</span></label>
+
+<div
+  [ngClass]="{
+    background: !bgHidden,
+    disabled: disabled
+  }"
+  class="wrapper {{ width
+   }} {{ size }} {{ font }}"
+>
+  @if (clearBtnShown && value()) {
+    <button class="clear-btn" (click)="clearValue()">
+      <svg-icon src="/assets/icons/input/input-clear.svg"></svg-icon>
+    </button>
+  }
+  <input
+    #input
+    (blur)="onTouched()"
+    (keydown.enter)="onEnter.emit()"
+    (ngModelChange)="onChange($event)"
+    [(ngModel)]="value"
+    [disabled]="disabled"
+    autocomplete="{{ autocomplete() ? '' : 'one-time-code' }}"
+    placeholder="Email"
+  />
+
+</div>
+

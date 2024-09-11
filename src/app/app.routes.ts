@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
 import {PageComponent} from "./core/components/page/page.component";
 import {MainComponent} from "./layout/main/main.component";
@@ -9,13 +9,14 @@ import {QuestionsAndAnswersComponent} from "./layout/questions-and-answers/quest
 import {NotificationsPageComponent} from "./layout/notifications-page/notifications-page.component";
 import {WalletComponent} from "./layout/wallet/wallet.component";
 import {AccountComponent} from "./layout/account/account.component";
+import {LoginComponent} from "./layout/login/login.component";
 
 
 const routes: Routes = [
   {
     path: '',
     component: PageComponent,
-    children:[
+    children: [
       {
         path: '',
         component: MainComponent
@@ -46,6 +47,10 @@ const routes: Routes = [
       }
     ]
   },
+  {
+    path: 'login',
+    component: LoginComponent
+  }
 ];
 
 @NgModule({
@@ -58,4 +63,5 @@ const routes: Routes = [
     RouterModule
   ]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}

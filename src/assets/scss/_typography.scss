@@ -8,7 +8,7 @@
 
 @mixin heading_1 {
   @include font-(48px, 48px);
-  font-family: "Inter-extrabold";
+  font-family: "Inter-extrabold", serif;
 }
 
 @mixin heading_2 {

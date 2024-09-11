@@ -58,6 +58,9 @@
       [ngClass]="{
         disabled: disabled || isLoading(),
       }"
+      [ngStyle]="{
+      height: height
+      }"
       [routerLink]="link"
     >
       @if (isLoading()) {
