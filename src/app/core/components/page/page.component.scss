@@ -6,24 +6,20 @@
     overflow: hidden;
 
 
-
     .page {
-    display: flex;
-    flex-direction: row;
+      display: flex;
+      flex-direction: row;
 
-    width: 100%;overflow: hidden;
+      width: 100%;
+      overflow: hidden;
 
-    .sidebar{
-        height: 80vh
+
+      .page-content {
+        width: 81%;
+        max-height: 100vh;
+
+
+      }
     }
-
-
-
-    .page-content{
-      width: 81%;
-      max-height: 100vh;
-
-
-    }
-  }}
+  }
 }

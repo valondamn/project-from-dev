@@ -3,6 +3,7 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
 import {NgClass, NgIf} from "@angular/common";
 import {RouterLink, RouterLinkActive} from "@angular/router";
 import {MatIcon} from "@angular/material/icon";
+import {SvgIconComponent} from "angular-svg-icon";
 
 @Component({
   selector: 'app-sidenav',
@@ -21,7 +22,8 @@ import {MatIcon} from "@angular/material/icon";
     RouterLinkActive,
     MatIcon,
     NgIf,
-    RouterLink
+    RouterLink,
+    SvgIconComponent
   ],
 
   standalone: true
