@@ -1,12 +1,14 @@
-import { Component } from '@angular/core';
-import { Cards } from '../main/main.interface';
+import {Component, OnInit} from '@angular/core';
+import {Benefits, Cards} from '../main/main.interface';
+import {CatalogService} from "./catalog.service";
 
 @Component({
   selector: 'app-catalog',
   templateUrl: './catalog.component.html',
   styleUrls: ['./catalog.component.scss'],
 })
-export class CatalogComponent {
+export class CatalogComponent implements OnInit {
+  public products!: Benefits;
   public selectedCategory: string = 'Все'; // "Все" selected by default
   public categorylist: string[] = [
     'Все',
@@ -18,26 +20,6 @@ export class CatalogComponent {
     'Комфорт и удобства',
     'Прочие',
   ];
-
-  get filteredMostPopularCards(): Cards[] {
-    return this.filterCards(this.mostPopularCards);
-  }
-
-  public filterCards(cards: Cards[]): Cards[] {
-    if (this.selectedCategory === 'Все') {
-      return cards;
-    }
-    return cards.filter((card) => card.category === this.selectedCategory);
-  }
-
-  public toggleCategory(category: string) {
-    this.selectedCategory = category;
-  }
-
-  public isCategorySelected(category: string): boolean {
-    return this.selectedCategory === category;
-  }
-
   public mostPopularCards: Cards[] = [
     {
       code: 1,
@@ -148,7 +130,6 @@ export class CatalogComponent {
       category: 'Комфорт и удобства', // Категория
     },
   ];
-
   public recommendationsCards: Cards[] = [
     {
       code: 1,
@@ -205,4 +186,38 @@ export class CatalogComponent {
       category: 'Комфорт и удобства', // Категория
     },
   ];
+
+  constructor(private catalogService: CatalogService) {
+  }
+
+  get filteredMostPopularCards(): Cards[] {
+    return this.filterCards(this.mostPopularCards);
+  }
+
+  ngOnInit(): void {
+    this.getCatalog()
+  }
+
+  public getCatalog() {
+    this.catalogService.getBenefits().subscribe((prods: Benefits) => {
+      this.products = prods
+      console.log(prods)
+    });
+
+  }
+
+  public filterCards(cards: Cards[]): Cards[] {
+    if (this.selectedCategory === 'Все') {
+      return cards;
+    }
+    return cards.filter((card) => card.category === this.selectedCategory);
+  }
+
+  public toggleCategory(category: string) {
+    this.selectedCategory = category;
+  }
+
+  public isCategorySelected(category: string): boolean {
+    return this.selectedCategory === category;
+  }
 }

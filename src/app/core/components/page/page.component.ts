@@ -1,10 +1,10 @@
-import {Component, input, OnInit} from '@angular/core';
-import {SidebarComponent} from "../sidebar/sidebar.component";
+import {Component, OnInit} from '@angular/core';
 import {HeaderComponent} from "../header/header.component";
 import {Tab} from "../../../shared/interfaces/tab.interface";
-import {Router, RouterOutlet} from "@angular/router";
+import {RouterOutlet} from "@angular/router";
 import {NgStyle} from "@angular/common";
 import {HeaderMenuComponent} from "../header-menu/header-menu.component";
+import {SidebarComponent} from "../sidenav/sidenav.component";
 
 @Component({
   selector: 'app-page',
@@ -17,11 +17,11 @@ import {HeaderMenuComponent} from "../header-menu/header-menu.component";
     HeaderComponent,
     RouterOutlet,
     NgStyle,
-    HeaderMenuComponent
+    HeaderMenuComponent,
+    SidebarComponent
   ]
 })
 export class PageComponent implements OnInit {
-  type = input.required<string>();
   public tabs: Tab[] = [
     {
       title: 'Главная',
@@ -46,40 +46,14 @@ export class PageComponent implements OnInit {
   ];
   currentTab: Tab = this.tabs[0];
 
-  constructor(private router: Router) {
+  constructor() {
   }
 
   ngOnInit() {
-    this.storeTab();
   }
 
-  storeTab() {
-    const storedTabLink = localStorage.getItem('currentTab');
-
-    // Проверяем, не является ли сохраненная страница "settings" или "wallet"
-    if (storedTabLink === 'settings' || storedTabLink === 'wallet') {
-      this.router.navigate([`/${storedTabLink}`]);
-    } else {
-      const tab = this.tabs.find(t => t.link === storedTabLink) || this.tabs[0];
-      this.changeCurrentTab(tab);
-    }
-  }
-
-  changeCurrentTab(tab: Tab) {
-    this.currentTab = tab;
-    localStorage.setItem('currentTab', tab.link);
-    this.router.navigate([`/${tab.link}`]);
-  }
 
   // Новый метод для работы со страницами, не зависящими от табов
-  changePage(page: string) {
-    localStorage.setItem('currentTab', page);
-    this.router.navigate([`/${page}`]);
-  }
 
-  setCurrentTab() {
-    let tab = this.tabs.find(item => item.link === this.type()) || this.tabs[0];
-    this.changeCurrentTab(tab);
-  }
 
 }

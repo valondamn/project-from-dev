@@ -1,5 +1,4 @@
-
-export interface Cards{
+export interface Cards {
   code: number
   image: string;
   title: string;
@@ -13,3 +12,7 @@ export interface Cards{
   date?: string;
 }
 
+export interface Benefits {
+  name: string;
+  count: string;
+}

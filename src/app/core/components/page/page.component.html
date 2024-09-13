@@ -1,12 +1,10 @@
 <div class="wrapper">
 
-<div class="page">
-  <div class="sidebar">
-      <app-sidebar
-        (onChange)="changeCurrentTab($event)"
-        [currentTab]="currentTab"
-        [tabs]="tabs"></app-sidebar>
-  </div>
+  <div class="page">
+    <div class="sidebar">
+      <app-sidenav></app-sidenav>
+
+    </div>
     <div class="page-content">
       <app-header></app-header>
       <router-outlet></router-outlet>

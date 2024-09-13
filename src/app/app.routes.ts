@@ -1,7 +1,6 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
-import {PageComponent} from "./core/components/page/page.component";
 import {MainComponent} from "./layout/main/main.component";
 import {CurrentBenefitsComponent} from "./layout/current-benefits/current-benefits.component";
 import {CatalogComponent} from "./layout/catalog/catalog.component";
@@ -13,39 +12,35 @@ import {LoginComponent} from "./layout/login/login.component";
 
 
 const routes: Routes = [
+  {path: '', redirectTo: 'main', pathMatch: 'full'},
+
   {
-    path: '',
-    component: PageComponent,
-    children: [
-      {
-        path: '',
-        component: MainComponent
-      },
-      {
-        path: 'current-benefits',
-        component: CurrentBenefitsComponent
-      },
-      {
-        path: 'catalog',
-        component: CatalogComponent
-      },
-      {
-        path: 'questions-and-answers',
-        component: QuestionsAndAnswersComponent
-      },
-      {
-        path: 'notifications',
-        component: NotificationsPageComponent
-      },
-      {
-        path: 'wallet',
-        component: WalletComponent
-      },
-      {
-        path: 'settings',
-        component: AccountComponent
-      }
-    ]
+    path: 'main',
+    component: MainComponent
+  },
+  {
+    path: 'current-benefits',
+    component: CurrentBenefitsComponent
+  },
+  {
+    path: 'catalog',
+    component: CatalogComponent
+  },
+  {
+    path: 'questions-and-answers',
+    component: QuestionsAndAnswersComponent
+  },
+  {
+    path: 'notifications',
+    component: NotificationsPageComponent
+  },
+  {
+    path: 'wallet',
+    component: WalletComponent
+  },
+  {
+    path: 'settings',
+    component: AccountComponent
   },
   {
     path: 'login',
