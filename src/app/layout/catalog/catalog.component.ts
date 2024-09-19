@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Benefits, Cards} from '../main/main.interface';
+import {BenefitsTop, Cards} from '../main/main.interface';
 import {CatalogService} from "./catalog.service";
 
 @Component({
@@ -8,7 +8,7 @@ import {CatalogService} from "./catalog.service";
   styleUrls: ['./catalog.component.scss'],
 })
 export class CatalogComponent implements OnInit {
-  public products!: Benefits;
+  public products!: BenefitsTop[];
   public selectedCategory: string = 'Все'; // "Все" selected by default
   public categorylist: string[] = [
     'Все',
@@ -199,10 +199,14 @@ export class CatalogComponent implements OnInit {
   }
 
   public getCatalog() {
-    this.catalogService.getBenefits().subscribe((prods: Benefits) => {
-      this.products = prods
-      console.log(prods)
-    });
+    this.catalogService.getBenefits().subscribe(
+      data => {
+        this.mostPopularCards = data
+      },
+      error => {
+        console.error('Error fetching benefits:', error);
+      }
+    );
 
   }
 

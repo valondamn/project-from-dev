@@ -8,11 +8,18 @@ export interface Cards {
   description?: string;
   descriptionList: string[];
   descriptionTitle: string;
-  category: string;
   date?: string;
+  id?: number;
+  name?: string;
+  sub_name?: string;
+  expired_date?: string;
+  cost?: number;
+  photo?: string;
+  category?: string;
 }
 
-export interface Benefits {
+export interface BenefitsTop {
   name: string;
-  count: string;
+  benefits: Cards[]
+
 }

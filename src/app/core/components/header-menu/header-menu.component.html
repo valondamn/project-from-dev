@@ -7,9 +7,9 @@
         class="profile-logo"
       />
       <div class="profile-info__name-coins">
-        <span>Эвелина</span>
+<span>{{ userProfile?.first_name }} {{ userProfile?.last_name }}</span>
         <div class="coins">
-          <span>10</span>
+          <span>1ng</span>
           <svg-icon src="assets/icons/coins.svg"></svg-icon>
         </div>
       </div>
@@ -25,7 +25,7 @@
       </div>
     </div>
     <div class="logout">
-      <div class="header-menu-item" routerLink="/login">
+      <div class="header-menu-item" (click)="onLogout()">
         <svg-icon src="assets/icons/account/logout.svg"></svg-icon>
         <span>Выйти</span>
       </div>

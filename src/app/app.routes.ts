@@ -9,38 +9,53 @@ import {NotificationsPageComponent} from "./layout/notifications-page/notificati
 import {WalletComponent} from "./layout/wallet/wallet.component";
 import {AccountComponent} from "./layout/account/account.component";
 import {LoginComponent} from "./layout/login/login.component";
+import {AuthGuard} from "./shared/guards/auth-guard.guard";
 
 
 const routes: Routes = [
-  {path: '', redirectTo: 'main', pathMatch: 'full'},
+  {path: '', redirectTo: 'login', pathMatch: 'full'},
 
   {
     path: 'main',
-    component: MainComponent
+    component: MainComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'current-benefits',
-    component: CurrentBenefitsComponent
+    component: CurrentBenefitsComponent,
+    canActivate: [AuthGuard]
+
   },
   {
     path: 'catalog',
-    component: CatalogComponent
+    component: CatalogComponent,
+    canActivate: [AuthGuard]
+
+
   },
   {
     path: 'questions-and-answers',
-    component: QuestionsAndAnswersComponent
+    component: QuestionsAndAnswersComponent,
+    canActivate: [AuthGuard]
+
   },
   {
     path: 'notifications',
-    component: NotificationsPageComponent
+    component: NotificationsPageComponent,
+    canActivate: [AuthGuard]
+
   },
   {
     path: 'wallet',
-    component: WalletComponent
+    component: WalletComponent,
+    canActivate: [AuthGuard]
+
   },
   {
     path: 'settings',
-    component: AccountComponent
+    component: AccountComponent,
+    canActivate: [AuthGuard]
+
   },
   {
     path: 'login',

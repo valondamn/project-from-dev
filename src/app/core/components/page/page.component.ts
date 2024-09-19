@@ -5,6 +5,7 @@ import {RouterOutlet} from "@angular/router";
 import {NgStyle} from "@angular/common";
 import {HeaderMenuComponent} from "../header-menu/header-menu.component";
 import {SidebarComponent} from "../sidenav/sidenav.component";
+import {LayoutComponent} from "../layout/layout.component";
 
 @Component({
   selector: 'app-page',
@@ -18,7 +19,8 @@ import {SidebarComponent} from "../sidenav/sidenav.component";
     RouterOutlet,
     NgStyle,
     HeaderMenuComponent,
-    SidebarComponent
+    SidebarComponent,
+    LayoutComponent
   ]
 })
 export class PageComponent implements OnInit {

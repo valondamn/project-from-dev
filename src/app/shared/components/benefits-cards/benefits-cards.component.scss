@@ -192,14 +192,13 @@
         @include heading_4;
       }
 
-      &__list {
-        padding-left: 16px;
-
+      &__text ::ng-deep {
         ul {
           @include flexbox;
           @include flex-direction(column);
           @include gap(8px);
           @include paragraph;
+          padding-left: 16px;
         }
       }
     }
@@ -216,6 +215,7 @@
     }
   }
 }
+
 .purchase-success-modal {
   @include flexbox;
   @include flex-direction(column);
@@ -229,6 +229,7 @@
     @include flexbox;
     @include flex-direction(column);
     @include gap(12px);
+
     .title {
       @include heading_2;
     }

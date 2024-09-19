@@ -1,177 +1,169 @@
-@if (isColumnCard && !isLinkCard){
-<div class="cards">
-  @for(card of cards; track card){
-  <div class="card-item">
-    <img src="{{ card.image }}" alt="" />
-    <div class="card-item-info">
-      <div class="card-item-info__title" [innerHTML]="card.title"></div>
-      <div class="card-item-info__company">
-        <svg-icon src="{{ card.companyLogo }}"></svg-icon>
-        <div
-          class="card-item-info__company__title"
-          [innerHTML]="card.company"
-        ></div>
-      </div>
-    </div>
-    @if (!deadLine){
-    <div class="coins-button">
-      <div class="coins">
-        <app-coins [coins]="card.coins"></app-coins>
-      </div>
-
-      <div class="button">
-        <app-primary-button
-          theme="dark"
-          styling="standard"
-          [label]="'Купить'"
-          type="routerLink"
-          (click)="openModal(card)"
-        />
-      </div>
-    </div>
-    } @else if (deadLine){
-    <app-dead-line date="{{ card.date }}"></app-dead-line>
-    }
-  </div>
-  }
-</div>
-} @else if (!isColumnCard && !isLinkCard){
-<div class="rowCards">
-  @for(card of cards; track card){
-  <div class="card-item" (click)="openModal(card)">
-    <img src="{{ card.image }}" alt="" />
-    <div class="card-item-info">
-      <div class="card-item-info__title" [innerHTML]="card.title"></div>
-      <div class="card-item-info__company">
-        <svg-icon src="{{ card.companyLogo }}"></svg-icon>
-        <div
-          class="card-item-info__company__title"
-          [innerHTML]="card.company"
-        ></div>
-      </div>
-    </div>
-    @if (deadLine){
-    <app-dead-line date="{{ card.date }}"></app-dead-line>
-    }
-  </div>
-  }
-</div>
-}@else if(isColumnCard && isLinkCard) {
-<div class="cards">
-  @for(card of cards; track card){
-  <div class="card-item" (click)="openModal(card)">
-    <img src="{{ card.image }}" alt="" />
-    <div class="card-item-info">
-      <div class="card-item-info__title" [innerHTML]="card.title"></div>
-      <div class="card-item-info__company">
-        <svg-icon src="{{ card.companyLogo }}"></svg-icon>
-        <div
-          class="card-item-info__company__title"
-          [innerHTML]="card.company"
-        ></div>
-      </div>
-    </div>
-    @if (!deadLine){
-    <div class="coins-button">
-      <div class="coins">
-        <app-coins [coins]="card.coins"></app-coins>
-      </div>
-
-      <div class="button">
-        <app-primary-button
-          theme="dark"
-          styling="standard"
-          [label]="'Купить'"
-          type="routerLink"
-          (click)="openModal(card)"
-        />
-      </div>
-    </div>
-    } @else if (deadLine){
-    <app-dead-line date="{{ card.date }}"></app-dead-line>
-    }
-  </div>
-  }
-</div>
-}
-
-<modal [(visible)]="modalVisible" width="634px" height="666px">
-  @if (currentCard){
-  <div class="modal">
-    <div class="info-title">
-      <div class="title">Подтвердите действие</div>
-      <div class="subtitle">
-        После покупки льгота появится на странице “Действующие льготы
-      </div>
-    </div>
-    <div class="modal__main-info">
-      <div class="heading">
-        <div class="heading__image">
-          <img src="{{ currentCard.image }}" alt="" />
-        </div>
-        <div class="heading__info">
-          <div class="heading__info__description">
+@if (isColumnCard && !isLinkCard) {
+  <div class="cards">
+    @for (card of cards; track card) {
+      <div class="card-item">
+        <img src="{{ card.photo }}" alt=""/>
+        <div class="card-item-info">
+          <div class="card-item-info__title" [innerHTML]="card.name"></div>
+          <div class="card-item-info__company">
+            <svg-icon src="{{ card.companyLogo }}"></svg-icon>
             <div
-              class="heading__info__description__title"
-              [innerHTML]="currentCard.title"
+              class="card-item-info__company__title"
+              [innerHTML]="card.company"
             ></div>
-            <div class="heading__info__description__company">
-              <svg-icon src="{{ currentCard.companyLogo }}"></svg-icon>
-              <div class="title" [innerHTML]="currentCard.company"></div>
+          </div>
+        </div>
+        @if (!deadLine) {
+          <div class="coins-button">
+            <div class="coins">
+              <app-coins [coins]="card.cost"></app-coins>
+            </div>
+
+            <div class="button">
+              <app-primary-button
+                theme="dark"
+                styling="standard"
+                [label]="'Купить'"
+                type="routerLink"
+                (click)="openModal(card)"
+              />
             </div>
           </div>
-          <div class="heading__info__coins">
-            <app-coins [coins]="currentCard.coins"></app-coins>
-          </div>
-        </div>
-      </div>
-      <div class="description">
-        <div
-          class="description__title"
-          [innerHTML]="currentCard.descriptionTitle"
-        ></div>
-        @if (currentCard.descriptionList){
-        <div class="description__list">
-          <ul>
-            @for (list of currentCard.descriptionList;track list){
-            <li [innerHTML]="list"></li>
-            }
-          </ul>
-        </div>
-        } @if (currentCard.description){
-        <div
-          class="description__text"
-          [innerHTML]="currentCard.description"
-        ></div>
+        } @else if (deadLine) {
+          <app-dead-line date="{{ card.expired_date }}"></app-dead-line>
         }
       </div>
-      @if (!deadLine && isColumnCard){
-
-      <div class="button">
-        <app-primary-button
-          theme="light"
-          styling="standard"
-          [label]="'Отмена'"
-          type="routerLink"
-          (click)="closeConfirmPurchase()"
-        />
-        <app-primary-button
-          theme="dark"
-          styling="standard"
-          [label]="'Купить'"
-          type="routerLink"
-          (click)="confirmPurchase()"
-        />
-      </div>
-      }
-    </div>
+    }
   </div>
+} @else if (!isColumnCard && !isLinkCard) {
+  <div class="rowCards">
+    @for (card of cards; track card) {
+      <div class="card-item" (click)="openModal(card)">
+        <img src="{{ card.photo }}" alt=""/>
+        <div class="card-item-info">
+          <div class="card-item-info__title" [innerHTML]="card.name"></div>
+          <div class="card-item-info__company">
+            <svg-icon src="{{ card.companyLogo }}"></svg-icon>
+            <div
+              class="card-item-info__company__title"
+              [innerHTML]="card.company"
+            ></div>
+          </div>
+        </div>
+        @if (deadLine) {
+          <app-dead-line date="{{ card.expired_date }}"></app-dead-line>
+        }
+      </div>
+    }
+  </div>
+} @else if (isColumnCard && isLinkCard) {
+  <div class="cards">
+    @for (card of cards; track card) {
+      <div class="card-item" (click)="openModal(card)">
+        <img src="{{ card.photo }}" alt=""/>
+        <div class="card-item-info">
+          <div class="card-item-info__title" [innerHTML]="card.name"></div>
+          <div class="card-item-info__company">
+            <svg-icon src="{{ card.companyLogo }}"></svg-icon>
+            <div
+              class="card-item-info__company__title"
+              [innerHTML]="card.company"
+            ></div>
+          </div>
+        </div>
+        @if (!deadLine) {
+          <div class="coins-button">
+            <div class="coins">
+              <app-coins [coins]="card.cost"></app-coins>
+            </div>
+
+            <div class="button">
+              <app-primary-button
+                theme="dark"
+                styling="standard"
+                [label]="'Купить'"
+                type="routerLink"
+                (click)="openModal(card)"
+              />
+            </div>
+          </div>
+        } @else if (deadLine) {
+          <app-dead-line date="{{ card.date }}"></app-dead-line>
+        }
+      </div>
+    }
+  </div>
+}
+
+<modal [(visible)]="modalVisible" height="666px" width="634px">
+  @if (currentCard) {
+    <div class="modal">
+      <div class="info-title">
+        <div class="title">Подтвердите действие</div>
+        <div class="subtitle">
+          После покупки льгота появится на странице “Действующие льготы
+        </div>
+      </div>
+      <div class="modal__main-info">
+        <div class="heading">
+          <div class="heading__image">
+            <img src="{{ currentCard.photo }}" alt=""/>
+          </div>
+          <div class="heading__info">
+            <div class="heading__info__description">
+              <div
+                class="heading__info__description__title"
+                [innerHTML]="currentCard.name"
+              ></div>
+              <div class="heading__info__description__company">
+                <svg-icon src="{{ currentCard.companyLogo }}"></svg-icon>
+                <div class="title" [innerHTML]="currentCard.company"></div>
+              </div>
+            </div>
+            <div class="heading__info__coins">
+              <app-coins [coins]="currentCard.cost"></app-coins>
+            </div>
+          </div>
+        </div>
+        <div class="description">
+          <div
+            class="description__title"
+            [innerHTML]="currentCard.sub_name"
+          ></div>
+          @if (currentCard.description) {
+            <div
+              class="description__text"
+              [innerHTML]="currentCard.description"
+            ></div>
+          }
+        </div>
+        @if (!deadLine && isColumnCard) {
+
+          <div class="button">
+            <app-primary-button
+              theme="light"
+              styling="standard"
+              [label]="'Отмена'"
+              type="routerLink"
+              (click)="closeConfirmPurchase()"
+            />
+            <app-primary-button
+              theme="dark"
+              styling="standard"
+              [label]="'Купить'"
+              type="routerLink"
+              (click)="confirmPurchase()"
+            />
+          </div>
+        }
+      </div>
+    </div>
   }
 </modal>
 
-<modal [(visible)]="purchaseSuccessModalVisible" width="634px" height="464px">
+<modal [(visible)]="purchaseSuccessModalVisible" height="464px" width="634px">
   <div class="purchase-success-modal">
-    <svg-icon [src]="'assets/images/purchase/success.svg'" />
+    <svg-icon [src]="'assets/images/purchase/success.svg'"/>
     <div class="title-message">
       <div class="title">Покупка совершена!</div>
       <div class="message">
@@ -181,18 +173,18 @@
 
     <div class="buttons">
       <app-primary-button
-        theme="light"
-        styling="standard"
-        [label]="'Закрыть'"
-        type="routerLink"
         (click)="closeSuccessModal()"
+        [label]="'Закрыть'"
+        styling="standard"
+        theme="light"
+        type="routerLink"
       ></app-primary-button>
       <app-primary-button
-        theme="dark"
-        styling="standard"
         [label]="'Перейти'"
-        type="routerLink"
         link="/current-benefits"
+        styling="standard"
+        theme="dark"
+        type="routerLink"
       ></app-primary-button>
     </div>
   </div>
