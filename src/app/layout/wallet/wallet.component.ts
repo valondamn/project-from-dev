@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {NgStyle} from "@angular/common";
 import {Cards} from "../main/main.interface";
 import {BenefitsCardsComponent} from "../../shared/components/benefits-cards/benefits-cards.component";
@@ -19,6 +19,8 @@ export class WalletComponent {
 
   public cards: Cards[] = [
     {
+      id: 3,
+
       code: 1,
       image: 'assets/images/main/Image.jpg',
       title: 'Абонемент в спортзал',
@@ -39,6 +41,8 @@ export class WalletComponent {
 // Категория
     },
     {
+      id: 3,
+
       code: 2,
       image: 'assets/images/main/Image1.jpg',
       title: 'Абонемент в бассейн',
@@ -55,10 +59,12 @@ export class WalletComponent {
       ],
       descriptionTitle: 'МЕСЯЦ FULL DAY',
       category: 'Спорт'
-      ,      date: '24.09.24'
+      , date: '24.09.24'
 // Категория
     },
     {
+      id: 3,
+
       code: 3,
       image: 'assets/images/main/Image2.jpg',
       title: 'Almaty Parking',
@@ -75,10 +81,12 @@ export class WalletComponent {
       ],
       descriptionTitle: 'МЕСЯЦ FULL DAY',
       category: 'Комфорт и удобства'
-      ,      date: '24.09.24'
+      , date: '24.09.24'
 // Категория
     },
     {
+      id: 3,
+
       code: 3,
       image: 'assets/images/main/Image2.jpg',
       title: 'Almaty Parking',
@@ -95,10 +103,12 @@ export class WalletComponent {
       ],
       descriptionTitle: 'МЕСЯЦ FULL DAY',
       category: 'Комфорт и удобства'
-      ,      date: '24.09.24'
+      , date: '24.09.24'
 // Категория
     },
     {
+      id: 3,
+
       code: 3,
       image: 'assets/images/main/Image2.jpg',
       title: 'Almaty Parking',
@@ -115,10 +125,12 @@ export class WalletComponent {
       ],
       descriptionTitle: 'МЕСЯЦ FULL DAY',
       category: 'Комфорт и удобства'
-      ,      date: '24.09.24'
+      , date: '24.09.24'
 // Категория
     },
     {
+      id: 3,
+
       code: 3,
       image: 'assets/images/main/Image2.jpg',
       title: 'Almaty Parking',
@@ -135,10 +147,11 @@ export class WalletComponent {
       ],
       descriptionTitle: 'МЕСЯЦ FULL DAY',
       category: 'Комфорт и удобства'
-      ,      date: '24.09.24'
+      , date: '24.09.24'
 // Категория
     },
     {
+      id: 3,
       code: 3,
       image: 'assets/images/main/Image2.jpg',
       title: 'Almaty Parking',
@@ -155,7 +168,7 @@ export class WalletComponent {
       ],
       descriptionTitle: 'МЕСЯЦ FULL DAY',
       category: 'Комфорт и удобства'
-      ,      date: '24.09.24'
+      , date: '24.09.24'
 // Категория
     },
   ];

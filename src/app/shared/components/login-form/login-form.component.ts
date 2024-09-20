@@ -45,17 +45,16 @@ export class LoginFormComponent implements OnInit {
 
     this.loginService.login({username, password}).subscribe({
       next: (response: any) => {
-        // Предполагаем, что ответ содержит токен
-        const authToken = response.token;  // Получите токен из ответа
-        this.loginService.setAuthToken(authToken);  // Сохраните токен
+        const authToken = response.access;  // Получите токен из ответа
+        if (authToken) {
+          this.loginService.setAuthToken(authToken);  // Сохраните токен
+        } else {
+          console.error('Token is undefined');
+        }
         this.router.navigate(['/main']);  // Перенаправить после успешного логина
         this.isLoading = false;
       },
-      error: (error) => {
-        console.error('Login failed', error);
-        this.errorMessage = 'Invalid username or password';
-        this.isLoading = false;
-      }
+
     });
   }
 

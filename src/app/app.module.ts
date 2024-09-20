@@ -30,7 +30,7 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {BenefitsCardsComponent} from "./shared/components/benefits-cards/benefits-cards.component";
 import {ModalComponent} from "./shared/components/modal/modal.component";
 import {AccordionCardComponent} from "./shared/components/accordion-card/accordion-card.component";
-import {AuthInterceptor} from "./shared/interceptors/auth-interceptor.interceptor";
+import {AuthInterceptor} from "./shared/auth-interceptor.interceptor";
 
 
 @NgModule({
@@ -70,11 +70,7 @@ import {AuthInterceptor} from "./shared/interceptors/auth-interceptor.intercepto
     AccordionCardComponent
   ],
   providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptor,
-      multi: true
-    }
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
   ],
   bootstrap: [AppComponent]
 })

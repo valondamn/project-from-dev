@@ -1,100 +1,205 @@
-@if (isColumnCard && !isLinkCard) {
-  <div class="cards">
-    @for (card of cards; track card) {
-      <div class="card-item">
-        <img src="{{ card.photo }}" alt=""/>
-        <div class="card-item-info">
-          <div class="card-item-info__title" [innerHTML]="card.name"></div>
-          <div class="card-item-info__company">
-            <svg-icon src="{{ card.companyLogo }}"></svg-icon>
-            <div
-              class="card-item-info__company__title"
-              [innerHTML]="card.company"
-            ></div>
-          </div>
-        </div>
-        @if (!deadLine) {
-          <div class="coins-button">
-            <div class="coins">
-              <app-coins [coins]="card.cost"></app-coins>
+@if (cards) {
+  @if (isColumnCard && !isLinkCard) {
+    <div class="cards">
+      @for (card of cards; track card) {
+        <div class="card-item">
+          <img src="{{ card.photo }}" alt=""/>
+          <div class="card-item-info">
+            <div class="card-item-info__title" [innerHTML]="card.name"></div>
+            <div class="card-item-info__company">
+              <svg-icon src="{{ card.companyLogo }}"></svg-icon>
+              <div
+                class="card-item-info__company__title"
+                [innerHTML]="card.company"
+              ></div>
             </div>
+          </div>
+          @if (!deadLine) {
+            <div class="coins-button">
+              <div class="coins">
+                <app-coins [coins]="card.cost"></app-coins>
+              </div>
 
-            <div class="button">
-              <app-primary-button
-                theme="dark"
-                styling="standard"
-                [label]="'Купить'"
-                type="routerLink"
-                (click)="openModal(card)"
-              />
+              <div class="button">
+                <app-primary-button
+                  theme="dark"
+                  styling="standard"
+                  [label]="'Купить'"
+                  type="routerLink"
+                  (click)="openModal(card)"
+                />
+              </div>
+            </div>
+          } @else if (deadLine) {
+            <app-dead-line date="{{ card.expired_date }}"></app-dead-line>
+          }
+        </div>
+      }
+    </div>
+  } @else if (!isColumnCard && !isLinkCard) {
+    <div class="rowCards">
+      @for (card of cards; track card) {
+        <div class="card-item" (click)="openModal(card)">
+          <img src="{{ card.photo }}" alt=""/>
+          <div class="card-item-info">
+            <div class="card-item-info__title" [innerHTML]="card.name"></div>
+            <div class="card-item-info__company">
+              <svg-icon src="{{ card.companyLogo }}"></svg-icon>
+              <div
+                class="card-item-info__company__title"
+                [innerHTML]="card.company"
+              ></div>
             </div>
           </div>
-        } @else if (deadLine) {
-          <app-dead-line date="{{ card.expired_date }}"></app-dead-line>
-        }
-      </div>
-    }
-  </div>
-} @else if (!isColumnCard && !isLinkCard) {
-  <div class="rowCards">
-    @for (card of cards; track card) {
-      <div class="card-item" (click)="openModal(card)">
-        <img src="{{ card.photo }}" alt=""/>
-        <div class="card-item-info">
-          <div class="card-item-info__title" [innerHTML]="card.name"></div>
-          <div class="card-item-info__company">
-            <svg-icon src="{{ card.companyLogo }}"></svg-icon>
-            <div
-              class="card-item-info__company__title"
-              [innerHTML]="card.company"
-            ></div>
-          </div>
+          @if (deadLine) {
+            <app-dead-line date="{{ card.expired_date }}"></app-dead-line>
+          }
         </div>
-        @if (deadLine) {
-          <app-dead-line date="{{ card.expired_date }}"></app-dead-line>
-        }
-      </div>
-    }
-  </div>
-} @else if (isColumnCard && isLinkCard) {
-  <div class="cards">
-    @for (card of cards; track card) {
-      <div class="card-item" (click)="openModal(card)">
-        <img src="{{ card.photo }}" alt=""/>
-        <div class="card-item-info">
-          <div class="card-item-info__title" [innerHTML]="card.name"></div>
-          <div class="card-item-info__company">
-            <svg-icon src="{{ card.companyLogo }}"></svg-icon>
-            <div
-              class="card-item-info__company__title"
-              [innerHTML]="card.company"
-            ></div>
-          </div>
-        </div>
-        @if (!deadLine) {
-          <div class="coins-button">
-            <div class="coins">
-              <app-coins [coins]="card.cost"></app-coins>
+      }
+    </div>
+  } @else if (isColumnCard && isLinkCard) {
+    <div class="cards">
+      @for (card of cards; track card) {
+        <div class="card-item" (click)="openModal(card)">
+          <img src="{{ card.photo }}" alt=""/>
+          <div class="card-item-info">
+            <div class="card-item-info__title" [innerHTML]="card.name"></div>
+            <div class="card-item-info__company">
+              <svg-icon src="{{ card.companyLogo }}"></svg-icon>
+              <div
+                class="card-item-info__company__title"
+                [innerHTML]="card.company"
+              ></div>
             </div>
+          </div>
+          @if (!deadLine) {
+            <div class="coins-button">
+              <div class="coins">
+                <app-coins [coins]="card.cost"></app-coins>
+              </div>
 
-            <div class="button">
-              <app-primary-button
-                theme="dark"
-                styling="standard"
-                [label]="'Купить'"
-                type="routerLink"
-                (click)="openModal(card)"
-              />
+              <div class="button">
+                <app-primary-button
+                  theme="dark"
+                  styling="standard"
+                  [label]="'Купить'"
+                  type="routerLink"
+                  (click)="openModal(card)"
+                />
+              </div>
             </div>
+          } @else if (deadLine) {
+            <app-dead-line date="{{ card.date }}"></app-dead-line>
+          }
+        </div>
+      }
+    </div>
+  }
+} @else if (currentCards) {
+  @if (isColumnCard && !isLinkCard) {
+    <div class="cards">
+      @for (item of currentCards.orders; track item) {
+        @for (card of item.benefits; track card) {
+          <div class="card-item">
+            <img src="{{ card.photo }}" alt=""/>
+            <div class="card-item-info">
+              <div class="card-item-info__title" [innerHTML]="card.name"></div>
+              <div class="card-item-info__company">
+                <svg-icon src="{{ card.companyLogo }}"></svg-icon>
+                <div
+                  class="card-item-info__company__title"
+                  [innerHTML]="card.company"
+                ></div>
+              </div>
+            </div>
+            @if (!deadLine) {
+              <div class="coins-button">
+                <div class="coins">
+                  <app-coins [coins]="card.cost"></app-coins>
+                </div>
+
+                <div class="button">
+                  <app-primary-button
+                    theme="dark"
+                    styling="standard"
+                    [label]="'Купить'"
+                    type="routerLink"
+                    (click)="openModal(card)"
+                  />
+                </div>
+              </div>
+            } @else if (deadLine) {
+              <app-dead-line date="{{ card.expired_date }}"></app-dead-line>
+            }
           </div>
-        } @else if (deadLine) {
-          <app-dead-line date="{{ card.date }}"></app-dead-line>
         }
-      </div>
-    }
-  </div>
+      }
+    </div>
+  } @else if (!isColumnCard && !isLinkCard) {
+    <div class="rowCards">
+      @for (item of currentCards.orders; track item) {
+        @for (card of item.benefits; track card) {
+          <div class="card-item" (click)="openModal(card)">
+            <img src="{{ card.photo }}" alt=""/>
+            <div class="card-item-info">
+              <div class="card-item-info__title" [innerHTML]="card.name"></div>
+              <div class="card-item-info__company">
+                <svg-icon src="{{ card.companyLogo }}"></svg-icon>
+                <div
+                  class="card-item-info__company__title"
+                  [innerHTML]="card.company"
+                ></div>
+              </div>
+            </div>
+            @if (deadLine) {
+              <app-dead-line date="{{ card.expired_date }}"></app-dead-line>
+            }
+          </div>
+        }
+      }
+    </div>
+  } @else if (isColumnCard && isLinkCard) {
+
+    <div class="cards">
+      @for (item of currentCards.orders; track item) {
+        @for (card of item.benefits; track card) {
+          <div class="card-item" (click)="openModal(card)">
+            <img src="{{ card.photo }}" alt=""/>
+            <div class="card-item-info">
+              <div class="card-item-info__title" [innerHTML]="card.name"></div>
+              <div class="card-item-info__company">
+                <svg-icon src="{{ card.companyLogo }}"></svg-icon>
+                <div
+                  class="card-item-info__company__title"
+                  [innerHTML]="card.company"
+                ></div>
+              </div>
+            </div>
+            @if (!deadLine) {
+              <div class="coins-button">
+                <div class="coins">
+                  <app-coins [coins]="card.cost"></app-coins>
+                </div>
+
+                <div class="button">
+                  <app-primary-button
+                    theme="dark"
+                    styling="standard"
+                    [label]="'Купить'"
+                    type="routerLink"
+                    (click)="openModal(card)"
+                  />
+                </div>
+              </div>
+            } @else if (deadLine) {
+              <app-dead-line date="{{ card.expired_date }}"></app-dead-line>
+            }
+          </div>
+        }
+      }
+    </div>
+  }
 }
-
 <modal [(visible)]="modalVisible" height="666px" width="634px">
   @if (currentCard) {
     <div class="modal">

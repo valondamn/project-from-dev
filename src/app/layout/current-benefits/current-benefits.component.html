@@ -1,9 +1,9 @@
 <div class="main-page">
   <div class="categories">
     <button
+      (click)="toggleCategory(category)"
       *ngFor="let category of categorylist"
       [class.active]="isCategorySelected(category)"
-      (click)="toggleCategory(category)"
     >
       {{ category }}
     </button>
@@ -11,8 +11,8 @@
   <div class="most-popular">
     <div class="most-popular__cards">
       <app-benefits-cards
+        [currentCards]="userProfile"
         [deadLine]="true"
-        [cards]="filteredMostPopularCards"
         [isLinkCard]="true"
       ></app-benefits-cards>
     </div>

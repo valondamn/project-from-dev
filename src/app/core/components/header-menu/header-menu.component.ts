@@ -44,7 +44,7 @@ export class HeaderMenuComponent implements OnChanges, OnInit {
 
   @ViewChild('modalBody') modalBody!: ElementRef;
 
-  userProfile: any = null; // Для хранения данных профиля
+  userProfile$ = this.loginService.userProfile$;
 
 
   constructor(
@@ -55,7 +55,19 @@ export class HeaderMenuComponent implements OnChanges, OnInit {
   }
 
   ngOnInit(): void {
-    this.fetchUserProfile();
+    this.loginService.checkAndRefreshToken().subscribe({
+      next: (isSuccess: boolean) => {
+        if (!isSuccess) {
+          this.loginService.logout();  // Разлогинить пользователя, если не удалось обновить токен
+        } else {
+          this.loginService.fetchUserProfile().subscribe();  // Загрузить профиль после успешного обновления токена
+        }
+      },
+      error: (err) => {
+        console.error('Ошибка при проверке токена:', err);
+        this.loginService.logout();
+      }
+    });
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -71,7 +83,7 @@ export class HeaderMenuComponent implements OnChanges, OnInit {
 
   closeModal() {
     this.visibleChange.emit(false);
-    ''
+
   }
 
   @HostListener('click', ['$event.target'])
@@ -86,14 +98,30 @@ export class HeaderMenuComponent implements OnChanges, OnInit {
     this.closeModal();  // Закрываем меню после выхода
   }
 
-  fetchUserProfile() {
-    this.loginService.getProfile().subscribe({
-      next: (profile: any) => {
-        this.userProfile = profile; // Сохраняем данные профиля
-      },
-      error: (error: any) => {
-        console.error('Ошибка получения данных профиля:', error);
-      }
-    });
-  }
+
+  // Проверка аутентификации перед получением данных профиля
+  // checkAndFetchUserProfile() {
+  //   if (this.loginService.isAuthenticated()) {
+  //     this.loginService.fetchUserProfile().subscribe({
+  //       next: (profile: User | null) => {
+  //         if (profile) {
+  //           this.userProfile = profile;
+  //         }
+  //       },
+  //       error: (err) => {
+  //         console.error('Error fetching user profile:', err);
+  //       },
+  //     });
+  //   } else {
+  //     console.log('User not authenticated');
+  //   }
+  // }
+  //
+  // fetchUserProfile() {
+  //   this.loginService.getProfile().subscribe({
+  //     next: (profile: User) => {
+  //       this.userProfile = profile;  // Получаем данные профиля
+  //     }
+  //   });
+  // }
 }

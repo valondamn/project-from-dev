@@ -1,13 +1,16 @@
-import { Component } from '@angular/core';
-import { Cards } from '../main/main.interface';
+import {Component, OnInit} from '@angular/core';
+import {Cards, User} from '../main/main.interface';
+import {LoginService} from "../login/login.service";
 
 @Component({
   selector: 'app-current-benefits',
   templateUrl: './current-benefits.component.html',
   styleUrls: ['./current-benefits.component.scss'],
 })
-export class CurrentBenefitsComponent {
+export class CurrentBenefitsComponent implements OnInit {
   public selectedCategory: string = 'Все'; // "Все" selected by default
+  userProfile!: User; // Для хранения данных профиля
+
   public categorylist: string[] = [
     'Все',
     'Здоровье',
@@ -18,32 +21,10 @@ export class CurrentBenefitsComponent {
     'Комфорт и удобства',
     'Прочие',
   ];
-
-  get filteredMostPopularCards(): Cards[] {
-    return this.filterCards(this.mostPopularCards);
-  }
-
-  get filteredRecommendationsCards(): Cards[] {
-    return this.filterCards(this.recommendationsCards);
-  }
-
-  public filterCards(cards: Cards[]): Cards[] {
-    if (this.selectedCategory === 'Все') {
-      return cards;
-    }
-    return cards.filter((card) => card.category === this.selectedCategory);
-  }
-
-  public toggleCategory(category: string) {
-    this.selectedCategory = category;
-  }
-
-  public isCategorySelected(category: string): boolean {
-    return this.selectedCategory === category;
-  }
-
   public mostPopularCards: Cards[] = [
     {
+      id: 3,
+
       code: 1,
       image: 'assets/images/main/Image.jpg',
       title: 'Абонемент в спортзал',
@@ -64,6 +45,8 @@ export class CurrentBenefitsComponent {
       // Категория
     },
     {
+      id: 3,
+
       code: 2,
       image: 'assets/images/main/Image1.jpg',
       title: 'Абонемент в бассейн',
@@ -84,6 +67,8 @@ export class CurrentBenefitsComponent {
       // Категория
     },
     {
+      id: 3,
+
       code: 3,
       image: 'assets/images/main/Image2.jpg',
       title: 'Almaty Parking',
@@ -104,9 +89,10 @@ export class CurrentBenefitsComponent {
       // Категория
     },
   ];
-
   public recommendationsCards: Cards[] = [
     {
+      id: 3,
+
       code: 1,
       image: 'assets/images/main/Image3.jpg',
       title: 'Абонемент на йогу',
@@ -127,6 +113,8 @@ export class CurrentBenefitsComponent {
       // Категория
     },
     {
+      id: 3,
+
       code: 2,
       image: 'assets/images/main/Image4.jpg',
       title: 'Стоматологические услуги',
@@ -147,6 +135,8 @@ export class CurrentBenefitsComponent {
       // Категория
     },
     {
+      id: 3,
+
       code: 3,
       image: 'assets/images/main/Image5.jpg',
       title: 'Коворкинг',
@@ -166,4 +156,44 @@ export class CurrentBenefitsComponent {
       date: '24.09.24',
     },
   ];
+
+  constructor(
+    private loginService: LoginService
+  ) {
+  }
+
+  get filteredMostPopularCards(): Cards[] {
+    return this.filterCards(this.mostPopularCards);
+  }
+
+  get filteredRecommendationsCards(): Cards[] {
+    return this.filterCards(this.recommendationsCards);
+  }
+
+  ngOnInit(): void {
+    this.fetchUserProfile();
+  }
+
+  public filterCards(cards: Cards[]): Cards[] {
+    if (this.selectedCategory === 'Все') {
+      return cards;
+    }
+    return cards.filter((card) => card.category === this.selectedCategory);
+  }
+
+  public toggleCategory(category: string) {
+    this.selectedCategory = category;
+  }
+
+  public isCategorySelected(category: string): boolean {
+    return this.selectedCategory === category;
+  }
+
+  fetchUserProfile() {
+    this.loginService.getProfile().subscribe({
+      next: (profile: User) => {
+        this.userProfile = profile;  // Получаем данные профиля
+      }
+    });
+  }
 }

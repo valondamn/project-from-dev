@@ -1,12 +1,14 @@
-import { Component, Input } from '@angular/core';
-import { Cards } from '../../../layout/main/main.interface';
-import { SvgIconComponent } from 'angular-svg-icon';
-import { PrimaryButtonComponent } from '../buttons/primary-button/primary-button.component';
-import { CoinsComponent } from '../coins/coins.component';
-import { ModalComponent } from '../modal/modal.component';
-import { NgIf } from '@angular/common';
-import { RouterLink } from '@angular/router';
-import { DeadLineComponent } from '../dead-line/dead-line.component';
+import {Component, Input} from '@angular/core';
+import {Cards, User} from '../../../layout/main/main.interface';
+import {SvgIconComponent} from 'angular-svg-icon';
+import {PrimaryButtonComponent} from '../buttons/primary-button/primary-button.component';
+import {CoinsComponent} from '../coins/coins.component';
+import {ModalComponent} from '../modal/modal.component';
+import {NgIf} from '@angular/common';
+import {RouterLink} from '@angular/router';
+import {DeadLineComponent} from '../dead-line/dead-line.component';
+import {BenefitsService} from "../../services/benefits.service";
+import {LoginService} from "../../../layout/login/login.service";
 
 @Component({
   selector: 'app-benefits-cards',
@@ -24,8 +26,8 @@ import { DeadLineComponent } from '../dead-line/dead-line.component';
   styleUrl: './benefits-cards.component.scss',
 })
 export class BenefitsCardsComponent {
-  @Input({ required: true }) cards!: Cards[];
-
+  @Input() cards!: Cards[];
+  @Input() currentCards!: User;
   @Input() deadLine: boolean = false;
   @Input() isColumnCard: boolean = true;
   @Input() isLinkCard: boolean = false;
@@ -34,10 +36,29 @@ export class BenefitsCardsComponent {
   public modalVisible: boolean = false;
   public purchaseSuccessModalVisible: boolean = false;
 
-  public confirmPurchase() {
-    this.modalVisible = false;
-    this.purchaseSuccessModalVisible = true;
+  constructor(private benefitsService: BenefitsService,
+              public loginService: LoginService) {
   }
+
+  public confirmPurchase() {
+    console.log('Покупка льготы с ID:', this.currentCard.id);
+
+    this.benefitsService.purchaseBenefit(this.currentCard.id).subscribe({
+      next: () => {
+        this.modalVisible = false;
+        this.purchaseSuccessModalVisible = true;
+
+        // Обновляем профиль пользователя после успешной покупки
+        this.loginService.fetchUserProfile().subscribe();
+      },
+      error: (error) => {
+        console.error('Ошибка при покупке льготы', error);
+        // Обработка ошибок
+      }
+    });
+  }
+
+
   public openModal(card: Cards) {
     this.currentCard = card;
     this.modalVisible = true;

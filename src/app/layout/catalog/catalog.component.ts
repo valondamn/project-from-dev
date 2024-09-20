@@ -22,6 +22,8 @@ export class CatalogComponent implements OnInit {
   ];
   public mostPopularCards: Cards[] = [
     {
+      id: 3,
+
       code: 1,
       image: 'assets/images/main/Image.jpg',
       title: 'Абонемент в спортзал',
@@ -40,6 +42,8 @@ export class CatalogComponent implements OnInit {
       category: 'Спорт', // Категория
     },
     {
+      id: 3,
+
       code: 2,
       image: 'assets/images/main/Image1.jpg',
       title: 'Абонемент в бассейн',
@@ -58,6 +62,8 @@ export class CatalogComponent implements OnInit {
       category: 'Спорт', // Категория
     },
     {
+      id: 3,
+
       code: 3,
       image: 'assets/images/main/Image2.jpg',
       title: 'Almaty Parking',
@@ -76,6 +82,8 @@ export class CatalogComponent implements OnInit {
       category: 'Комфорт и удобства', // Категория
     },
     {
+      id: 3,
+
       code: 1,
       image: 'assets/images/main/Image3.jpg',
       title: 'Абонемент на йогу',
@@ -94,6 +102,8 @@ export class CatalogComponent implements OnInit {
       category: 'Спорт', // Категория
     },
     {
+      id: 3,
+
       code: 2,
       image: 'assets/images/main/Image4.jpg',
       title: 'Стоматологические услуги',
@@ -112,6 +122,8 @@ export class CatalogComponent implements OnInit {
       category: 'Здоровье', // Категория
     },
     {
+      id: 3,
+
       code: 3,
       image: 'assets/images/main/Image5.jpg',
       title: 'Коворкинг',
@@ -132,6 +144,8 @@ export class CatalogComponent implements OnInit {
   ];
   public recommendationsCards: Cards[] = [
     {
+      id: 3,
+
       code: 1,
       image: 'assets/images/main/Image3.jpg',
       title: 'Абонемент на йогу',
@@ -150,6 +164,8 @@ export class CatalogComponent implements OnInit {
       category: 'Спорт', // Категория
     },
     {
+      id: 3,
+
       code: 2,
       image: 'assets/images/main/Image4.jpg',
       title: 'Стоматологические услуги',
@@ -168,6 +184,8 @@ export class CatalogComponent implements OnInit {
       category: 'Здоровье', // Категория
     },
     {
+      id: 3,
+
       code: 3,
       image: 'assets/images/main/Image5.jpg',
       title: 'Коворкинг',
