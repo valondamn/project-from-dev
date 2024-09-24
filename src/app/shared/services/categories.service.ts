@@ -13,7 +13,7 @@ export class CategoriesService {
   constructor(private httpClient: HttpClient) {
   }
 
-  getTopBenefits(): Observable<Categories[]> {
+  getCategories(): Observable<Categories[]> {
     return this.httpClient.get<Categories[]>(`${this.url}/benefits/categories/`);
   }
 }

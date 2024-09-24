@@ -16,18 +16,18 @@
 
   <div class="categories">
     <button
-      (click)="toggleCategory(category)"
-      *ngFor="let category of categorylist"
+      (click)="toggleCategory(category.id)"
+      *ngFor="let category of categories"
       [class.active]="isCategorySelected(category)"
     >
-      {{ category }}
+      {{ category.name }}
     </button>
   </div>
 
   <div class="most-popular">
     <div class="most-popular__cards">
       <app-benefits-cards
-        [cards]="filteredMostPopularCards"
+        [cards]="filteredBenefits"
       ></app-benefits-cards>
     </div>
   </div>

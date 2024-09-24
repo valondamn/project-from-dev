@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {Cards, User} from '../main/main.interface';
+import {BenefitsTop, Cards, Categories, User} from '../main/main.interface';
 import {LoginService} from "../login/login.service";
+import {CategoriesService} from "../../shared/services/categories.service";
 
 @Component({
   selector: 'app-current-benefits',
@@ -8,191 +9,69 @@ import {LoginService} from "../login/login.service";
   styleUrls: ['./current-benefits.component.scss'],
 })
 export class CurrentBenefitsComponent implements OnInit {
-  public selectedCategory: string = 'Все'; // "Все" selected by default
   userProfile!: User; // Для хранения данных профиля
-
-  public categorylist: string[] = [
-    'Все',
-    'Здоровье',
-    'Спорт',
-    'Питание',
-    'Обучение и развитие',
-    'Семья',
-    'Комфорт и удобства',
-    'Прочие',
-  ];
-  public mostPopularCards: Cards[] = [
-    {
-      id: 3,
-
-      code: 1,
-      image: 'assets/images/main/Image.jpg',
-      title: 'Абонемент в спортзал',
-      company: 'Invictus GO',
-      companyLogo: 'assets/icons/main/company-logo1.svg',
-      coins: 4,
-      descriptionList: [
-        'Доступ в клуб на Суюнбая 89б',
-        'Без ограничений по времени',
-        'Тренер за дополнительную плату',
-        'Заморозка 5 дней',
-        '1 гостевое посещение',
-        'Действует 1 месяц с момента покупки',
-      ],
-      descriptionTitle: 'МЕСЯЦ FULL DAY',
-      category: 'Спорт',
-      date: '24.09.24',
-      // Категория
-    },
-    {
-      id: 3,
-
-      code: 2,
-      image: 'assets/images/main/Image1.jpg',
-      title: 'Абонемент в бассейн',
-      company: 'Aqua Stars',
-      companyLogo: 'assets/icons/main/company-logo2.svg',
-      coins: 3,
-      descriptionList: [
-        'Доступ в клуб на Суюнбая 89б',
-        'Без ограничений по времени',
-        'Тренер за дополнительную плату',
-        'Заморозка 5 дней',
-        '1 гостевое посещение',
-        'Действует 1 месяц с момента покупки',
-      ],
-      descriptionTitle: 'МЕСЯЦ FULL DAY',
-      category: 'Спорт',
-      date: '24.09.24',
-      // Категория
-    },
-    {
-      id: 3,
-
-      code: 3,
-      image: 'assets/images/main/Image2.jpg',
-      title: 'Almaty Parking',
-      company: 'Almaty Parking',
-      companyLogo: 'assets/icons/main/company-logo3.svg',
-      coins: 5,
-      descriptionList: [
-        'Доступ в клуб на Суюнбая 89б',
-        'Без ограничений по времени',
-        'Тренер за дополнительную плату',
-        'Заморозка 5 дней',
-        '1 гостевое посещение',
-        'Действует 1 месяц с момента покупки',
-      ],
-      descriptionTitle: 'МЕСЯЦ FULL DAY',
-      category: 'Комфорт и удобства',
-      date: '24.09.24',
-      // Категория
-    },
-  ];
-  public recommendationsCards: Cards[] = [
-    {
-      id: 3,
-
-      code: 1,
-      image: 'assets/images/main/Image3.jpg',
-      title: 'Абонемент на йогу',
-      company: 'ВОЗДУХ',
-      companyLogo: 'assets/icons/main/company-logo4.svg',
-      coins: 4,
-      descriptionList: [
-        'Доступ в клуб на Суюнбая 89б',
-        'Без ограничений по времени',
-        'Тренер за дополнительную плату',
-        'Заморозка 5 дней',
-        '1 гостевое посещение',
-        'Действует 1 месяц с момента покупки',
-      ],
-      descriptionTitle: 'МЕСЯЦ FULL DAY',
-      category: 'Спорт',
-      date: '24.09.24',
-      // Категория
-    },
-    {
-      id: 3,
-
-      code: 2,
-      image: 'assets/images/main/Image4.jpg',
-      title: 'Стоматологические услуги',
-      company: 'Dobro Dent',
-      companyLogo: 'assets/icons/main/company-logo5.svg',
-      coins: 3,
-      descriptionList: [
-        'Доступ в клуб на Суюнбая 89б',
-        'Без ограничений по времени',
-        'Тренер за дополнительную плату',
-        'Заморозка 5 дней',
-        '1 гостевое посещение',
-        'Действует 1 месяц с момента покупки',
-      ],
-      descriptionTitle: 'МЕСЯЦ FULL DAY',
-      category: 'Здоровье',
-      date: '24.09.24',
-      // Категория
-    },
-    {
-      id: 3,
-
-      code: 3,
-      image: 'assets/images/main/Image5.jpg',
-      title: 'Коворкинг',
-      company: 'Most Hub',
-      companyLogo: 'assets/icons/main/company-logo6.svg',
-      coins: 5,
-      descriptionList: [
-        'Доступ в клуб на Суюнбая 89б',
-        'Без ограничений по времени',
-        'Тренер за дополнительную плату',
-        'Заморозка 5 дней',
-        '1 гостевое посещение',
-        'Действует 1 месяц с момента покупки',
-      ],
-      descriptionTitle: 'МЕСЯЦ FULL DAY',
-      category: 'Комфорт и удобства', // Категория
-      date: '24.09.24',
-    },
-  ];
+  public products!: BenefitsTop[];
+  public filteredBenefits!: Cards[]; // для фильтрованных бонусов
+  public categories!: Categories[];
+  public benefits!: Cards[]; // Полный список всех бонусов
+  public selectedCategory: number = 0; // "Все" по умолчанию, поэтому 0
 
   constructor(
-    private loginService: LoginService
+    private loginService: LoginService,
+    public categoriesService: CategoriesService
   ) {
-  }
-
-  get filteredMostPopularCards(): Cards[] {
-    return this.filterCards(this.mostPopularCards);
-  }
-
-  get filteredRecommendationsCards(): Cards[] {
-    return this.filterCards(this.recommendationsCards);
   }
 
   ngOnInit(): void {
     this.fetchUserProfile();
+    this.getCategories();
   }
 
-  public filterCards(cards: Cards[]): Cards[] {
-    if (this.selectedCategory === 'Все') {
-      return cards;
+  public getCategories(): void {
+    this.categoriesService.getCategories().subscribe(
+      data => {
+        // Добавляем категорию "Все" с id 0
+        this.categories = [{id: 0, name: 'Все', description: '', photo: ''}, ...data];
+      },
+      error => {
+        console.error('Error fetching categories:', error);
+      }
+    );
+  }
+
+  public toggleCategory(categoryId: number): void {
+    this.selectedCategory = categoryId; // изменяем выбранную категорию
+    this.filterBenefits(); // обновляем фильтрацию
+  }
+
+  public filterBenefits(): void {
+    if (this.userProfile) {
+      const userBenefits = this.userProfile.orders.flatMap(order => order.benefits);
+
+      // Если выбрана категория "Все" (id 0), показываем все льготы пользователя
+      if (this.selectedCategory === 0) {
+        this.filteredBenefits = userBenefits;
+      } else {
+        // Иначе фильтруем бонусы по выбранной категории
+        this.filteredBenefits = userBenefits.filter(benefit =>
+          benefit.category === this.selectedCategory
+        );
+      }
     }
-    return cards.filter((card) => card.category === this.selectedCategory);
   }
 
-  public toggleCategory(category: string) {
-    this.selectedCategory = category;
+  public isCategorySelected(category: Categories): boolean {
+    return category.id === this.selectedCategory; // проверка активной категории
   }
 
-  public isCategorySelected(category: string): boolean {
-    return this.selectedCategory === category;
-  }
-
-  fetchUserProfile() {
+  fetchUserProfile(): void {
     this.loginService.getProfile().subscribe({
       next: (profile: User) => {
         this.userProfile = profile;  // Получаем данные профиля
+        this.filterBenefits();  // Фильтруем после загрузки профиля
+      },
+      error: (err) => {
+        console.error('Error fetching user profile:', err);
       }
     });
   }

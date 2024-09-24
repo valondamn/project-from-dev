@@ -15,7 +15,7 @@ export interface Cards {
   expired_date?: string;
   cost?: number;
   photo?: string;
-  category?: string;
+  category?: 1;
 }
 
 export interface BenefitsTop {
