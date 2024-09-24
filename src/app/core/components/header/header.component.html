@@ -1,23 +1,24 @@
 <div class="header">
   <app-input
-    [placeholder]="'Поиск'"
-    type="search"
-    [width]="'100%'"
+    #input
     [bgHidden]="true"
     [clearBtnShown]="true"
-    #input
+    [placeholder]="'Поиск'"
+    [width]="'100%'"
+    type="search"
   />
 
-  <div class="account-info">
+  <div *ngIf="userProfile$ | async as userProfile" class="account-info">
     <div class="notification">
-      <app-notifications />
+      <app-notifications/>
     </div>
     <div class="coins">
-      <app-coins [isLink]="true" [coins]="10" />
+      <app-coins [coins]="userProfile.coins" [isLink]="true"/>
     </div>
-    <div class="account-image" (click)="openModal()">
+    <div (click)="openModal()" class="account-image">
       <a>
-      <svg-icon src="assets/icons/account/account-logo.svg" /></a>
+        <svg-icon src="assets/icons/account/account-logo.svg"/>
+      </a>
 
     </div>
   </div>

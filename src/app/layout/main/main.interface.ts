@@ -38,3 +38,11 @@ export interface User {
   role: number;
   orders: Order[]
 }
+
+export interface Categories {
+  id: number;
+  name: string;
+  description: string;
+  photo: string;
+
+}

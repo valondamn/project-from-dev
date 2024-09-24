@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {Cards, User} from '../../../layout/main/main.interface';
+import {BenefitsTop, Cards, User} from '../../../layout/main/main.interface';
 import {SvgIconComponent} from 'angular-svg-icon';
 import {PrimaryButtonComponent} from '../buttons/primary-button/primary-button.component';
 import {CoinsComponent} from '../coins/coins.component';
@@ -9,6 +9,7 @@ import {RouterLink} from '@angular/router';
 import {DeadLineComponent} from '../dead-line/dead-line.component';
 import {BenefitsService} from "../../services/benefits.service";
 import {LoginService} from "../../../layout/login/login.service";
+import {environment} from "../../../../enviroments/environment";
 
 @Component({
   selector: 'app-benefits-cards',
@@ -26,11 +27,14 @@ import {LoginService} from "../../../layout/login/login.service";
   styleUrl: './benefits-cards.component.scss',
 })
 export class BenefitsCardsComponent {
+  @Input() isLoading: boolean = true;
   @Input() cards!: Cards[];
   @Input() currentCards!: User;
+  @Input() topBenefits!: BenefitsTop[];
   @Input() deadLine: boolean = false;
   @Input() isColumnCard: boolean = true;
   @Input() isLinkCard: boolean = false;
+  public url = environment.serverURL; // Base URL
 
   public currentCard!: Cards;
   public modalVisible: boolean = false;

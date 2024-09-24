@@ -31,6 +31,7 @@ import {BenefitsCardsComponent} from "./shared/components/benefits-cards/benefit
 import {ModalComponent} from "./shared/components/modal/modal.component";
 import {AccordionCardComponent} from "./shared/components/accordion-card/accordion-card.component";
 import {AuthInterceptor} from "./shared/auth-interceptor.interceptor";
+import {NgxSkeletonLoaderModule} from "ngx-skeleton-loader";
 
 
 @NgModule({
@@ -67,7 +68,8 @@ import {AuthInterceptor} from "./shared/auth-interceptor.interceptor";
     AngularSvgIconModule.forRoot(),
     BenefitsCardsComponent,
     ModalComponent,
-    AccordionCardComponent
+    AccordionCardComponent,
+    NgxSkeletonLoaderModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}

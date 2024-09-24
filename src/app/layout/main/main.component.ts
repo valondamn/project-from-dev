@@ -1,13 +1,17 @@
-import {Component} from '@angular/core';
-import {Cards} from "./main.interface";
+import {Component, OnInit} from '@angular/core';
+import {BenefitsTop, Cards} from "./main.interface";
+import {TopBenefitsService} from "../../shared/services/top-benefits.service";
 
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss']
 })
-export class MainComponent {
+export class MainComponent implements OnInit {
+  public isLoading: boolean = true;
 
+
+  public topBenefits!: BenefitsTop[]
   public selectedCategory: string = 'Все';
   public mostPopularCards: Cards[] = [
     {
@@ -134,6 +138,10 @@ export class MainComponent {
     }
   ];
 
+
+  constructor(public topBenefitsService: TopBenefitsService) {
+  }
+
   get filteredMostPopularCards(): Cards[] {
     return this.filterCards(this.mostPopularCards);
   }
@@ -141,6 +149,25 @@ export class MainComponent {
   get filteredRecommendationsCards(): Cards[] {
     return this.filterCards(this.recommendationsCards);
   }
+
+  ngOnInit(): void {
+    this.getTopBenefits()
+  }
+
+  public getTopBenefits() {
+    this.isLoading = true;
+    this.topBenefitsService.getTopBenefits().subscribe(
+      data => {
+        this.topBenefits = data;
+        this.isLoading = false; // Отключаем загрузку после получения данных
+      },
+      error => {
+        console.error('Error fetching benefits:', error);
+        this.isLoading = false;
+      }
+    );
+  }
+
 
   public filterCards(cards: Cards[]): Cards[] {
     if (this.selectedCategory === 'Все') {

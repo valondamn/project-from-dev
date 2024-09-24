@@ -1,29 +1,29 @@
 <div class="main-page">
-<div class="banner" [ngStyle]="{
+  <div [ngStyle]="{
     background: 'url(assets/images/main/Banner.jpg) no-repeat',
     'background-size': '100% 100%'
-  }">
-  <div class="banner-content">
-      <span>Найдите идеальные бонусы <br />
+  }" class="banner">
+    <div class="banner-content">
+      <span>Найдите идеальные бонусы <br/>
         для вашего образа жизни!</span>
+    </div>
   </div>
-</div>
 
-<div class="most-popular">
-  <div class="most-popular__title">
-    <span>Самые популярные</span>
+  <div class="most-popular">
+    <div class="most-popular__title">
+      <span>Самые популярные</span>
+    </div>
+    <div class="most-popular__cards">
+      <app-benefits-cards [topBenefits]="topBenefits"></app-benefits-cards>
+    </div>
   </div>
-  <div class="most-popular__cards">
-    <app-benefits-cards  [cards]="filteredMostPopularCards"></app-benefits-cards>
-  </div>
-</div>
 
-<div class="recommendations">
-  <div class="recommendations__title">
-    <span>Рекомендации для вас</span>
-  </div>
-  <div class="recommendations__cards">
-    <app-benefits-cards  [cards]="filteredRecommendationsCards"></app-benefits-cards>
-  </div>
-</div>
+  <!--  <div class="recommendations">-->
+  <!--    <div class="recommendations__title">-->
+  <!--      <span>Рекомендации для вас</span>-->
+  <!--    </div>-->
+  <!--    <div class="recommendations__cards">-->
+  <!--      <app-benefits-cards [cards]="filteredRecommendationsCards"></app-benefits-cards>-->
+  <!--    </div>-->
+  <!--  </div>-->
 </div>
