@@ -3,12 +3,13 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "node server.js",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "build-deploy": "ng build  && firebase deploy --only hosting",
-    "postbuild": "preloadfonts --dist dist/materuak -f index.html -i arial,helvetica -e comic-sans"
+    "postbuild": "preloadfonts --dist dist/materuak -f index.html -i arial,helvetica -e comic-sans",
+    "heroku-postbuild": "ng build"
   },
   "private": true,
   "dependencies": {
@@ -25,6 +26,7 @@
     "@bfoese/ngx-preload-fonts": "^1.0.0",
     "@favware/skip-dependency": "^1.2.2",
     "angular-svg-icon": "^18.0.1",
+    "express": "^4.21.0",
     "ngx-skeleton-loader": "^9.0.0",
     "primeng": "^17.18.7",
     "rxjs": "~7.8.0",
