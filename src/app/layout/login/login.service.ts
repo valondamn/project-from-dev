@@ -1,5 +1,4 @@
 import {Injectable} from '@angular/core';
-import {environment} from "../../../enviroments/environment";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Router} from "@angular/router";
 import {BehaviorSubject, map, Observable, of, switchMap} from "rxjs";
@@ -10,8 +9,8 @@ import {User} from "../main/main.interface";
   providedIn: 'root'
 })
 export class LoginService {
-  private url = `${environment.serverURL}/auth/login/`;
-  private authUrl = `${environment.serverURL}/auth`;
+  private url = `/api/auth/login/`;
+  private authUrl = `/api/auth`;
 
   // BehaviorSubject для хранения данных профиля
   private userProfileSubject = new BehaviorSubject<any>(null);
