@@ -4,20 +4,17 @@ const {createProxyMiddleware} = require('http-proxy-middleware');
 
 const app = express();
 
-// Прокси для запросов к API
+// Прокси для запросов к API, передаём их с префиксом /api
 app.use('/api', createProxyMiddleware({
   target: 'http://69.197.164.80:8000', // Ваш внешний API-сервер
   changeOrigin: true,
-  secure: false,
-  pathRewrite: {
-    '^/api': '', // Убираем префикс /api при проксировании
-  },
+  secure: false,  // Отключает проверку HTTPS
 }));
 
-// Статические файлы
+// Настройка для раздачи статических файлов
 app.use(express.static(__dirname + '/dist/materuak'));
 
-// Обработка маршрутов Angular
+// Перенаправляем все маршруты на Angular приложение
 app.get('/*', function (req, res) {
   res.sendFile(path.join(__dirname + '/dist/materuak/index.html'));
 });
