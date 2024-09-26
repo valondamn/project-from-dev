@@ -10,8 +10,8 @@ import {environment} from "../../../enviroments/environment";
   providedIn: 'root'
 })
 export class LoginService {
-  private url = `${environment.serverURL}/api/auth/login/`; // Без префикса /api, если API его не использует
-  private authUrl = `${environment.serverURL}/api/auth`;
+  private url = `${environment.serverURL}/auth/login/`; // Без префикса /api, если API его не использует
+  private authUrl = `${environment.serverURL}/auth`;
 
 
   // BehaviorSubject для хранения данных профиля
