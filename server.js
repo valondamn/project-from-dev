@@ -1,15 +1,15 @@
 const express = require("express");
 const path = require("path");
+const {createProxyMiddleware} = require('http-proxy-middleware');
 
 const app = express();
 
-// Отключаем принудительный редирект на HTTPS
-app.use((req, res, next) => {
-  if (req.headers['x-forwarded-proto'] === 'https') {
-    return res.redirect('http://' + req.headers.host + req.url);
-  }
-  next();
-});
+// Прокси для запросов к API, перенаправляющий их на ваш API-сервер
+app.use('/api', createProxyMiddleware({
+  target: 'http://69.197.164.80:8000', // URL вашего API-сервера
+  changeOrigin: true,
+  secure: false
+}));
 
 // Настройка для раздачи статических файлов
 app.use(express.static(__dirname + '/dist/materuak'));
