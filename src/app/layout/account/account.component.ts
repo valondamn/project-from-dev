@@ -16,6 +16,7 @@ import {environment} from "../../../enviroments/environment";
 })
 export class AccountComponent implements OnInit {
   profileForm: FormGroup; // Реактивная форма
+  selectedFile!: File | null; // Для хранения загруженного файла аватара
 
   private authUrl = `${environment.serverURL}/auth/me/`;
 
@@ -29,9 +30,7 @@ export class AccountComponent implements OnInit {
       date_of_birth: [''],
       country: ['', [Validators.required, Validators.maxLength(50)]],
       gender: [''], // Поле gender
-      language: ['ru'], // Default to Russian
-      avatar: [''], // Default to Russian
-
+      avatar: [''], // Поле для аватара
     });
   }
 
@@ -55,10 +54,8 @@ export class AccountComponent implements OnInit {
           phone_number: profileData.phone_number,
           date_of_birth: profileData.date_of_birth,
           country: profileData.country,
-          gender: profileData.gender === 1 ? 'male' : 'female', // Предполагаем: 1 = male, 2 = female
-          language: profileData.language || 'ru',
-          avatar: profileData.avatar // Заполнение аватара
-
+          gender: profileData.gender === 1 ? 'male' : 'female',
+          avatar: profileData.avatar // Заполнение поля аватара
         });
       },
       (error) => {
@@ -77,37 +74,60 @@ export class AccountComponent implements OnInit {
     const updatedProfile = this.profileForm.value;
     updatedProfile.gender = updatedProfile.gender === 'male' ? 1 : 2; // Преобразование значения gender
 
-    if (updatedProfile.avatar.startsWith('data:image')) {
-      updatedProfile.avatar = updatedProfile.avatar.split(',')[1]; // Удаление префикса Base64
-    }
-
     const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${localStorage.getItem('authToken')}`, // Используем токен из localStorage
+      Authorization: `Bearer ${localStorage.getItem('authToken')}`,
     });
 
-    this.http.put(this.authUrl, updatedProfile, {headers}).subscribe(
-      (response) => {
-        console.log('Профиль успешно обновлен', response);
-      },
-      (error) => {
-        console.error('Ошибка при обновлении профиля:', error);
-      }
-    );
+    // Если выбрали новый аватар, используем FormData для отправки изображения и других данных
+    if (this.selectedFile) {
+      const formData = new FormData();
+      formData.append('first_name', updatedProfile.first_name);
+      formData.append('last_name', updatedProfile.last_name);
+      formData.append('email', updatedProfile.email);
+      formData.append('phone_number', updatedProfile.phone_number);
+      formData.append('date_of_birth', updatedProfile.date_of_birth);
+      formData.append('country', updatedProfile.country);
+      formData.append('gender', updatedProfile.gender.toString());
+
+      // Добавляем файл аватара в FormData
+      formData.append('avatar', this.selectedFile);
+
+      this.http.put(this.authUrl, formData, {headers}).subscribe(
+        (response) => {
+          console.log('Профиль успешно обновлен с аватаром', response);
+          this.selectedFile = null; // Сбрасываем файл после успешного обновления
+        },
+        (error) => {
+          console.error('Ошибка при обновлении профиля с аватаром:', error);
+        }
+      );
+    } else {
+      // Если аватар не обновляется, отправляем только текстовые данные
+      this.http.put(this.authUrl, updatedProfile, {headers}).subscribe(
+        (response) => {
+          console.log('Профиль успешно обновлен', response);
+        },
+        (error) => {
+          console.error('Ошибка при обновлении профиля:', error);
+        }
+      );
+    }
   }
 
+  // Обработка выбора файла для аватара
   onFileSelected(event: any) {
     const file: File = event.target.files[0];
     if (file) {
+      this.selectedFile = file;
+
+      // Отображение выбранного аватара в интерфейсе
       const reader = new FileReader();
       reader.onload = () => {
-        // Установка base64 изображения в поле avatar
         this.profileForm.patchValue({
-          avatar: reader.result as string,
+          avatar: reader.result as string, // Устанавливаем base64 в форму для отображения
         });
       };
       reader.readAsDataURL(file);
     }
   }
-
 }

@@ -6,9 +6,9 @@
         <div class="subtitle">Тут вы можете изменить персональные данные</div>
       </div>
 
+      <!-- Блок для отображения и изменения аватара -->
       <div class="photo">
-        <div class="photo__title">Фотография
-        </div>
+        <div class="photo__title">Фотография</div>
         <div class="photo__active">
           <img [src]="profileForm.get('avatar')?.value" alt="Avatar" class="avatar"/>
           <div class="buttons">
@@ -16,73 +16,66 @@
             <input (change)="onFileSelected($event)" id="avatar-upload" style="display: none" type="file"/>
           </div>
         </div>
-
-
-        <!-- Форма профиля -->
-        <div class="form-container">
-          <form [formGroup]="profileForm">
-            <div class="firstName-lastName">
-              <!-- Имя и Фамилия -->
-              <div class="form-group">
-                <label for="first_name">Имя*</label>
-                <input formControlName="first_name" id="first_name" name="first_name" type="text"/>
-              </div>
-              <div class="form-group">
-                <label for="last_name">Фамилия*</label>
-                <div class="input">
-                  <input formControlName="last_name" id="last_name" name="last_name" type="text"/>
-                </div>
-              </div>
-            </div>
-
-            <!-- Электронная почта и Номер телефона -->
-            <div class="account-data">
-              <div class="group-title">Ваш аккаунт</div>
-              <div class="account-data__content">
-                <div class="form-group">
-                  <label for="email">Электронная почта*</label>
-                  <input formControlName="email" id="email" name="email" type="email"/>
-                </div>
-                <div class="form-group">
-                  <label for="phone_number">Номер телефона*</label>
-                  <input formControlName="phone_number" id="phone_number" name="phone_number" type="tel"/>
-                </div>
-              </div>
-            </div>
-
-            <!-- Дата рождения и Страна -->
-            <div class="birthDate-country">
-              <div class="group-title">Персональные данные</div>
-              <div class="birthDate-country__content">
-                <div class="form-group">
-                  <label for="date_of_birth">Дата рождения</label>
-                  <input formControlName="date_of_birth" id="date_of_birth" name="date_of_birth" type="date"/>
-                </div>
-                <div class="form-group">
-                  <label for="country">Страна</label>
-                  <input formControlName="country" id="country" name="country" type="text"/>
-                </div>
-                <div class="form-group">
-                  <label for="language">Выбрать язык</label>
-                  <select formControlName="language" id="language" name="language">
-                    <option value="ru">Русский</option>
-                    <option value="en">Английский</option>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label>Пол</label>
-                  <div class="radio-group">
-                    <input formControlName="gender" name="gender" type="radio" value="male"/>
-                    <label>Мужской</label>
-                    <input formControlName="gender" name="gender" type="radio" value="female"/>
-                    <label>Женский</label>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </form>
-        </div>
       </div>
+
+      <!-- Форма профиля -->
+      <div class="form-container">
+        <form [formGroup]="profileForm">
+          <div class="firstName-lastName">
+            <!-- Имя и Фамилия -->
+            <div class="form-group">
+              <label for="first_name">Имя*</label>
+              <input formControlName="first_name" id="first_name" name="first_name" type="text"/>
+            </div>
+            <div class="form-group">
+              <label for="last_name">Фамилия*</label>
+              <div class="input">
+                <input formControlName="last_name" id="last_name" name="last_name" type="text"/>
+              </div>
+            </div>
+          </div>
+
+          <!-- Электронная почта и Номер телефона -->
+          <div class="account-data">
+            <div class="group-title">Ваш аккаунт</div>
+            <div class="account-data__content">
+              <div class="form-group">
+                <label for="email">Электронная почта*</label>
+                <input formControlName="email" id="email" name="email" type="email"/>
+              </div>
+              <div class="form-group">
+                <label for="phone_number">Номер телефона*</label>
+                <input formControlName="phone_number" id="phone_number" name="phone_number" type="tel"/>
+              </div>
+            </div>
+          </div>
+
+          <!-- Дата рождения и Страна -->
+          <div class="birthDate-country">
+            <div class="group-title">Персональные данные</div>
+            <div class="birthDate-country__content">
+              <div class="form-group">
+                <label for="date_of_birth">Дата рождения</label>
+                <input formControlName="date_of_birth" id="date_of_birth" name="date_of_birth" type="date"/>
+              </div>
+              <div class="form-group">
+                <label for="country">Страна</label>
+                <input formControlName="country" id="country" name="country" type="text"/>
+              </div>
+              <div class="form-group">
+                <label>Пол</label>
+                <div class="radio-group">
+                  <input formControlName="gender" name="gender" type="radio" value="male"/>
+                  <label>Мужской</label>
+                  <input formControlName="gender" name="gender" type="radio" value="female"/>
+                  <label>Женский</label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+
       <div class="buttons-block">
         <div class="button">
           <app-primary-button [label]="'Сбросить'" styling="standard" theme="light" type="button"/>
