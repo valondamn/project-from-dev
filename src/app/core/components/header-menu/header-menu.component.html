@@ -2,7 +2,7 @@
   <div class="dropdown-menu" #modalBody>
     <div class="profile-info" *ngIf="userProfile$ | async as userProfile">
       <img
-        src="assets/icons/account/account-logo.svg"
+        src="{{userProfile.avatar}}"
         alt="Profile Picture"
         class="profile-logo"
       />

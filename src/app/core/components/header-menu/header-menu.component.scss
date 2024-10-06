@@ -23,6 +23,12 @@
 
     padding: 13px 16px;
 
+    img {
+      width: 48px;
+      height: 46px;
+      border-radius: 1000px;
+    }
+
     &__name-coins {
       @include flexbox;
       @include flex-direction(column);
