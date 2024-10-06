@@ -15,19 +15,21 @@
   </div>
 
   <div class="categories">
-    <button
-      (click)="toggleCategory(category.id)"
-      *ngFor="let category of categories"
-      [class.active]="isCategorySelected(category)"
-    >
-      {{ category.name }}
-    </button>
+    @for (category of categories; track category) {
+      <button
+        (click)="toggleCategory(category.id)"
+        [class.active]="isCategorySelected(category)"
+      >
+        {{ category.name }}
+      </button>
+    }
   </div>
 
   <div class="most-popular">
     <div class="most-popular__cards">
       <app-benefits-cards
         [cards]="filteredBenefits"
+        type="catalog"
       ></app-benefits-cards>
     </div>
   </div>

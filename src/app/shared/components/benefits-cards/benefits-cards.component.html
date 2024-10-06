@@ -252,7 +252,11 @@
       <div class="modal__main-info">
         <div class="heading">
           <div class="heading__image">
-            <img src="{{url}}{{ currentCard.photo }}" alt=""/>
+            @if (type === "main") {
+              <img src="{{url}}{{ currentCard.photo }}" alt=""/>
+            } @else if (type === "catalog") {
+              <img src="{{ currentCard.photo }}" alt=""/>
+            }
           </div>
           <div class="heading__info">
             <div class="heading__info__description">
@@ -327,6 +331,35 @@
       <app-primary-button
         [label]="'Перейти'"
         link="/current-benefits"
+        styling="standard"
+        theme="dark"
+        type="routerLink"
+      ></app-primary-button>
+    </div>
+  </div>
+</modal>
+
+<modal [(visible)]="purchaseFailedModalVisible" height="464px" width="634px">
+  <div class="purchase-success-modal">
+    <svg-icon [src]="'assets/images/purchase/failed.svg'"/>
+    <div class="title-message">
+      <div class="title">Упс... Вам не хватает коинов</div>
+      <div class="message">
+        Попробуйте выбрать другую льготу
+      </div>
+    </div>
+
+    <div class="buttons">
+      <app-primary-button
+        (click)="closeSuccessModal()"
+        [label]="'Закрыть'"
+        styling="standard"
+        theme="light"
+        type="routerLink"
+      ></app-primary-button>
+      <app-primary-button
+        [label]="'Каталог льгот'"
+        link="/catalog"
         styling="standard"
         theme="dark"
         type="routerLink"

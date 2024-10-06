@@ -21,6 +21,20 @@
     padding: 8px;
     background-color: $primary-white;
 
+    overflow-x: auto;
+    white-space: nowrap;
+
+    scrollbar-width: none; // Для Firefox
+    -ms-overflow-style: none; // Для IE и Edge
+    flex-shrink: 0;
+
+
+    &::-webkit-scrollbar {
+      display: none; // Для Chrome, Safari и Opera
+    }
+
+    // Стили для кнопок внутри контейнера
+
     button {
       @include lead;
       padding: 8px 16px;
@@ -30,6 +44,7 @@
       cursor: pointer;
       color: $neutral-400;
       transition: background-color 0.3s;
+      display: inline-block; // Важно для горизонтальной прокрутки
 
       &:hover {
         background-color: $neutral-200;
