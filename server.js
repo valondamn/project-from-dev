@@ -16,7 +16,6 @@ app.use('/api', createProxyMiddleware({
 
 // Статические файлы
 app.use(express.static(__dirname + '/dist/materuak'));
-
 // Перенаправляем все запросы на Angular приложение
 app.get('/*', function (req, res) {
   res.sendFile(path.join(__dirname + '/dist/materuak/index.html'));
