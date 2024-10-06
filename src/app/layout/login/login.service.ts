@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Router} from "@angular/router";
-import {BehaviorSubject, map, Observable, of, switchMap} from "rxjs";
+import {BehaviorSubject, map, Observable, of} from "rxjs";
 import {catchError, tap} from 'rxjs/operators';
 import {User} from "../main/main.interface";
 import {environment} from "../../../enviroments/environment";
@@ -52,8 +52,7 @@ export class LoginService {
         } else {
           console.error('Refresh token is undefined');
         }
-      }),
-      switchMap(() => this.fetchUserProfile()) // Загружаем профиль после логина
+      })
     );
   }
 

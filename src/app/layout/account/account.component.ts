@@ -97,7 +97,9 @@ export class AccountComponent implements OnInit {
     formData.append('gender', updatedProfile.gender.toString());
 
     if (this.selectedFile) {
-      formData.append('avatar', this.selectedFile);
+      formData.append('avatar', this.selectedFile); // Если файл выбран, добавляем его
+    } else if (updatedProfile.avatar === null) {
+      formData.append('avatar', ''); // Явно указываем, что аватар должен быть удален
     }
 
     this.http.put(this.authUrl, formData, {headers}).subscribe(
@@ -108,11 +110,11 @@ export class AccountComponent implements OnInit {
       },
       (error) => {
         console.error('Ошибка при обновлении профиля:', error);
-        
         this.messageService.add({severity: 'error', summary: 'Ошибка', detail: 'Не удалось обновить профиль'});
       }
     );
   }
+
 
   onFileSelected(event: any) {
     const file: File = event.target.files[0];

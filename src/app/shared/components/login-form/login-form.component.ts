@@ -6,26 +6,34 @@ import {PasswordComponent} from "../inputs/password/password.component";
 import {InputComponent} from "../inputs/input/input.component";
 import {PrimaryButtonComponent} from "../buttons/primary-button/primary-button.component";
 import {NgIf} from "@angular/common";
+import {MessageService} from 'primeng/api'; // Импорт MessageService
+import {ToastModule} from 'primeng/toast'; // Импорт ToastModule
 
 @Component({
   selector: 'app-login-form',
   standalone: true,
   templateUrl: './login-form.component.html',
+  styleUrls: ['./login-form.component.scss'],
   imports: [
     PasswordComponent,
     InputComponent,
     ReactiveFormsModule,
     PrimaryButtonComponent,
-    NgIf
+    NgIf,
+    ToastModule
   ],
-  styleUrl: './login-form.component.scss'
+  providers: [MessageService] // Добавление MessageService в провайдеры компонента
 })
 export class LoginFormComponent implements OnInit {
   authForm!: FormGroup;
   errorMessage: string = '';
   isLoading: boolean = false;
 
-  constructor(private loginService: LoginService, private router: Router) {
+  constructor(
+    private loginService: LoginService,
+    private router: Router,
+    private messageService: MessageService // Внедрение MessageService
+  ) {
   }
 
   ngOnInit() {
@@ -34,7 +42,11 @@ export class LoginFormComponent implements OnInit {
 
   onSubmit() {
     if (this.authForm.invalid) {
-      this.errorMessage = 'Please fill in both fields.';
+      this.messageService.add({
+        severity: 'error',
+        summary: 'Ошибка',
+        detail: 'Пожалуйста, заполните оба поля.',
+      });
       return;
     }
 
@@ -45,18 +57,48 @@ export class LoginFormComponent implements OnInit {
 
     this.loginService.login({username, password}).subscribe({
       next: (response: any) => {
-        const authToken = response.access;  // Получите токен из ответа
+        const authToken = response.access; // Получите токен из ответа
         if (authToken) {
-          this.loginService.setAuthToken(authToken);  // Сохраните токен
+          this.loginService.setAuthToken(authToken); // Сохраните токен
+          this.messageService.add({
+            severity: 'success',
+            summary: 'Успех',
+            detail: 'Вы успешно вошли в систему!',
+          });
+
+          // Загрузить профиль пользователя после успешного входа
+          this.loginService.fetchUserProfile().subscribe({
+            next: () => {
+              this.router.navigate(['/main']); // Перенаправить после успешного логина
+            },
+            error: (profileError) => {
+              this.messageService.add({
+                severity: 'error',
+                summary: 'Ошибка профиля',
+                detail: 'Не удалось загрузить профиль пользователя. Пожалуйста, попробуйте снова.',
+              });
+            },
+          });
         } else {
-          console.error('Token is undefined');
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Ошибка',
+            detail: 'Не удалось получить токен. Повторите попытку позже.',
+          });
         }
-        this.router.navigate(['/main']);  // Перенаправить после успешного логина
         this.isLoading = false;
       },
-
+      error: () => {
+        this.isLoading = false;
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Ошибка',
+          detail: 'Неправильный логин или пароль. Пожалуйста, попробуйте еще раз.',
+        });
+      },
     });
   }
+
 
   private _createAuthForm() {
     this.authForm = new FormGroup({
