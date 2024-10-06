@@ -14,7 +14,6 @@ export class LoginService {
   private authUrl = `${environment.serverURL}/auth`;
 
 
-  // BehaviorSubject для хранения данных профиля
   private userProfileSubject = new BehaviorSubject<any>(null);
   public userProfile$ = this.userProfileSubject.asObservable();
 
