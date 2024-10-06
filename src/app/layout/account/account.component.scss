@@ -63,6 +63,54 @@ input {
           .buttons {
             @include flexbox;
             @include gap(16px);
+
+            .input-button {
+
+              background: $brand-900;
+              color: $primary-white;
+
+              @include hover {
+                background: $brand-700;
+                cursor: pointer;
+              }
+
+              padding: 11px 16px;
+              margin: 0;
+
+              @include font-(16px, 120%);
+              border-radius: 8px;
+
+              @include flexbox;
+              @include justify-content(center);
+              @include align-items(center);
+              @include gap(8px);
+
+              text-decoration: none;
+              border: none;
+
+              cursor: pointer;
+              user-select: none;
+
+
+              &.disabled {
+                pointer-events: none;
+                opacity: 30%;
+              }
+
+              @include sm-breakpoint-down {
+                width: 100%;
+              }
+              @include media-breakpoint-between(sm, xl) {
+                width: 100%;
+              }
+
+
+              label {
+                @include hover {
+                  cursor: pointer;
+                }
+              }
+            }
           }
         }
 
@@ -170,4 +218,35 @@ input {
       }
     }
   }
+}
+
+/* Кастомизация стилей для PrimeNG Toast */
+.p-toast {
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.p-toast-message {
+  border-radius: 8px;
+  padding: 16px;
+  font-family: 'Inter', sans-serif;
+}
+
+.p-toast-message-success {
+  background-color: #dff0d8;
+  color: #3c763d;
+}
+
+.p-toast-message-error {
+  background-color: #f2dede;
+  color: #a94442;
+}
+
+.p-toast-message-info {
+  background-color: #d9edf7;
+  color: #31708f;
+}
+
+.p-toast-message-icon {
+  font-size: 24px;
 }

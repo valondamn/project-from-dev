@@ -9,7 +9,7 @@
   background-color: $neutral-100;
 
   overflow-y: auto; // Добавьте скроллинг по вертикали
-  height: 83vh;
+  height: 89vh;
 
   .categories {
     @include flexbox;

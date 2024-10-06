@@ -32,7 +32,8 @@ import {ModalComponent} from "./shared/components/modal/modal.component";
 import {AccordionCardComponent} from "./shared/components/accordion-card/accordion-card.component";
 import {AuthInterceptor} from "./shared/auth-interceptor.interceptor";
 import {NgxSkeletonLoaderModule} from "ngx-skeleton-loader";
-
+import {ButtonModule} from "primeng/button";
+import {ToastModule} from "primeng/toast";
 
 @NgModule({
   declarations: [
@@ -69,7 +70,9 @@ import {NgxSkeletonLoaderModule} from "ngx-skeleton-loader";
     BenefitsCardsComponent,
     ModalComponent,
     AccordionCardComponent,
-    NgxSkeletonLoaderModule
+    NgxSkeletonLoaderModule,
+    ToastModule,
+    ButtonModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}

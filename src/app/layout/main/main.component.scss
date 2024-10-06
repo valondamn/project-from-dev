@@ -1,6 +1,6 @@
 @import "../../../assets/scss/properties";
 
-.main-page{
+.main-page {
   @include flexbox;
   @include flex-direction(column);
 
@@ -9,39 +9,39 @@
   background-color: $neutral-100;
 
   overflow-y: auto;
-  height: 83vh;
+  height: 89vh;
 
-.banner{
-  @include flexbox;
-  @include align-items(center);
-  border-radius: 16px;
-  height: 160px;
+  .banner {
+    @include flexbox;
+    @include align-items(center);
+    border-radius: 16px;
+    height: 160px;
 
-  .banner-content{
-    padding: 44px 40px;
-    color: $primary-white;
-    @include heading_2;
+    .banner-content {
+      padding: 44px 40px;
+      color: $primary-white;
+      @include heading_2;
+    }
+
   }
 
-}
-
-  .most-popular{
+  .most-popular {
     @include flexbox;
     @include flex-direction(column);
     @include gap(16px);
 
-    &__title{
+    &__title {
       font-size: 20px;
       font-family: 'Inter-regular';
     }
   }
 
-  .recommendations{
+  .recommendations {
     @include flexbox;
     @include flex-direction(column);
     @include gap(16px);
 
-    &__title{
+    &__title {
       font-size: 20px;
       font-family: 'Inter-regular';
     }

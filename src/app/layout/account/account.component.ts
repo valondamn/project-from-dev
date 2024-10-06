@@ -6,22 +6,28 @@ import {AccordionCardComponent} from '../../shared/components/accordion-card/acc
 import {ModalComponent} from "../../shared/components/modal/modal.component";
 import {SvgIconComponent} from "angular-svg-icon";
 import {environment} from "../../../enviroments/environment";
+import {MessageService} from 'primeng/api'; // Импорт MessageService
+import {ToastModule} from 'primeng/toast'; // Импорт ToastModule
 
 @Component({
   selector: 'app-account',
   standalone: true,
-  imports: [PrimaryButtonComponent, ReactiveFormsModule, AccordionCardComponent, ModalComponent, SvgIconComponent],
+  imports: [PrimaryButtonComponent, ReactiveFormsModule, AccordionCardComponent, ModalComponent, SvgIconComponent, ToastModule],
   templateUrl: './account.component.html',
   styleUrls: ['./account.component.scss'],
+  providers: [MessageService], // Добавление MessageService в провайдеры компонента
 })
 export class AccountComponent implements OnInit {
-  profileForm: FormGroup; // Реактивная форма
-  selectedFile!: File | null; // Для хранения загруженного файла аватара
+  profileForm: FormGroup;
+  selectedFile!: File | null;
 
   private authUrl = `${environment.serverURL}/auth/me/`;
 
-  constructor(private http: HttpClient, private fb: FormBuilder) {
-    // Инициализация реактивной формы
+  constructor(
+    private http: HttpClient,
+    private fb: FormBuilder,
+    private messageService: MessageService // Внедрение MessageService
+  ) {
     this.profileForm = this.fb.group({
       first_name: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(100)]],
       last_name: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(100)]],
@@ -29,8 +35,8 @@ export class AccountComponent implements OnInit {
       phone_number: ['', [Validators.required, Validators.maxLength(20)]],
       date_of_birth: [''],
       country: ['', [Validators.required, Validators.maxLength(50)]],
-      gender: [''], // Поле gender
-      avatar: [''], // Поле для аватара
+      gender: [''],
+      avatar: [''],
     });
   }
 
@@ -38,15 +44,13 @@ export class AccountComponent implements OnInit {
     this.loadProfile();
   }
 
-  // Загрузка профиля и заполнение формы
   loadProfile() {
     const headers = new HttpHeaders({
-      Authorization: `Bearer ${localStorage.getItem('authToken')}`, // Используем токен из localStorage
+      Authorization: `Bearer ${localStorage.getItem('authToken')}`,
     });
 
     this.http.get<any>(this.authUrl, {headers}).subscribe(
       (profileData) => {
-        // Заполнение формы данными пользователя
         this.profileForm.patchValue({
           first_name: profileData.first_name,
           last_name: profileData.last_name,
@@ -55,79 +59,78 @@ export class AccountComponent implements OnInit {
           date_of_birth: profileData.date_of_birth,
           country: profileData.country,
           gender: profileData.gender === 1 ? 'male' : 'female',
-          avatar: profileData.avatar // Заполнение поля аватара
+          avatar: profileData.avatar,
         });
       },
       (error) => {
         console.error('Ошибка при загрузке профиля:', error);
+        this.messageService.add({severity: 'error', summary: 'Ошибка', detail: 'Не удалось загрузить профиль'});
       }
     );
   }
 
-  // Метод для сохранения профиля
   saveProfile() {
     if (this.profileForm.invalid) {
       console.error('Форма заполнена некорректно');
+      this.messageService.add({
+        severity: 'error',
+        summary: 'Ошибка',
+        detail: 'Пожалуйста, заполните все обязательные поля'
+      });
       return;
     }
 
     const updatedProfile = this.profileForm.value;
-    updatedProfile.gender = updatedProfile.gender === 'male' ? 1 : 2; // Преобразование значения gender
+    updatedProfile.gender = updatedProfile.gender === 'male' ? 1 : 2;
 
     const headers = new HttpHeaders({
       Authorization: `Bearer ${localStorage.getItem('authToken')}`,
     });
 
-    // Если выбрали новый аватар, используем FormData для отправки изображения и других данных
+    const formData = new FormData();
+    formData.append('first_name', updatedProfile.first_name);
+    formData.append('last_name', updatedProfile.last_name);
+    formData.append('email', updatedProfile.email);
+    formData.append('phone_number', updatedProfile.phone_number);
+    formData.append('date_of_birth', updatedProfile.date_of_birth);
+    formData.append('country', updatedProfile.country);
+    formData.append('gender', updatedProfile.gender.toString());
+
     if (this.selectedFile) {
-      const formData = new FormData();
-      formData.append('first_name', updatedProfile.first_name);
-      formData.append('last_name', updatedProfile.last_name);
-      formData.append('email', updatedProfile.email);
-      formData.append('phone_number', updatedProfile.phone_number);
-      formData.append('date_of_birth', updatedProfile.date_of_birth);
-      formData.append('country', updatedProfile.country);
-      formData.append('gender', updatedProfile.gender.toString());
-
-      // Добавляем файл аватара в FormData
       formData.append('avatar', this.selectedFile);
-
-      this.http.put(this.authUrl, formData, {headers}).subscribe(
-        (response) => {
-          console.log('Профиль успешно обновлен с аватаром', response);
-          this.selectedFile = null; // Сбрасываем файл после успешного обновления
-        },
-        (error) => {
-          console.error('Ошибка при обновлении профиля с аватаром:', error);
-        }
-      );
-    } else {
-      // Если аватар не обновляется, отправляем только текстовые данные
-      this.http.put(this.authUrl, updatedProfile, {headers}).subscribe(
-        (response) => {
-          console.log('Профиль успешно обновлен', response);
-        },
-        (error) => {
-          console.error('Ошибка при обновлении профиля:', error);
-        }
-      );
     }
+
+    this.http.put(this.authUrl, formData, {headers}).subscribe(
+      (response) => {
+        console.log('Профиль успешно обновлен', response);
+        this.selectedFile = null;
+        this.messageService.add({severity: 'success', summary: 'Успех', detail: 'Профиль успешно обновлен'});
+      },
+      (error) => {
+        console.error('Ошибка при обновлении профиля:', error);
+        
+        this.messageService.add({severity: 'error', summary: 'Ошибка', detail: 'Не удалось обновить профиль'});
+      }
+    );
   }
 
-  // Обработка выбора файла для аватара
   onFileSelected(event: any) {
     const file: File = event.target.files[0];
     if (file) {
       this.selectedFile = file;
-
-      // Отображение выбранного аватара в интерфейсе
       const reader = new FileReader();
       reader.onload = () => {
         this.profileForm.patchValue({
-          avatar: reader.result as string, // Устанавливаем base64 в форму для отображения
+          avatar: reader.result as string,
         });
       };
       reader.readAsDataURL(file);
     }
+  }
+
+  removeAvatar() {
+    this.profileForm.patchValue({avatar: null});
+    this.selectedFile = null;
+    this.messageService.add({severity: 'info', summary: 'Информация', detail: 'Аватар удален'});
   }
 }

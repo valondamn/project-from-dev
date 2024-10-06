@@ -8,7 +8,7 @@
     @include justify-content(space-between);
     padding: 16px 24px;
     border-bottom: 1px solid $neutral-200;
-    width: 96%;
+    width: 100%;
 
     .account-info {
       @include flexbox;
