@@ -27,7 +27,7 @@ export class CatalogService {
 
   // benefits.service.ts
 
-  updateBenefit(id: number, data: FormData): Observable<any> {
-    return this.httpClient.put(`${this.url}/hr/benefits/${id}/`, data);
+  updateBenefit(id: number, data: any): Observable<any> {
+    return this.httpClient.patch<any>(`${this.url}/hr/benefits/${id}/`, data);
   }
 }

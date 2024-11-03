@@ -20,6 +20,8 @@ export class CatalogComponent implements OnInit {
   public photoPreview: string | null = null;
   public isVisible: boolean = false;
 
+  public isEditMode: boolean = false;
+  private currentBenefitId!: number;
   constructor(
     private catalogService: CatalogService,
     public categoriesService: CategoriesService,
@@ -43,6 +45,18 @@ export class CatalogComponent implements OnInit {
       category: [0, Validators.required],
       photo: [''],
     });
+  }
+
+  public deleteBenefit(id: number): void {
+    this.catalogService.deleteBenefit(id).subscribe(
+      () => {
+        console.log('Benefit deleted successfully');
+        this.getCatalog(); // Refresh the benefits list
+      },
+      (error) => {
+        console.error('Error deleting benefit:', error);
+      },
+    );
   }
 
   public onFileSelected(event: any) {
@@ -91,6 +105,50 @@ export class CatalogComponent implements OnInit {
           console.error('Error creating benefit:', error);
         },
       );
+    } else {
+      console.error('Form is invalid');
+    }
+  }
+
+  public addOrUpdateBenefit(): void {
+    if (this.benefitForm.valid) {
+      const formData = new FormData();
+
+      // Add form data, excluding the photo if not being updated
+      Object.keys(this.benefitForm.controls).forEach((key) => {
+        if (key !== 'photo') {
+          formData.append(key, this.benefitForm.get(key)?.value);
+        }
+      });
+
+      if (this.isEditMode) {
+        // Update existing benefit
+        this.catalogService
+          .updateBenefit(this.currentBenefitId, formData)
+          .subscribe(
+            (response) => {
+              console.log('Benefit updated successfully:', response);
+              this.getCatalog();
+              this.closeModal();
+              this.isEditMode = false;
+            },
+            (error) => {
+              console.error('Error updating benefit:', error);
+            },
+          );
+      } else {
+        // Add new benefit
+        this.catalogService.addBenefit(formData).subscribe(
+          (response) => {
+            console.log('Benefit created successfully:', response);
+            this.getCatalog();
+            this.closeModal();
+          },
+          (error) => {
+            console.error('Error creating benefit:', error);
+          },
+        );
+      }
     } else {
       console.error('Form is invalid');
     }
@@ -146,6 +204,25 @@ export class CatalogComponent implements OnInit {
 
   public openModal() {
     this.isVisible = true;
+  }
+
+  public openEditModal(benefit: any) {
+    this.isEditMode = true;
+    this.currentBenefitId = benefit.id;
+
+    // Populate the form with benefit details
+    this.benefitForm.patchValue({
+      name: benefit.name,
+      sub_name: benefit.sub_name,
+      description: benefit.description,
+      company: benefit.company,
+      expired_date: benefit.expired_date,
+      cost: benefit.cost,
+      category: benefit.category,
+      photo: benefit.photo,
+    });
+
+    this.openModal();
   }
 
   public closeModal() {

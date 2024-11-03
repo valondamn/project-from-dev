@@ -54,6 +54,12 @@
       @include justify-content(space-between);
       margin-top: auto;
     }
+
+    .buttons{
+      @include flexbox;
+      @include align-items(center);
+      @include gap(8px);
+    }
   }
 }
 

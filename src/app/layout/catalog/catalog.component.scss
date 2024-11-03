@@ -11,6 +11,25 @@
   overflow-y: auto; // Добавьте скроллинг по вертикали
   height: 89vh;
 
+  .banner {
+    @include flexbox;
+    @include align-items(center);
+    border-radius: 16px;
+    height: 160px;
+    background-color: $primary-white;
+
+    .banner-content {
+      padding: 44px 40px;
+      @include heading_2;
+
+      span{
+        color: $cl-black;
+
+      }
+    }
+
+  }
+
   .categories {
     @include flexbox;
     @include align-items(center);

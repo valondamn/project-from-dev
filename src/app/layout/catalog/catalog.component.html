@@ -1,11 +1,17 @@
 <div class="main-page">
-  <app-primary-button
-    (onClick)="openModal()"
-    [label]="'Добавить льготу'"
-    styling="standard"
-    theme="green"
-    type="button"
-  ></app-primary-button>
+
+  <div class="banner">
+    <div class="banner-content">
+      <span>Льготы <br /> </span>
+    </div>
+    <app-primary-button
+      (onClick)="openModal()"
+      [label]="'Добавить льготу'"
+      styling="standard"
+      theme="green"
+      type="button"
+    ></app-primary-button>
+  </div>
 
   <div class="categories">
     @for (category of categories; track category) {
@@ -22,6 +28,9 @@
     <div class="most-popular__cards">
       <app-benefits-cards
         [cards]="filteredBenefits"
+        (deleteBenefit)="deleteBenefit($event)"
+        (editBenefit)="openEditModal($event)"
+
         type="catalog"
       ></app-benefits-cards>
     </div>
@@ -30,8 +39,9 @@
 
 <modal [(visible)]="isVisible">
   <div class="create-modal">
-    <div class="create-modal__title">Добавление льготы</div>
-    <form [formGroup]="benefitForm">
+    <div class="create-modal__title">
+      {{ isEditMode ? 'Редактирование льготы' : 'Добавление льготы' }}
+    </div>    <form [formGroup]="benefitForm">
       <div class="flex-row">
         <div class="form-group">
           <label for="name">Название:</label>
@@ -94,13 +104,13 @@
           </div>
         </div>
       </div>
-      <app-primary-button
-        (onClick)="addBenefit()"
-        [label]="'Добавить льготу'"
-        styling="standard"
-        theme="dark"
-        type="button"
-      ></app-primary-button>
+    <app-primary-button
+      (click)="addOrUpdateBenefit()"
+      [label]="isEditMode ? 'Обновить льготу' : 'Добавить льготу'"
+      styling="standard"
+      theme="dark"
+      type="button"
+    ></app-primary-button>
     </form>
   </div>
 </modal>
