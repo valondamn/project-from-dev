@@ -1,0 +1,43 @@
+@if (orders) {
+  <div class="staff-container">
+    <div *ngFor="let item of orders">
+      <div class="staff" (click)="openModal(item)">
+        <div class="account-info">
+          <div class="img">
+            @if (item.avatar) {
+              <img src="{{ item.avatar }}" alt="" />
+            } @else {
+              <img src="/assets/images/main/profile.png" alt="" />
+            }
+          </div>
+          <div class="name-container">
+            <div class="name" [innerHTML]="item.first_name"></div>
+            <div class="status" [innerHTML]="item.last_name"></div>
+          </div>
+        </div>
+        <div class="company" [innerHTML]="item.company"></div>
+
+        <div class="number" [innerHTML]="item.phone_number"></div>
+
+        <div class="coins">
+          <app-coins [coins]="item.coins" />
+        </div>
+      </div>
+    </div>
+  </div>
+}
+
+<modal [(visible)]="isModalVisible">
+  <div class="orders-modal">
+    <div class="orders-modal-container">
+      @if (currentCard) {
+        @for (item of currentCard.orders; track item) {
+          <app-benefits-cards
+            [cards]="item.benefits"
+            type="catalog"
+          ></app-benefits-cards>
+        }
+      }
+    </div>
+  </div>
+</modal>
