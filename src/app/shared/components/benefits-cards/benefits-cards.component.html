@@ -19,20 +19,11 @@
               <div class="coins">
                 <app-coins [coins]="card.cost"></app-coins>
               </div>
-
-              <div class="button">
-                <app-primary-button
-                  theme="dark"
-                  styling="standard"
-                  [label]="'Купить'"
-                  type="routerLink"
-                  (click)="openModal(card)"
-                />
-              </div>
             </div>
           } @else if (deadLine) {
             <app-dead-line date="{{ card.expired_date }}"></app-dead-line>
           }
+
         </div>
       }
     </div>
@@ -181,15 +172,7 @@
                   <app-coins [coins]="card.cost"></app-coins>
                 </div>
 
-                <div class="button">
-                  <app-primary-button
-                    theme="dark"
-                    styling="standard"
-                    [label]="'Купить'"
-                    type="routerLink"
-                    (click)="openModal(card)"
-                  />
-                </div>
+
               </div>
             } @else if (deadLine) {
               <app-dead-line date="{{ card.expired_date }}"></app-dead-line>
@@ -286,25 +269,7 @@
             ></div>
           }
         </div>
-        @if (!deadLine && isColumnCard) {
 
-          <div class="button">
-            <app-primary-button
-              theme="light"
-              styling="standard"
-              [label]="'Отмена'"
-              type="routerLink"
-              (click)="closeConfirmPurchase()"
-            />
-            <app-primary-button
-              theme="dark"
-              styling="standard"
-              [label]="'Купить'"
-              type="routerLink"
-              (click)="confirmPurchase()"
-            />
-          </div>
-        }
       </div>
     </div>
   }

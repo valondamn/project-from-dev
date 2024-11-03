@@ -11,6 +11,7 @@ import {AccountComponent} from "./layout/account/account.component";
 import {LoginComponent} from "./layout/login/login.component";
 import {AuthGuard} from "./shared/guards/auth-guard.guard";
 import {LoginGuard} from "./shared/guards/login-guard.guard";
+import {StaffPageComponent} from "./layout/staff-page/staff-page.component";
 
 
 const routes: Routes = [
@@ -61,7 +62,12 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
-    canActivate: [LoginGuard] // Добавляем LoginGuard для маршрута логина
+    canActivate: [LoginGuard]
+  },
+  {
+    path: 'staff',
+    component: StaffPageComponent,
+    canActivate: [AuthGuard] // Добавляем LoginGuard для маршрута логина
   }
 ];
 

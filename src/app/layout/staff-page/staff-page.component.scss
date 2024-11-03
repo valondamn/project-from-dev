@@ -8,66 +8,21 @@
   padding: 24px;
   background-color: $neutral-100;
 
-  overflow-y: auto; // Добавьте скроллинг по вертикали
+  overflow-y: auto;
   height: 89vh;
-
-  .categories {
-    @include flexbox;
-    @include align-items(center);
-    @include gap(3px);
-    border-radius: 8px;
-    box-shadow: 0 5px 16px rgba(93, 93, 93, 0.06);
-    padding: 8px;
-    background-color: $primary-white;
-
-    overflow-x: auto;
-    white-space: nowrap;
-
-    scrollbar-width: none; // Для Firefox
-    -ms-overflow-style: none; // Для IE и Edge
-    flex-shrink: 0;
-
-
-    &::-webkit-scrollbar {
-      display: none; // Для Chrome, Safari и Opera
-    }
-
-    // Стили для кнопок внутри контейнера
-
-    button {
-      @include lead;
-      padding: 8px 16px;
-      background-color: $primary-white;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      color: $neutral-400;
-      transition: background-color 0.3s;
-      display: inline-block; // Важно для горизонтальной прокрутки
-
-      &:hover {
-        background-color: $neutral-200;
-      }
-
-      &.active {
-        background-color: $neutral-900;
-        color: $primary-white;
-      }
-    }
-  }
-
 
   .banner {
     @include flexbox;
     @include align-items(center);
     border-radius: 16px;
     height: 160px;
+    background-color: $primary-white;
 
     .banner-content {
       padding: 44px 40px;
-      color: $primary-white;
       @include heading_2;
     }
+
   }
 
   .most-popular {
@@ -77,7 +32,7 @@
 
     &__title {
       font-size: 20px;
-      font-family: "Inter-regular";
+      font-family: 'Inter-regular';
     }
   }
 
@@ -88,10 +43,11 @@
 
     &__title {
       font-size: 20px;
-      font-family: "Inter-regular";
+      font-family: 'Inter-regular';
     }
   }
 }
+
 .create-modal {
   @include flexbox;
   @include flex-direction(column);
@@ -277,4 +233,6 @@
       }
     }
 
-  }}
+  }
+
+}

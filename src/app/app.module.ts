@@ -34,6 +34,7 @@ import {AuthInterceptor} from "./shared/auth-interceptor.interceptor";
 import {NgxSkeletonLoaderModule} from "ngx-skeleton-loader";
 import {ButtonModule} from "primeng/button";
 import {ToastModule} from "primeng/toast";
+import {PrimaryButtonComponent} from "./shared/components/buttons/primary-button/primary-button.component";
 
 @NgModule({
   declarations: [
@@ -43,37 +44,38 @@ import {ToastModule} from "primeng/toast";
     CatalogComponent,
     QuestionsAndAnswersComponent,
   ],
-  imports: [
-    AppRoutingModule,
-    BrowserModule,
-    RouterModule,
-    BrowserAnimationsModule,
-    MatSlideToggleModule,
-    MatInputModule,
-    MatButtonModule,
-    MatSelectModule,
-    MatRadioModule,
-    MatCardModule,
-    ReactiveFormsModule,
-    MatToolbarModule,
-    MatSidenavModule,
-    MatIconModule,
-    MatListModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatSortModule,
-    MatGridListModule,
-    MatMenuModule,
-    PageComponent,
-    HttpClientModule,
-    AngularSvgIconModule.forRoot(),
-    BenefitsCardsComponent,
-    ModalComponent,
-    AccordionCardComponent,
-    NgxSkeletonLoaderModule,
-    ToastModule,
-    ButtonModule
-  ],
+    imports: [
+        AppRoutingModule,
+        BrowserModule,
+        RouterModule,
+        BrowserAnimationsModule,
+        MatSlideToggleModule,
+        MatInputModule,
+        MatButtonModule,
+        MatSelectModule,
+        MatRadioModule,
+        MatCardModule,
+        ReactiveFormsModule,
+        MatToolbarModule,
+        MatSidenavModule,
+        MatIconModule,
+        MatListModule,
+        MatTableModule,
+        MatPaginatorModule,
+        MatSortModule,
+        MatGridListModule,
+        MatMenuModule,
+        PageComponent,
+        HttpClientModule,
+        AngularSvgIconModule.forRoot(),
+        BenefitsCardsComponent,
+        ModalComponent,
+        AccordionCardComponent,
+        NgxSkeletonLoaderModule,
+        ToastModule,
+        ButtonModule,
+        PrimaryButtonComponent
+    ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
   ],

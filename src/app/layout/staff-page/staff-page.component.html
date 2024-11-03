@@ -1,0 +1,201 @@
+<div class="main-page">
+  <div class="banner">
+    <div class="banner-content">
+      <span>Cотрудники <br /> </span>
+    </div>
+    <app-primary-button
+      (onClick)="openModal()"
+      [label]="'Добавить пользователя'"
+      styling="standard"
+      theme="green"
+      type="button"
+    ></app-primary-button>
+  </div>
+
+  <div class="most-popular">
+    <div class="most-popular__title"></div>
+    <div class="most-popular__cards">
+      <app-staff-cards
+        [staffList]="staffList"
+        (deleteUser)="deleteStaff($event)"
+      ></app-staff-cards>
+    </div>
+  </div>
+</div>
+
+<modal [(visible)]="isVisible" width="65%">
+  <div class="create-modal">
+    <div class="create-modal__title">Добавление пользователя</div>
+    <form [formGroup]="staffForm">
+      <!-- Имя и Фамилия -->
+      <div class="flex-row">
+        <div class="form-group">
+          <label for="first_name">Имя*</label>
+          <input
+            formControlName="first_name"
+            id="first_name"
+            name="first_name"
+            type="text"
+          />
+        </div>
+        <div class="form-group">
+          <label for="last_name">Фамилия*</label>
+          <input
+            formControlName="last_name"
+            id="last_name"
+            name="last_name"
+            type="text"
+          />
+        </div>
+      </div>
+
+      <!-- Имя пользователя -->
+
+      <!-- Электронная почта и Номер телефона -->
+      <div class="flex-row">
+        <div class="form-group">
+          <label for="username">Имя пользователя*</label>
+          <input
+            formControlName="username"
+            id="username"
+            name="username"
+            type="text"
+          />
+        </div>
+        <div class="form-group">
+          <label for="email">Электронная почта*</label>
+          <input formControlName="email" id="email" name="email" type="email" />
+        </div>
+        <div class="form-group">
+          <label for="phone_number">Номер телефона*</label>
+          <input
+            formControlName="phone_number"
+            id="phone_number"
+            name="phone_number"
+            type="tel"
+          />
+        </div>
+      </div>
+
+      <!-- Пароль -->
+
+      <!-- Дата рождения и Страна -->
+      <div class="flex-row">
+        <div class="form-group">
+          <label for="date_of_birth">Дата рождения</label>
+          <input
+            formControlName="date_of_birth"
+            id="date_of_birth"
+            name="date_of_birth"
+            type="date"
+          />
+        </div>
+        <div class="form-group">
+          <label for="country">Страна</label>
+          <input
+            formControlName="country"
+            id="country"
+            name="country"
+            type="text"
+          />
+        </div>
+        <div class="form-group">
+          <label for="password">Пароль*</label>
+          <input
+            formControlName="password"
+            id="password"
+            name="password"
+            type="password"
+          />
+        </div>
+      </div>
+
+      <!-- Пол -->
+      <div class="form-group">
+        <label>Пол</label>
+        <div class="radio-group">
+          <input
+            formControlName="gender"
+            name="gender"
+            type="radio"
+            value="1"
+          />
+          <label>Мужской</label>
+          <input
+            formControlName="gender"
+            name="gender"
+            type="radio"
+            value="2"
+          />
+          <label>Женский</label>
+        </div>
+      </div>
+
+      <div class="flex-row">
+        <!-- Компания -->
+        <div class="form-group">
+          <label for="company">Компания*</label>
+          <input
+            formControlName="company"
+            id="company"
+            name="company"
+            type="text"
+          />
+        </div>
+
+        <!-- Coins -->
+        <div class="form-group">
+          <label for="coins">Количество монет</label>
+          <input
+            formControlName="coins"
+            id="coins"
+            name="coins"
+            type="number"
+          />
+        </div>
+      </div>
+
+      <div class="photo">
+        <div class="photo__title">Фотография</div>
+        <div class="photo__active">
+          <img [src]="staffForm.get('avatar')?.value" alt="" class="avatar" />
+          <div class="buttons">
+            <div class="input-button">
+              <label class="button" for="avatar-upload">Загрузить фото</label>
+              <input
+                (change)="onFileSelected($event)"
+                id="avatar-upload"
+                style="display: none"
+                type="file"
+              />
+            </div>
+            <app-primary-button
+              (click)="removeAvatar()"
+              [label]="'Удалить аватар'"
+              styling="standard"
+              theme="light"
+              type="button"
+            />
+          </div>
+        </div>
+      </div>
+    </form>
+
+    <div class="buttons">
+      <app-primary-button
+        (onClick)="closeModal()"
+        [label]="'Закрыть'"
+        styling="standard"
+        theme="light"
+        type="button"
+      ></app-primary-button>
+      <app-primary-button
+        (onClick)="addNewStaff()"
+        [label]="'Добавить пользователя'"
+        styling="standard"
+        theme="dark"
+        type="button"
+      ></app-primary-button>
+    </div>
+  </div>
+</modal>
