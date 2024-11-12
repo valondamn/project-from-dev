@@ -23,6 +23,7 @@
           } @else if (deadLine) {
             <app-dead-line date="{{ card.expired_date }}"></app-dead-line>
           }
+          @if (isEditable){
           <div class="buttons">
             <app-primary-button
               (click)="onDeleteBenefit(card.id)"
@@ -39,6 +40,7 @@
               type="button"
             ></app-primary-button>
           </div>
+          }
         </div>
       }
     </div>

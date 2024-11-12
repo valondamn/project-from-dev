@@ -79,37 +79,6 @@ export class CatalogComponent implements OnInit {
     this.benefitForm.patchValue({ photo: '' });
   }
 
-  public addBenefit(): void {
-    if (this.benefitForm.valid) {
-      const formData = new FormData();
-
-      // Добавляем все значения формы, кроме аватара
-      Object.keys(this.benefitForm.controls).forEach((key) => {
-        if (key !== 'photo') {
-          formData.append(key, this.benefitForm.get(key)?.value);
-        }
-      });
-
-      // Add the photo if it was selected
-      if (this.selectedPhoto) {
-        formData.append('photo', this.selectedPhoto, this.selectedPhoto.name);
-      }
-
-      this.catalogService.addBenefit(formData).subscribe(
-        (response) => {
-          console.log('Benefit created successfully:', response);
-          this.getCatalog(); // Refresh the benefits list
-          this.closeModal();
-        },
-        (error) => {
-          console.error('Error creating benefit:', error);
-        },
-      );
-    } else {
-      console.error('Form is invalid');
-    }
-  }
-
   public addOrUpdateBenefit(): void {
     if (this.benefitForm.valid) {
       const formData = new FormData();
@@ -120,6 +89,10 @@ export class CatalogComponent implements OnInit {
           formData.append(key, this.benefitForm.get(key)?.value);
         }
       });
+
+      if (this.selectedPhoto) {
+        formData.append('photo', this.selectedPhoto, this.selectedPhoto.name);
+      }
 
       if (this.isEditMode) {
         // Update existing benefit

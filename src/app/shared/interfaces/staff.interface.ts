@@ -1,14 +1,14 @@
-export interface Staff{
-  id: number
+export interface Staff {
+  pk: number;
   first_name: string;
   last_name: string;
   username: string;
-  email	: string;
+  email: string;
   password: string;
-  gender: number
+  gender: number;
   avatar: string;
   country: string;
   phone_number: string;
-  coins: number
+  coins: number;
   company: string;
 }

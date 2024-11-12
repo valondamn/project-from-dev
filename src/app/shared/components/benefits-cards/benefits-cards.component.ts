@@ -36,6 +36,7 @@ export class BenefitsCardsComponent implements OnInit {
   @Input() isLinkCard: boolean = false;
   @Input() fontWeight: 'thin' | 'normal' = 'thin';
   @Input() type: 'catalog' | 'main' = 'main';
+  @Input() isEditable = true;
 
   @Output() deleteBenefit = new EventEmitter<number>();
 

@@ -107,6 +107,7 @@ export class StaffPageComponent implements OnInit {
           console.log('User created successfully:', response);
           this.getStaffList(); // Обновляем список сотрудников
           this.closeModal();
+          this.staffForm.reset();
         },
         (error) => {
           console.error('Error creating user:', error);
@@ -139,13 +140,14 @@ export class StaffPageComponent implements OnInit {
   }
 
   public deleteStaff(id: number) {
-    this.staffService.deleteStaff(id).subscribe(
+    this.staffService.deleteUser(id).subscribe(
       (response) => {
         console.log('User deleted successfully:', response);
         this.getStaffList(); // Обновляем список сотрудников после удаления
       },
       (error) => {
         console.error('Error deleting user:', error);
+        this.getStaffList(); // Обновляем список сотрудников после удаления
       },
     );
   }

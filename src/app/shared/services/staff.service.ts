@@ -20,7 +20,7 @@ export class StaffService {
     return this.httpClient.post<any>(`${this.url}/hr/create_user/`, data);
   }
 
-  deleteStaff(id: number): Observable<any> {
+  deleteUser(id: number): Observable<void> {
     return this.httpClient.delete<any>(`${this.url}/hr/users/${id}/`);
   }
 }

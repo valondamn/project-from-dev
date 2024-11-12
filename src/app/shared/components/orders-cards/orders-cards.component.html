@@ -27,17 +27,25 @@
   </div>
 }
 
-<modal [(visible)]="isModalVisible">
+<modal [width]="'80%'" [(visible)]="isModalVisible" [hasOverflow]="true">
   <div class="orders-modal">
+    <div class="title">Список заказов пользователя</div>
     <div class="orders-modal-container">
       @if (currentCard) {
+        @if (currentCard.orders){
         @for (item of currentCard.orders; track item) {
-          <app-benefits-cards
+            <app-benefits-cards
             [cards]="item.benefits"
+            [isEditable]="false"
             type="catalog"
           ></app-benefits-cards>
         }
+      } @else {
+          <div class="title">Заказы отсутствуют</div>
+
+        }
       }
+
     </div>
   </div>
 </modal>
