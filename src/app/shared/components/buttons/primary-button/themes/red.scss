@@ -1,0 +1,15 @@
+@import "../../../../../../assets/scss/properties";
+
+button,
+a {
+  &.red {
+    &.standard {
+      background: $cl-red-light;
+      color: $primary-white;
+
+      @include hover {
+        background: $cl-red;
+      }
+    }
+  }
+}

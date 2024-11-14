@@ -1,15 +1,15 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {BenefitsTop, Cards, User} from '../../../layout/main/main.interface';
-import {SvgIconComponent} from 'angular-svg-icon';
-import {PrimaryButtonComponent} from '../buttons/primary-button/primary-button.component';
-import {CoinsComponent} from '../coins/coins.component';
-import {ModalComponent} from '../modal/modal.component';
-import {NgIf} from '@angular/common';
-import {RouterLink} from '@angular/router';
-import {DeadLineComponent} from '../dead-line/dead-line.component';
-import {BenefitsService} from "../../services/benefits.service";
-import {LoginService} from "../../../layout/login/login.service";
-import {environment} from "../../../../enviroments/environment";
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { BenefitsTop, Cards, User } from '../../../layout/main/main.interface';
+import { SvgIconComponent } from 'angular-svg-icon';
+import { PrimaryButtonComponent } from '../buttons/primary-button/primary-button.component';
+import { CoinsComponent } from '../coins/coins.component';
+import { ModalComponent } from '../modal/modal.component';
+import { NgIf } from '@angular/common';
+import { RouterLink } from '@angular/router';
+import { DeadLineComponent } from '../dead-line/dead-line.component';
+import { BenefitsService } from '../../services/benefits.service';
+import { LoginService } from '../../../layout/login/login.service';
+import { environment } from '../../../../enviroments/environment';
 
 @Component({
   selector: 'app-benefits-cards',
@@ -35,9 +35,14 @@ export class BenefitsCardsComponent implements OnInit {
   @Input() isColumnCard: boolean = true;
   @Input() isLinkCard: boolean = false;
   @Input() fontWeight: 'thin' | 'normal' = 'thin';
-  @Input() type: 'catalog' | 'main' = 'main'
+  @Input() type: 'catalog' | 'main' = 'main';
+  @Input() isEditable = true;
+
+  @Output() deleteBenefit = new EventEmitter<number>();
+
   public url = environment.serverURL;
   userProfile$ = this.loginService;
+  @Output() editBenefit = new EventEmitter<any>();
 
   public currentCard!: Cards;
   public modalVisible: boolean = false;
@@ -47,9 +52,8 @@ export class BenefitsCardsComponent implements OnInit {
 
   constructor(
     private benefitsService: BenefitsService,
-    private loginService: LoginService
-  ) {
-  }
+    private loginService: LoginService,
+  ) {}
 
   ngOnInit() {
     // Подписываемся на профиль пользователя
@@ -58,6 +62,12 @@ export class BenefitsCardsComponent implements OnInit {
     });
   }
 
+  public onEditBenefit(card: Cards): void {
+    this.editBenefit.emit(card);
+  }
+  public onDeleteBenefit(id: number): void {
+    this.deleteBenefit.emit(id);
+  }
   public confirmPurchase() {
     console.log('Покупка льготы с ID:', this.currentCard?.id);
 
@@ -97,7 +107,6 @@ export class BenefitsCardsComponent implements OnInit {
       });
     }
   }
-
 
   public openModal(card: Cards) {
     this.currentCard = card;

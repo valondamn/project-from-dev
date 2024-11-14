@@ -1,0 +1,44 @@
+@if(staffList){
+  <div class="staff-container">
+    <div class="staff-container__info" *ngFor="let item of staffList; trackBy: trackById">
+      <div class="staff">
+        <div class="account-info">
+          <div class="img">
+            @if(item.avatar){
+            <img src="{{item.avatar}}" alt="">
+            } @else {
+              <img src="/assets/images/main/profile.png" alt="">
+
+            }
+          </div>
+          <div class="name-container">
+            <div class="name" [innerHTML]="item.first_name"></div>
+            <div class="status" [innerHTML]="item.pk"></div>
+          </div>
+        </div>
+        <div class="company"
+             [innerHTML]="item.company">
+        </div>
+
+        <div class="number"
+             [innerHTML]="item.phone_number">
+        </div>
+
+        <div class="coins">
+          <app-coins [coins]="item.coins"/>
+        </div>
+
+      </div>
+      <app-primary-button
+        (click)="onDeleteUser(item.pk)"
+        [label]="'Удалить'"
+        styling="standard"
+        theme="red"
+        type="button"
+      ></app-primary-button>
+
+    </div>
+
+
+  </div>
+}

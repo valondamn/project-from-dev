@@ -11,7 +11,7 @@ import {ProgressSpinnerModule} from 'primeng/progressspinner';
   imports: [NgClass, RouterLink, ProgressSpinnerModule, NgStyle],
 })
 export class PrimaryButtonComponent {
-  @Input({required: true}) theme!: 'dark' | 'light';
+  @Input({required: true}) theme!: 'dark' | 'light' | 'green' | 'red';
   @Input({required: true}) styling!:
     | 'standard'
     | 'outlined'
