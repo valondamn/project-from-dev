@@ -69,7 +69,7 @@ export class AccountComponent implements OnInit {
     );
   }
 
-  saveProfile() {
+   saveProfile() {
     if (this.profileForm.invalid) {
       console.error('Форма заполнена некорректно');
       this.messageService.add({
